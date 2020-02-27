@@ -37,13 +37,170 @@
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
 	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 	-->
+
+	<!--New Code -->
+		 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+   <script type="text/javascript" src="leafletpractice/js/leaflet.ajax.min.js"></script>
+
+   <script src="leafletpractice/js/jquery-2.1.1.min.js"></script>
+
+
+   <script>
+   	function aboutPanelClose(){
+   		x = document.getElementById("AboutPanel");
+   		x.className="close";
+   	}
+
+   	function aboutPanelOpen(){
+   		x = document.getElementById("AboutPanel");
+   		x.className="AboutPanel";
+   	}
+
+   	function LULCPanelClose1(){ //can probably do a get element by class for all panels for this later
+   		x = document.getElementById("LULCPanel1");
+   		x.className="LULCclose";
+   	}
+
+   	function LULCPanelClose2(){
+   		x = document.getElementById("LULCPanel2");
+   		x.className="LULCclose";
+   	}
+
+   	function LULCPanelClose3(){
+   		x = document.getElementById("LULCPanel3");
+   		x.className="LULCclose";
+   	}
+   	//class name changes to .close when closed, LULCclose
+   	function LULCPanelOpen(){
+   		x =document.getElementById("LULCPanel1");
+   		x.className="LULCpanel";
+   		y =document.getElementById("LULCPanel2");
+   		y.className="LULCpanel";
+   		z =document.getElementById("LULCPanel3");
+   		z.className="LULCpanel";
+   	}
+
+   	
+	
+
+	
+   </script>
+
+	<style>
+		#mapid {
+			height: 600px;
+			width: 100%;
+			z-index: 1;
+		}
+
+		#panel {
+			display: inline-block;
+			float: right;
+			padding: 1.5%;
+			width: 200px;
+			height: 500px;
+			background-color: #994000;
+			z-index: 99;
+		}
+
+		.LULCpanel {
+			display: inline-block;
+			float: right;
+			padding: 1.5%;
+			width: 100px;
+			height: 500px;
+			background-color: #994000;
+			z-index: 99;
+
+		}
+
+
+		#LULCPanel1 {
+			top: 15px;
+			right: 245px;
+			position: absolute;
+
+		}
+
+
+		#LULCPanel2 {
+			top: 15px;
+			right: 375px;
+			position: absolute;
+
+		}
+
+		#LULCPanel3 {
+			top: 15px;
+			right: 505px;
+			position: absolute;
+
+		}
+
+		.AboutPanel {
+			display: inline-block;
+			float: right;
+			padding: 1.5%;
+			width: 500px;
+			height: 500px;
+			background-color: #ADD8E6;
+			z-index: 100;
+			top: 15px;
+			right: 245px;
+			position: absolute;
+
+		}
+
+
+		.exitButton {
+			background-color: #994000;
+			float: right;
+		}
+
+		.close {
+			display: none;
+		}
+
+		.LULCclose{
+			display: none;
+		}
+
+		#LULCclose{
+			display: none;
+		}
+
+		#interactiveLegend{
+			display: inline-block;
+			float: left;
+			padding: 1.5%;
+			width: 100px;
+			height: 100px;
+			background-color: #ADD8E6;
+			z-index: 100;
+			top: 450px;
+			left: 35px;
+			position: absolute;
+
+		}
+
+
+
+
+
+	</style>
+	
 	</head>
 
 
 
 	<body>
 
-	  <div id="map">
+	 <!-- <div id="map">
 	  </div>
 
 	<div id="logo" style="position: absolute;
@@ -69,10 +226,10 @@
 		  <button class="tablinks" onclick="openTab(event, 'Salud')">Salud</button>
 		  <button class="tablinks" onclick="openTab(event, 'Agua')">Agua</button>
 		  <button class="tablinks" onclick="openTab(event, 'Hábitat')">Hábitat</button>
-		  <!--<button class="tablinks" onclick="openTab(event, 'Recreación')">Recreación</button>
+		  <button class="tablinks" onclick="openTab(event, 'Recreación')">Recreación</button>
 		  <button class="tablinks" onclick="openTab(event, 'Población')">Población</button>
 			<button class="tablinks" onclick="openTab(event, 'About')">About</button>-->
-		</div>
+		<!--</div>
 
 		<div id="Geografía" class="tabcontent">
 
@@ -97,7 +254,7 @@
 			
 		</div>
 
-		<!--<div id="Carbón" class="tabcontent">
+			<div id="Carbón" class="tabcontent">
 	
 				<fieldset><legend><b>InVEST Carbono resultados</b></legend>
 					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>Forest Edge Effect Model</p>
@@ -113,7 +270,7 @@
 
 		</div>-->
 
-		<div id="Salud" class="tabcontent">
+		<!--<div id="Salud" class="tabcontent">
 	
 				<fieldset><legend><b>Mosquito-borne disease</b></legend>
 					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>dengue, zika y/o chikuengunya</p>
@@ -137,15 +294,15 @@
 					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Escorrentía superficial [mm] per mes</p>
 					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Flujo base [mm] per año</p>
 					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Recarga local [mm] per año</p>
-					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				</fieldset>
+					 Add a 'information' button after each thing - leading to InVEST User Guide !!-->
+				<!--</fieldset>
 
 				<fieldset><legend><b>Sedimento</b></legend>
 					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>Exportación de sedimentos [toneladas/año]</p>
 					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Índice de retención de sedimentos [toneladas/año]</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Pérdida potencial de suelo (USLE) [toneladas/año]</p>
+					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Pérdida potencial de suelo (USLE) [toneladas/año]</p>-->
 					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				</fieldset>
+				<!--</fieldset>
 
 
 
@@ -166,7 +323,7 @@
 
 				<fieldset><legend><b>Cualidad del hábitat</b></legend>
 					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>Hábitat sensitivos</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Amenazas</p>
+					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Amenazas</p>-->
 					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
 				<!--</fieldset>
 
@@ -175,7 +332,7 @@
 		<!--<div id="Recreación" class="tabcontent">
 				<fieldset><legend><b>Recreación y turismo</b></legend>
 					 <p><label class="switch"><input type="checkbox" id='checkbox2'><span class="slider"></span></label>  Foto-usario-día per año</p>
-					 <p><label class="switch"><input type="checkbox" id='checkbox2'><span class="slider"></span></label>  Foto-usario-día per mes</p>
+					 <p><label class="switch"><input type="checkbox" id='checkbox2'><span class="slider"></span></label>  Foto-usario-día per mes</p>-->
 					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
 				<!--</fieldset>
 
@@ -220,10 +377,234 @@
 			  		
 				</fieldset>
 		</div> -->
-	</div>
+	<!--</div>-->
 
 
+	<!-- Base Map-->
+
+<div id="mapid"></div>
+
+
+<script>
+	var mymap = L.map('mapid').setView([16.872890378907783, -88.87390136718749], 10);
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+}).addTo(mymap);
+
+	//var shapestyle = {
+	//	color: 'red',
+	//	fillColor: '#f03',
+	//	fillOpacity: 0.5,
+	//	weight: 0.5,
+
+	//};
+
+	//var greenIcon = L.icon({
+    //iconUrl: 'leafletpractice/imgs/tree.png',
+
+    //iconSize:     [32, 37], // size of the icon
+    //iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	//});
+
+	//L.marker([16.872890378907783, -88.87390136718749], {icon: greenIcon}).addTo(mymap).bindPopup("Hi <img src= 'leafletpractice/imgs/placeholder.png'>");
 	
+	//var circle = L.circle([16.872890378907783, -88.87390136718749], {
+		//radius: 500
+	//}, shapestyle).addTo(mymap).bindPopup("Cicle time.");
+
+	//var polygon = L.polygon([
+	//	[16.872890378907783, -88.87390136718749],
+	//	[16.852890378907783, -88.86390136718749],
+	//	[16.882890378907783, -88.87390136718749]
+	//], shapestyle).addTo(mymap);
+
+	//polygon.bindPopup("I am a polygon.");
+
+	//var popup = L.popup();
+
+	//function onMapClick(e) {
+	//	popup
+	//		.setLatLng(e.latlng)
+	//		.setContent("You clicked the map at " + e.latlng.toString())
+	//		.openOn(mymap);
+	//}
+	//mymap.on('click', onMapClick);
+
+	//var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+    //	imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+	//L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+
+
+	//L.geoJSON(geojson).addTo(mymap);
+
+	//var agLocation = "leafletpractice/data/ag_defined_v1/testgeojsonag.geojson";
+	//L.geoJSON(agLocation).addTo(mymap);
+
+
+	//var mapboxAccessToken = {your access token here};
+	//var map = L.map('map').setView([37.8, -96], 4);
+
+	//L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    	//id: 'andreacelestecontreras.85cftm35',
+    	//attribution: ...,
+    	//tileSize: 512,
+    	//zoomOffset: -1
+	//}).addTo(map);
+
+	//L.geoJson(statesData).addTo(map);
+
+
+
+
+
+
+
+</script>
+
+<!-- Selection Panel -->
+<div id="panel" style="position: absolute;
+						top: 15px;
+						right: 15px;
+						z-index: 500;"> 
+Options for Map
+<p><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+<p><button type= "button" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+
+<p><input type = "checkbox"><b>map 1</b></p>
+<p><input type = "checkbox">another layer</p>
+<p><input type = "checkbox">raster</p>
+<p><input type = "checkbox">look a layer</p>
+<p><input type = "checkbox">map 2</p>
+
+</div>
+
+<!--Data Layers
+ may end up at the same place as the selection panel but could be separate under this heading -->
+ <script>
+ 
+ 	var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+    	imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+	L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+
+	var geojson = 
+   		{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -88.87664794921875,
+            16.867633616803847
+          ],
+          [
+            -89.03732299804688,
+            16.754577926390972
+          ],
+          [
+            -88.97964477539062,
+            16.566441404897738
+          ],
+          [
+            -88.87390136718749,
+            16.509832826905846
+          ],
+          [
+            -88.81622314453125,
+            16.628296869727386
+          ],
+          [
+            -88.72421264648438,
+            16.66908424753323
+          ],
+          [
+            -88.7860107421875,
+            16.748002850231376
+          ],
+          [
+            -88.84780883789062,
+            16.792708886295564
+          ],
+          [
+            -88.94805908203125,
+            16.676977575323487
+          ],
+          [
+            -88.91510009765625,
+            16.58618467276904
+          ],
+          [
+            -88.824462890625,
+            16.66908424753323
+          ],
+          [
+            -88.79974365234375,
+            16.711178229749688
+          ],
+          [
+            -88.8409423828125,
+            16.75063290794781
+          ],
+          [
+            -88.90274047851562,
+            16.67434650224802
+          ]
+        ]
+      }
+    }
+  ]
+}
+
+
+	L.geoJSON(geojson).addTo(mymap);
+
+	var myLayer = L.geoJSON().addTo(mymap);
+	myLayer.addData("img/data/map.geojson");
+
+	var agExtent;
+	agExtent = L.geoJSON.ajax("img/data/ag_defined_v1/testgeojsonag.geojson").addTo(mymap);
+
+	var overlayLayers = {
+		"swirlRoad": geojson
+
+	}
+
+
+ </script>
+
+
+<!-- Interactvice Legend -->
+<div class="InteractiveLegend" id="interactiveLegend">Interactive Legend
+</div>
+
+<!-- LULC Panel
+	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
+
+<div class= "LULCclose" id= "LULCPanel1">case 1 <button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+</div>
+
+<div class= "LULCclose" id= "LULCPanel2">case 2 <button type= "button" class= "exitButton" onclick="LULCPanelClose2()">X</button>
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+</div>
+<div class= "LULCclose" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose3()">X</button>
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+	<img src="img/placeholdersmall.png" height="100" width="100">
+</div>
+</div>
+
+<!--About panel on top of scenarios, also easy to x out of it -->
+<div class= "close" id=AboutPanel>Learn about this viewer, cool work went into it
+<button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button>
 
 
 	  <!--<div id="key" class="key hide">
