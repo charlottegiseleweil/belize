@@ -106,6 +106,7 @@
 			height: 500px;
 			background-color: #994000;
 			z-index: 99;
+			line-height: 0.2;
 		}
 
 		.LULCpanel {
@@ -113,6 +114,7 @@
 			float: right;
 			padding: 1.5%;
 			width: 100px;
+			top: 50px;
 			height: 500px;
 			background-color: #994000;
 			z-index: 99;
@@ -187,6 +189,11 @@
 			position: absolute;
 
 		}
+
+		.panelOption{
+			padding: 0.2%;
+		}
+
 
 
 
@@ -464,17 +471,29 @@
 
 <!-- Selection Panel -->
 <div id="panel" style="position: absolute;
-						top: 15px;
+						top: 50px;
 						right: 15px;
 						z-index: 500;"> 
 Options for Map
-<p><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-<p><button type= "button" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+<p class="panelOption"><input type = "checkbox">New Layer</p>
+<p class="panelOption"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+<p class="panelOption"><button type= "button" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
 
-<p><input type = "checkbox"><b>map 1</b></p>
-<p><input type = "checkbox">another layer</p>
-<p><input type = "checkbox">raster</p>
-<p><input type = "checkbox">look a layer</p>
+<p class="panelOption"><input type = "checkbox" onclick="LULCPanelOpen()"><b>Tourism</b></p>
+<p class="panelOption"><input type = "checkbox">Impacted tourist sites</p>
+<p class="panelOption"><input type = "checkbox">Tourism expansion</p>
+<p><input type = "checkbox"><b>Mining</b></p>
+<p><input type = "checkbox">Mining areas</p>
+<p><input type = "checkbox">Mining expansion</p>
+<p><input type = "checkbox"><b>Ag</b></p>
+<p><input type = "checkbox">Current ag zones</p>
+<p><input type = "checkbox">Ag expansion (along roads)</p>
+<p><input type = "checkbox"><b>Timber</b></p>
+<p><input type = "checkbox">Current Timber Areas</p>
+<p><input type = "checkbox">Timber Expansion</p>
+<p><input type = "checkbox"><b>Energy</b></p>
+<p><input type = "checkbox">Potential sites for renewables</p>
+<p><input type = "checkbox">River network and Watersheds</p>
 <p><input type = "checkbox">map 2</p>
 
 </div>
@@ -483,9 +502,9 @@ Options for Map
  may end up at the same place as the selection panel but could be separate under this heading -->
  <script>
  
- 	var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
-    	imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
-	L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+ 	//var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+    	//imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+	//L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
 
 	var geojson = 
    		{
@@ -559,19 +578,82 @@ Options for Map
   ]
 }
 
+	var zigzag = 
+		{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -89.09088134765625,
+            16.865005180909595
+          ],
+          [
+            -88.87390136718749,
+            16.901799954655466
+          ],
+          [
+            -88.69537353515625,
+            16.899171994430848
+          ],
+          [
+            -88.6376953125,
+            16.754577926390972
+          ],
+          [
+            -89.154052734375,
+            16.736167140985224
+          ],
+          [
+            -88.68988037109375,
+            16.66776866124075
+          ],
+          [
+            -89.176025390625,
+            16.59671358730417
+          ]
+        ]
+      }
+    }
+  ]
+}
 
-	L.geoJSON(geojson).addTo(mymap);
+	var myStyle = {
+		"color": "red", 
+		"weight": 5
+	};
 
-	var myLayer = L.geoJSON().addTo(mymap);
-	myLayer.addData("img/data/map.geojson");
+		var layer1 = L.geoJSON(geojson)//.addTo(mymap);
 
-	var agExtent;
-	agExtent = L.geoJSON.ajax("img/data/ag_defined_v1/testgeojsonag.geojson").addTo(mymap);
+	var layer2 = L.geoJSON(zigzag, {
+		style: myStyle
+	});//.addTo(mymap);
 
-	var overlayLayers = {
-		"swirlRoad": geojson
+	var roads = L.layerGroup([layer1, layer2]);
+	
 
-	}
+	var overlayMaps = {
+		"Roads": roads
+	};
+
+	L.control.layers(null, overlayMaps).addTo(mymap);	
+
+	//L.geoJSON(geojson).addTo(mymap);
+
+	//var myLayer = L.geoJSON().addTo(mymap);
+	//myLayer.addData("img/data/map.geojson");
+
+	//var agExtent;
+	//agExtent = L.geoJSON.ajax("img/data/ag_defined_v1/testgeojsonag.geojson").addTo(mymap);
+
+	//var overlayLayers = {
+	//	"swirlRoad": geojson
+
+	//}
 
 
  </script>
