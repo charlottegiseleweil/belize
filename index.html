@@ -101,13 +101,13 @@
 		#panel {
 			display: inline-block;
 			float: right;
-			padding: 1.5%;
+			padding: 1%;
 			width: 200px;
-			height: 500px;
+			top: 15px;
+			height: 115px;
 			background-color: #994000;
 			z-index: 99;
-			line-height: 0.2;
-		}
+			line-height: 0.2;		}
 
 		.LULCpanel {
 			display: inline-block;
@@ -192,6 +192,24 @@
 
 		.panelOption{
 			padding: 0.2%;
+		}
+
+		.leaflet-control-layers {
+			z-index: 900;
+
+		}
+
+		.leaflet-control{
+			z-index: 900;
+		}
+
+		.leaflet-control-layers-expanded { 
+			float: left;
+			z-index: 900;
+			top: 140px;
+			width: 210px;
+			border-radius: 0px;
+
 		}
 
 
@@ -471,7 +489,6 @@
 
 <!-- Selection Panel -->
 <div id="panel" style="position: absolute;
-						top: 50px;
 						right: 15px;
 						z-index: 500;"> 
 Options for Map
@@ -479,7 +496,7 @@ Options for Map
 <p class="panelOption"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
 <p class="panelOption"><button type= "button" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
 
-<p class="panelOption"><input type = "checkbox" onclick="LULCPanelOpen()"><b>Tourism</b></p>
+<!--<p class="panelOption"><input type = "checkbox" onclick="LULCPanelOpen()"><b>Tourism</b></p>
 <p class="panelOption"><input type = "checkbox">Impacted tourist sites</p>
 <p class="panelOption"><input type = "checkbox">Tourism expansion</p>
 <p><input type = "checkbox"><b>Mining</b></p>
@@ -494,7 +511,7 @@ Options for Map
 <p><input type = "checkbox"><b>Energy</b></p>
 <p><input type = "checkbox">Potential sites for renewables</p>
 <p><input type = "checkbox">River network and Watersheds</p>
-<p><input type = "checkbox">map 2</p>
+<p><input type = "checkbox">map 2</p>-->
 
 </div>
 
@@ -627,20 +644,24 @@ Options for Map
 		"weight": 5
 	};
 
-		var layer1 = L.geoJSON(geojson)//.addTo(mymap);
+		var myStyle2 = {
+		"color": "green"
+	}
 
-	var layer2 = L.geoJSON(zigzag, {
-		style: myStyle
-	});//.addTo(mymap);
+	//var layer1 = L.geoJSON(geojson)//.addTo(mymap);
 
-	var roads = L.layerGroup([layer1, layer2]);
+	//var layer2 = L.geoJSON(zigzag, {
+	//	style: myStyle
+	//});//.addTo(mymap);
+
+	//var roads = L.layerGroup([layer1, layer2]);
 	
 
-	var overlayMaps = {
-		"Roads": roads
-	};
+	//var overlayMaps = {
+	//	"Roads": roads
+	//};
 
-	L.control.layers(null, overlayMaps).addTo(mymap);	
+	//L.control.layers(null, overlayMaps).addTo(mymap);	
 
 	//L.geoJSON(geojson).addTo(mymap);
 
@@ -654,6 +675,36 @@ Options for Map
 	//	"swirlRoad": geojson
 
 	//}
+
+	var layer1 = L.geoJSON(geojson)//.addTo(mymap);
+
+	var layer2 = L.geoJSON(zigzag, {
+		style: myStyle
+	});//.addTo(mymap);
+	var layer3 = L.geoJSON(zigzag, {
+		style: myStyle2
+	});//.addTo(mymap);
+	//var layer4;
+
+	//layer4= L.geoJSON.ajax("leafletpractice/data/roadCompleted.geojson").addTo(mymap);
+
+
+
+	//var layerbus;
+	//layerbus = L.geoJSON.ajax("leafletpractice/data/testbusag.geojson").addTo(mymap);
+
+	var roads = L.layerGroup([layer1]);
+		roads2 = L.layerGroup([layer2]);
+		roads3 = L.layerGroup([layer3]);
+	
+
+	var overlayMaps = {
+		"Roads": roads,
+		"Roads2": roads2,
+		"Roads3": roads3
+	};
+
+	L.control.layers(null, overlayMaps, {collapsed: false}).addTo(mymap);
 
 
  </script>
