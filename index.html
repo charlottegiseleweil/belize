@@ -45,11 +45,12 @@
 	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
-   <script type="text/javascript" src="leafletpractice/js/leaflet.ajax.min.js"></script>
+   <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
 
    <script src="leafletpractice/js/jquery-2.1.1.min.js"></script>
    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
    <script src="js/lib/leaflet.shpfile.js"></script>
+   <script src="shp.js"></script>
 
 
    <script>
@@ -99,7 +100,8 @@
 			top: 0;
 			bottom: 0;
 			width: 100%;
-			z-index: 1;;
+			z-index: 1;
+
 		}
 
 		#panel {
@@ -109,9 +111,11 @@
 			width: 200px;
 			top: 15px;
 			height: 115px;
-			background-color: #994000;
+			background-color: #FFFFFF;
 			z-index: 99;
 			line-height: 0.2;	
+			border-radius: 25px;
+			box-shadow: none;
 		}
 
 		.LULCpanel {
@@ -123,6 +127,7 @@
 			height: 500px;
 			background-color: #994000;
 			z-index: 99;
+			border-radius: 25px;
 
 		}
 
@@ -214,9 +219,14 @@
 			z-index: 900;
 			top: 160px;
 			width: 215px;
-			border-radius: 0px;
+			border-radius: 25px;
 			right: 15px;
+			box-shadow: none;
 
+		}
+
+		#viewerTitle {
+			font-size: 24px;
 		}
 
 
@@ -443,7 +453,7 @@
 <div id="panel" style="position: absolute;
 						right: 15px;
 						z-index: 500;"> 
-Options for Map
+<p id="viewerTitle">Belize SDP Viewer</p>
 <p class="panelOption"><input type = "checkbox">New Road</p>
 <p class="panelOption" style="display: inline;"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
 <p class="panelOption" style="display: inline"><button type= "button" style="display: inline;">Data Download</button></p>
@@ -626,7 +636,7 @@ Options for Map
 
 	//layer4= L.geoJSON.ajax("leafletpractice/data/roadCompleted.geojson").addTo(mymap);
 
-	var newRoad = new L.Shapefile("data/newRoad.zip");
+	var newRoad = new L.Shapefile("newRoad.zip");
 	newRoad.addTo(mymap);
 
 	//var layerbus;
