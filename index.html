@@ -48,6 +48,8 @@
    <script type="text/javascript" src="leafletpractice/js/leaflet.ajax.min.js"></script>
 
    <script src="leafletpractice/js/jquery-2.1.1.min.js"></script>
+   <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+   <script src="leafletpractice/js/leaflet.shpfile.js"></script>
 
 
    <script>
@@ -93,28 +95,31 @@
 
 	<style>
 		#mapid {
-			height: 600px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
 			width: 100%;
-			z-index: 1;
+			z-index: 1;;
 		}
 
 		#panel {
 			display: inline-block;
 			float: right;
-			padding: 1%;
+			padding: 1.5%;
 			width: 200px;
 			top: 15px;
 			height: 115px;
 			background-color: #994000;
 			z-index: 99;
-			line-height: 0.2;		}
+			line-height: 0.2;	
+		}
 
 		.LULCpanel {
+			position: absolute;
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
 			width: 100px;
-			top: 50px;
 			height: 500px;
 			background-color: #994000;
 			z-index: 99;
@@ -204,11 +209,13 @@
 		}
 
 		.leaflet-control-layers-expanded { 
+			position: absolute;
 			float: left;
 			z-index: 900;
-			top: 140px;
-			width: 210px;
+			top: 160px;
+			width: 215px;
 			border-radius: 0px;
+			right: 15px;
 
 		}
 
@@ -412,9 +419,14 @@
 
 <script>
 	var mymap = L.map('mapid').setView([16.872890378907783, -88.87390136718749], 10);
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 }).addTo(mymap);
+
+	//L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	//attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+//}).addTo(mymap);
 
 	//var shapestyle = {
 	//	color: 'red',
@@ -492,26 +504,12 @@
 						right: 15px;
 						z-index: 500;"> 
 Options for Map
-<p class="panelOption"><input type = "checkbox">New Layer</p>
-<p class="panelOption"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-<p class="panelOption"><button type= "button" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+<p class="panelOption"><input type = "checkbox">New Road</p>
+<p class="panelOption" style="display: inline;"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;">Data Download</button></p>
+<p class="panelOption"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
 
-<!--<p class="panelOption"><input type = "checkbox" onclick="LULCPanelOpen()"><b>Tourism</b></p>
-<p class="panelOption"><input type = "checkbox">Impacted tourist sites</p>
-<p class="panelOption"><input type = "checkbox">Tourism expansion</p>
-<p><input type = "checkbox"><b>Mining</b></p>
-<p><input type = "checkbox">Mining areas</p>
-<p><input type = "checkbox">Mining expansion</p>
-<p><input type = "checkbox"><b>Ag</b></p>
-<p><input type = "checkbox">Current ag zones</p>
-<p><input type = "checkbox">Ag expansion (along roads)</p>
-<p><input type = "checkbox"><b>Timber</b></p>
-<p><input type = "checkbox">Current Timber Areas</p>
-<p><input type = "checkbox">Timber Expansion</p>
-<p><input type = "checkbox"><b>Energy</b></p>
-<p><input type = "checkbox">Potential sites for renewables</p>
-<p><input type = "checkbox">River network and Watersheds</p>
-<p><input type = "checkbox">map 2</p>-->
+
 
 </div>
 
@@ -644,7 +642,7 @@ Options for Map
 		"weight": 5
 	};
 
-		var myStyle2 = {
+	var myStyle2 = {
 		"color": "green"
 	}
 
@@ -688,7 +686,8 @@ Options for Map
 
 	//layer4= L.geoJSON.ajax("leafletpractice/data/roadCompleted.geojson").addTo(mymap);
 
-
+	var newRoad = new L.Shapefile("data/newRoad.zip");
+	newRoad.addTo(mymap);
 
 	//var layerbus;
 	//layerbus = L.geoJSON.ajax("leafletpractice/data/testbusag.geojson").addTo(mymap);
