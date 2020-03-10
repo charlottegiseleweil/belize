@@ -39,10 +39,10 @@
 	-->
 
 	<!--New Code -->
-		 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
-	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
@@ -52,10 +52,10 @@
    <script src="js/lib/leaflet.shpfile.js"></script>
    <script src="shp.js"></script>
 
-   	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
-	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
@@ -65,6 +65,13 @@
 
    <script src="js/lib/leaflet.shpfile.js"></script>
    <script src="js/lib/shp.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
 
 
    <script>
@@ -134,7 +141,7 @@
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 250px;
+			width: 400px;
 			top: 15px;
 			right: 15px;
 			height: 200px;
@@ -152,7 +159,7 @@
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 100px;
+			width: 115px;
 			height: 500px;
 			background-color: #994000;
 			z-index: 99;
@@ -163,7 +170,7 @@
 
 		#LULCPanel1 {
 			top: 15px;
-			right: 245px;
+			right: 425px;
 			position: absolute;
 
 		}
@@ -171,14 +178,14 @@
 
 		#LULCPanel2 {
 			top: 15px;
-			right: 375px;
+			right: 555px;
 			position: absolute;
 
 		}
 
 		#LULCPanel3 {
 			top: 15px;
-			right: 505px;
+			right: 685px;
 			position: absolute;
 
 		}
@@ -192,8 +199,9 @@
 			background-color: #ADD8E6;
 			z-index: 100;
 			top: 15px;
-			right: 245px;
+			right: 425px;
 			position: absolute;
+			border-radius: 25px;
 
 		}
 
@@ -219,13 +227,14 @@
 			display: inline-block;
 			float: left;
 			padding: 1.5%;
-			width: 100px;
+			width: 250px;
 			height: 100px;
 			background-color: #ADD8E6;
 			z-index: 100;
 			bottom: 50px;
-			left: 35px;
+			left: 15px;
 			position: absolute;
+			border-radius: 25px;
 
 		}
 
@@ -245,7 +254,16 @@
 		
 
 		#viewerTitle {
-			font-size: 24px;
+			font-size: 38px;
+		}
+
+		#dataDownload {
+			z-index: 500;
+			float: right;
+			width: 400px;
+			height: 500px;
+			background-color: #ADD8E6;
+			display: absolute;
 		}
 
 
@@ -473,13 +491,17 @@
 						right: 15px;
 						z-index: 500;"> 
 <p id="viewerTitle">Belize SDP Viewer</p>
-<p class="panelOption"><input type = "checkbox">New Road</p>
-<p class="panelOption" style="display: inline;"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+
+<p class="panelOption" style="display: inline"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
 <p class="panelOption" style="display: inline"><button type= "button" style="display: inline;">Data Download</button></p>
-<p class="panelOption"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
 
 
 
+</div>
+
+<!-- Data Download -->
+<div id="dataDownload">
 </div>
 
 <!--Data Layers
@@ -662,17 +684,30 @@
 	//layerbus = L.geoJSON.ajax("leafletpractice/data/testbusag.geojson").addTo(mymap);
 
 	var newRoad = new L.Shapefile("data/newRoad.zip");
-	var agZones = new L.Shapefile("data/ag_defined_v1.zip");//.addTo(mymap);
+	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: myStyle});
 	var CMCCCommunities = new L.Shapefile("data/CMCCCommunitiesPoints.zip");
 	var CMCCGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip");
+	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip");
+	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip");
+	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip");
+	var PLCArea = new L.Shapefile("data/timberConcessions/PLCArea.zip");
+	var RecinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip");
+	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
+	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
+	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
+	//var allRoads = new L.Shapefile("data/timberConcessions/Roads_2011_BERDS.zip", {style: myStyle});
 
-	var roads = L.layerGroup([layer1]);
-		roads2 = L.layerGroup([layer2]);
-		roads3 = L.layerGroup([layer3]);
+	var //roads = L.layerGroup([layer1]);
+		//roads2 = L.layerGroup([layer2]);
+		//roads3 = L.layerGroup([layer3]);
 		roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
 		CMCCCommPoints = L.layerGroup([CMCCCommunities]);
 		CMCCZone = L.layerGroup([CMCCGeographicZone]);
+		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, CFR, FDPortionMPR, PLCArea, RecinosMngtArea]);
+		water = L.layerGroup([waterWays, waterBody, majorRivers]);
+		//allRoads = L.layerGroup([allRoads]); COULD WORK NOT DISPLAY
+
 	
 
 	var overlayMaps = {
@@ -680,8 +715,9 @@
 		"Current Agriculture Zones": agZone,
 		"CMCCC Communities": CMCCCommPoints,
 		"CMCC Area": CMCCZone,
-		"Current Ag Zones": roads2,
-		"Roads3": roads3
+		"Timber": timberConcessions,
+		"River Network and Watersheds": water
+		//"Roads": allRoads
 		//"New Road": roads4
 	};
 
