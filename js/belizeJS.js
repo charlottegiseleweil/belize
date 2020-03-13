@@ -33,3 +33,13 @@
    		z.className="LULCpanel";
    	}
 
+      function dataPanelClose(){
+         x = document.getElementById("dataDownloadPanel");
+         x.className="close";
+      }
+
+      function dataPanelOpen(){
+         x = document.getElementById("dataDownloadPanel");
+         x.className="dataDownload";
+      }
+

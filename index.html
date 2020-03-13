@@ -62,38 +62,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             
-    <style>
 
-    	.leaflet-control-layers-expanded { 
-			position: absolute;
-			float: right;
-			z-index: 500;
-			top: 210px;
-			width: 250px;
-			border-radius: 25px;
-			right: 15px;
-			box-shadow: none;
-			overflow: scroll;
-		}
-
-		.leaflet-control-layers-overlays {
-			line-height: 15px;
-
-		}
-
-		.dataDownload {
-			z-index: 600;
-			float: right;
-			width: 400px;
-			height: 500px;
-			top: 15px;
-			right: 300px;
-			background-color: #ADD8E6;
-			display: absolute;
-		}
-
-
-    </style>
 	
 	</head>
 
@@ -133,7 +102,7 @@
 <p id="viewerTitle">Belize SDP Viewer</p>
 
 <p class="panelOption" style="display: inline"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;">Data Download</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" onclick="dataPanelOpen()">Data Download</button></p>
 <p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
 
 
@@ -141,7 +110,28 @@
 </div>
 
 <!-- Data Download -->
-<div class="dataDownload" id="dataDownload">Data Download
+<div class= "close" id=dataDownloadPanel>Download the sick data
+<button type= "button" class= "exitButton" onclick="dataPanelClose()" >X</button>
+<div>New Road</div>
+<div>Tourism</div>
+<div>Archeological/Key Cultural Sites</div>
+<div>Impacted Toursit Sites</div>
+<div>Tourism Expansion</div>
+<div>Mining</div>
+<div>Mining Areas</div>
+<div>Mining Expansion</div>
+<div>Agriculture</div>
+<div>Current Agriculture Zones</div>
+<div>Ag Expansion</div>
+<div>Timber</div>
+<div>Timber</div>
+<div>Timber Expansion</div>
+<div>Energy</div>
+<div>Potential Sites for Energy</div>
+<div>Watersheds</div>
+<div>CMCC Areas</div>
+<div>CMCC Communities</div>
+
 </div>
 
 <!--Data Layers
@@ -253,7 +243,7 @@
 
 <!--About panel on top of scenarios, also easy to x out of it -->
 <div class= "close" id=AboutPanel>Learn about this viewer, cool work went into it
-<button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button>
+<button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button></div>
 
 
 	  <!--<div id="key" class="key hide">
