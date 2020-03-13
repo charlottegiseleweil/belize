@@ -6,20 +6,19 @@
 	
 	  <!-- Leaflet & Plugins -->
 	  <link rel="stylesheet" href="src/Control.MiniMap.css" />
-	  <link rel="stylesheet" href="css/leaflet.draw.css"/>
+	
+
 	  <!-- ONLINE <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>-->
 	  <script src="src/leaflet/leaflet.js"></script>
 	  <script src="js/lib/leaflet.draw.js"></script>
+
 	  <!-- ONLINE <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css"/>-->
 	  <link rel="stylesheet" href="src/leaflet/leaflet.css"/>
 
 	   <script src="src/Control.MiniMap.js" type="text/javascript"></script> 
 
-
-	  <link rel="stylesheet" href="css/style.css"/>
-	  <link rel="stylesheet" href="css/sliders.css"/>
-	  <link rel="stylesheet" href="css/tabs.css"/>
-
+	   <link rel="stylesheet" href="css/belizeStylesheet.css">
+	   <script src="js/belizeJS.js"></script>
 	  
 	<!--jQuery-->
 	<script src="js/lib/jquery-2.1.1.min.js"></script> 
@@ -28,15 +27,6 @@
 	<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
 	<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 
-	<!-- ESRI Leaflet 
-	<script src="https://unpkg.com/esri-leaflet@2.1.4/dist/esri-leaflet.js"
-    integrity="sha512-m+BZ3OSlzGdYLqUBZt3u6eA0sH+Txdmq7cqA1u8/B2aTXviGMMLOfrKyiIW7181jbzZAY0u+3jWoiL61iLcTKQ=="
-    crossorigin=""></script>
-
-    MapBox
-    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
-	-->
 
 	<!--New Code -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -60,7 +50,7 @@
    crossorigin=""></script>
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
 
-   <script src="leafletpractice/js/jquery-2.1.1.min.js"></script>
+  
    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
 
    <script src="js/lib/leaflet.shpfile.js"></script>
@@ -72,60 +62,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             
+    <style>
 
-
-   <script>
-   	function aboutPanelClose(){
-   		x = document.getElementById("AboutPanel");
-   		x.className="close";
-   	}
-
-   	function aboutPanelOpen(){
-   		x = document.getElementById("AboutPanel");
-   		x.className="AboutPanel";
-   	}
-
-   	function LULCPanelClose1(){ //can probably do a get element by class for all panels for this later
-   		x = document.getElementById("LULCPanel1");
-   		x.className="LULCclose";
-   	}
-
-   	function LULCPanelClose2(){
-   		x = document.getElementById("LULCPanel2");
-   		x.className="LULCclose";
-   	}
-
-   	function LULCPanelClose3(){
-   		x = document.getElementById("LULCPanel3");
-   		x.className="LULCclose";
-   	}
-   	//class name changes to .close when closed, LULCclose
-   	function LULCPanelOpen(){
-   		x =document.getElementById("LULCPanel1");
-   		x.className="LULCpanel";
-   		y =document.getElementById("LULCPanel2");
-   		y.className="LULCpanel";
-   		z =document.getElementById("LULCPanel3");
-   		z.className="LULCpanel";
-   	}
-
-   	
-	
-
-	
-   </script>
-
-	<style>
-		#mapid {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			width: 100%;
-			z-index: 1;
-
-		}
-
-		.leaflet-control-layers-expanded { 
+    	.leaflet-control-layers-expanded { 
 			position: absolute;
 			float: right;
 			z-index: 500;
@@ -134,330 +73,33 @@
 			border-radius: 25px;
 			right: 15px;
 			box-shadow: none;
-			height: 200px;
+			overflow: scroll;
 		}
 
-		#panel {
-			display: inline-block;
-			float: right;
-			padding: 1.5%;
-			width: 400px;
-			top: 15px;
-			right: 15px;
-			height: 200px;
-			background-color: #FFFFFF;
-			z-index: 99;
-			line-height: 0.2;	
-			border-radius: 25px;
-			box-shadow: none;
-			position: absolute;
-			z-index: 500;
-		}
-
-		.LULCpanel {
-			position: absolute;
-			display: inline-block;
-			float: right;
-			padding: 1.5%;
-			width: 115px;
-			height: 500px;
-			background-color: #994000;
-			z-index: 99;
-			border-radius: 25px;
+		.leaflet-control-layers-overlays {
+			line-height: 15px;
 
 		}
 
-
-		#LULCPanel1 {
-			top: 15px;
-			right: 425px;
-			position: absolute;
-
-		}
-
-
-		#LULCPanel2 {
-			top: 15px;
-			right: 555px;
-			position: absolute;
-
-		}
-
-		#LULCPanel3 {
-			top: 15px;
-			right: 685px;
-			position: absolute;
-
-		}
-
-		.AboutPanel {
-			display: inline-block;
-			float: right;
-			padding: 1.5%;
-			width: 500px;
-			height: 500px;
-			background-color: #ADD8E6;
-			z-index: 100;
-			top: 15px;
-			right: 425px;
-			position: absolute;
-			border-radius: 25px;
-
-		}
-
-
-		.exitButton {
-			background-color: #994000;
-			float: right;
-		}
-
-		.close {
-			display: none;
-		}
-
-		.LULCclose{
-			display: none;
-		}
-
-		#LULCclose{
-			display: none;
-		}
-
-		#interactiveLegend{
-			display: inline-block;
-			float: left;
-			padding: 1.5%;
-			width: 250px;
-			height: 100px;
-			background-color: #ADD8E6;
-			z-index: 100;
-			bottom: 50px;
-			left: 15px;
-			position: absolute;
-			border-radius: 25px;
-
-		}
-
-		.panelOption{
-			padding: 0.2%;
-		}
-
-		.leaflet-control-layers {
-			z-index: 900;
-
-		}
-
-		.leaflet-control{
-			z-index: 900;
-		}
-
-		
-
-		#viewerTitle {
-			font-size: 38px;
-		}
-
-		#dataDownload {
-			z-index: 500;
+		.dataDownload {
+			z-index: 600;
 			float: right;
 			width: 400px;
 			height: 500px;
+			top: 15px;
+			right: 300px;
 			background-color: #ADD8E6;
 			display: absolute;
 		}
 
 
-
-
-
-
-	</style>
+    </style>
 	
 	</head>
 
 
 
 	<body>
-
-	 <!-- <div id="map">
-	  </div>
-
-	<div id="logo" style="position: absolute;
-	 					  top: 15px;
-	   					  right: 10px;
-	   					  z-index: 500;">
-		<a href="https://www.naturalcapitalproject.org/" target="_blank"><img src="img/natcap.png" alt="NatCap" width="100" height="80"></a>
-	</div>
-
-	<div id="leyenda" class="panel-right-top">
-		
-		<div id="LUleyenda" class="hide"> <p> Leyenda: Uso del Suelo </p> <img src="img/leyendas/LU_legend.jpg" alt="LU Legend" width="170" height="250"></div>
-
-		<div id="RECleyenda" class="hide"> <p> Fóto-Usario-Día </p> <img src="img/leyendas/rec_leyenda.jpg" alt="Rec Legend" width="100" height="190"></div>
-
-	</div>
-
-	<div id="column" class="panel-left-bottom">
-
-	  	<div class="tab">
-		  <button class="tablinks" onclick="openTab(event, 'Geografía')">LULC Scenarios</button>
-
-		  <button class="tablinks" onclick="openTab(event, 'Salud')">Salud</button>
-		  <button class="tablinks" onclick="openTab(event, 'Agua')">Agua</button>
-		  <button class="tablinks" onclick="openTab(event, 'Hábitat')">Hábitat</button>
-		  <button class="tablinks" onclick="openTab(event, 'Recreación')">Recreación</button>
-		  <button class="tablinks" onclick="openTab(event, 'Población')">Población</button>
-			<button class="tablinks" onclick="openTab(event, 'About')">About</button>-->
-		<!--</div>
-
-		<div id="Geografía" class="tabcontent">
-
-			<p><label class="switch"><input type="checkbox" id='aoi'><span class="slider"></span></label>Área de interés</p>
-			<p><label class="switch"><input type="checkbox" id='watersheds'><span class="slider"></span></label>Cuencas hidrográficas</p>
-		  
-				<fieldset><legend><b>Uso/cobertura del suelo</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='geosur'><span class="slider"></span></label>Perú</p>
-					 <p><label class="switch"><input type="checkbox" id='landuse'><span class="slider"></span></label>Brasil</p>
-					 <p><label class="switch"><input type="checkbox" id='landuse'><span class="slider"></span></label>Bolivia</p>
-				</fieldset>
-
-				<fieldset><legend><b>Topografía y clima</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='landuse'><span class="slider"></span></label>DEM</p>
-					 <p><label class="switch"><input type="checkbox" id='landuse'><span class="slider"></span></label>Precipitación</p>
-					 <p><label class="switch"><input type="checkbox" id='landuse'><span class="slider"></span></label>Temperatura</p>
-				</fieldset>
-
-				<fieldset><legend><b>Satélito datos</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='Satellite'><span class="slider"></span></label>LandSat</p>
-				</fieldset>
-			
-		</div>
-
-			<div id="Carbón" class="tabcontent">
-	
-				<fieldset><legend><b>InVEST Carbono resultados</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>Forest Edge Effect Model</p>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbon'><span class="slider"></span></label>Storage Model</p>
-				</fieldset>
-
-				<fieldset><legend><b>Carbono Validation datasets</b></legend>
-			  		<p><label class="switch small"><input type="checkbox"><span class="slider"></span></label> Peru Carbon Map (Asner 200x)</p>
-			  		<p><label class="switch small"><input type="checkbox"><span class="slider"></span></label> Brazil Carbon Map (ref)</p>
-			  		<p><label class="switch small"><input type="checkbox"><span class="slider"></span></label> Bolivia Carbon Map (ref)</p>
-			  		<p><label class="switch small"><input type="checkbox"><span class="slider"></span></label> Full Carbon Map (ref)</p>
-				</fieldset>
-
-		</div>-->
-
-		<!--<div id="Salud" class="tabcontent">
-	
-				<fieldset><legend><b>Mosquito-borne disease</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>dengue, zika y/o chikuengunya</p>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbon'><span class="slider"></span></label>...</p>
-				</fieldset>
-
-				<fieldset><legend><b>...</b></legend>
-	
-				</fieldset>
-
-		</div>
-
-
-		<div id="Agua" class="tabcontent">
-				<fieldset><legend><b>Activos Naturales</b></legend>
-					<p><label class="switch"><input type="checkbox" id='corrientes'><span class="slider"></span></label>Corriente</p>
-				</fieldset>
-
-				<fieldset><legend><b>Rendimiento estacional de agua</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>Escorrentía superficial [mm] per año</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Escorrentía superficial [mm] per mes</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Flujo base [mm] per año</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Recarga local [mm] per año</p>
-					 Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				<!--</fieldset>
-
-				<fieldset><legend><b>Sedimento</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>Exportación de sedimentos [toneladas/año]</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Índice de retención de sedimentos [toneladas/año]</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>Pérdida potencial de suelo (USLE) [toneladas/año]</p>-->
-					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				<!--</fieldset>
-
-
-
-		</div>
-
-		<div id="Hábitat" class="tabcontent">
-
-				<fieldset><legend><b>Recreación y turismo</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='turismolugares'><span class="slider"></span></label>Lugares turisticos (TripAdvisor)</p>
-					 <p><label class="switch"><input type="checkbox" id='rec'><span class="slider"></span></label>Foto-usario-día (InVEST modelado)</p>
-				</fieldset>
-
-				<fieldset><legend><b>Carbono</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>InVEST modelado (Con effecto de del bosque)</p>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>InVEST modelado (Sin effecto de del bosque)</p>
-					 <p><label class="switch"><input type="checkbox" id='InVESTcarbonforest'><span class="slider"></span></label>Datps de validación (Asner, 2010)</p>
-				</fieldset>
-
-				<fieldset><legend><b>Cualidad del hábitat</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>Hábitat sensitivos</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>Amenazas</p>-->
-					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				<!--</fieldset>
-
-		</div>-->
-
-		<!--<div id="Recreación" class="tabcontent">
-				<fieldset><legend><b>Recreación y turismo</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='checkbox2'><span class="slider"></span></label>  Foto-usario-día per año</p>
-					 <p><label class="switch"><input type="checkbox" id='checkbox2'><span class="slider"></span></label>  Foto-usario-día per mes</p>-->
-					 <!--Add a 'information' button after each thing - leading to InVEST User Guide !!-->
-				<!--</fieldset>
-
-				<fieldset><legend><b>Turismo datos</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>  Lugares de TripAdvisor</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>  Lugares de Lonely Planet</p>
-				</fieldset>
-
-		</div>-->
-
-		<!-- <div id="Población" class="tabcontent">
-				<fieldset><legend><b>Rendimiento estacional de agua</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>sediment exported reaching stream [tons/pixel]</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>potential soil loss [tons/pixel]</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>sediment retention [tons/pixel]</p>
-				</fieldset>
-
-				<fieldset><legend><b>Per watershed</b></legend>
-					 <p><label class="switch"><input type="checkbox" id='sed_export'><span class="slider"></span></label>sediment exported reaching stream [tons/watershed]</p>
-					 <p><label class="switch"><input type="checkbox" id='usle'><span class="slider"></span></label>potential soil loss [tons/watershed]</p>
-					 <p><label class="switch"><input type="checkbox" id='sed_retention'><span class="slider"></span></label>sediment retention [tons/watershed</p>
-				</fieldset>
-
-		</div> -->
-
-
-		<!--<div id="About" class="tabcontent">
-				<fieldset><legend><b>The Natural Capital Project</b></legend>
-					 <p><a href="https://www.naturalcapitalproject.org/" target="_blank"><img src="img/natcap.png" alt="NatCap" width="50" height="40">   The Natural Capital Project</a> develops practical tools and approaches to account for nature’s contributions to society, so that leaders of countries, companies, communities, and organizations worldwide can make smarter decisions for a more sustainable future</p>
-				</fieldset>
-
-				<fieldset><legend><b>Collaborators</b></legend>
-			  		<p>
-			  			<a href="http://www.minam.gob.pe/" target="_blank"><img src="img/minam_small.jpg" alt="MINAM" width="202" height="38"></a>
-			  			<a href="http://cincia.wfu.edu/en/" target="_blank"><img src="img/cincia.png" alt="CINCIA" width="170" height="44"></a>
-			  			<a href="http://www.unamad.edu.pe/" target="_blank"><img src="img/unamad.png" alt="UNAMAD" width="240" height="40"></a>
-			  			<a href="http://www.ufac.br/" target="_blank"><img src="img/ufac.png" alt="UFAC" width="50" height="70"></a>
-			  			<a href="https://www.usaid.gov/" target="_blank"><img src="img/usaid.png" alt="USAID" width="129" height="40"></a>
-			  			<a href="https://www.moore.org/" target="_blank"><img src="img/moore2.png" alt="Moore" width="100" height="40"></a>
-			  			<a href="https://www.naturalcapitalproject.org/" target="_blank"><img src="img/natcap.png" alt="NatCap" width="50" height="40"></a>
-			  		</p>
-			  		
-				</fieldset>
-		</div> -->
-	<!--</div>-->
-
 
 	<!-- Base Map-->
 
@@ -471,18 +113,16 @@
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 }).addTo(mymap);
 
-	//L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	//attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-//}).addTo(mymap);
 
-	//var shapestyle = {
-	//	color: 'red',
-	//	fillColor: '#f03',
-	//	fillOpacity: 0.5,
-	//	weight: 0.5,
 
-	//};
+</script>
 
+<!--Mini Map -->
+<script>
+	var miniMapLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+});
+	var miniMap = new L.Control.MiniMap(miniMapLayer).addTo(mymap);
 
 </script>
 
@@ -501,192 +141,35 @@
 </div>
 
 <!-- Data Download -->
-<div id="dataDownload">
+<div class="dataDownload" id="dataDownload">Data Download
 </div>
 
 <!--Data Layers
- may end up at the same place as the selection panel but could be separate under this heading -->
+ may end up at the same place as the selection panel but could be separate under this heading, includes styling for the layers -->
  <script>
  
- 	//var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
-    	//imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
-	//L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
-
-	var geojson = 
-   		{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -88.87664794921875,
-            16.867633616803847
-          ],
-          [
-            -89.03732299804688,
-            16.754577926390972
-          ],
-          [
-            -88.97964477539062,
-            16.566441404897738
-          ],
-          [
-            -88.87390136718749,
-            16.509832826905846
-          ],
-          [
-            -88.81622314453125,
-            16.628296869727386
-          ],
-          [
-            -88.72421264648438,
-            16.66908424753323
-          ],
-          [
-            -88.7860107421875,
-            16.748002850231376
-          ],
-          [
-            -88.84780883789062,
-            16.792708886295564
-          ],
-          [
-            -88.94805908203125,
-            16.676977575323487
-          ],
-          [
-            -88.91510009765625,
-            16.58618467276904
-          ],
-          [
-            -88.824462890625,
-            16.66908424753323
-          ],
-          [
-            -88.79974365234375,
-            16.711178229749688
-          ],
-          [
-            -88.8409423828125,
-            16.75063290794781
-          ],
-          [
-            -88.90274047851562,
-            16.67434650224802
-          ]
-        ]
-      }
-    }
-  ]
-}
-
-	var zigzag = 
-		{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -89.09088134765625,
-            16.865005180909595
-          ],
-          [
-            -88.87390136718749,
-            16.901799954655466
-          ],
-          [
-            -88.69537353515625,
-            16.899171994430848
-          ],
-          [
-            -88.6376953125,
-            16.754577926390972
-          ],
-          [
-            -89.154052734375,
-            16.736167140985224
-          ],
-          [
-            -88.68988037109375,
-            16.66776866124075
-          ],
-          [
-            -89.176025390625,
-            16.59671358730417
-          ]
-        ]
-      }
-    }
-  ]
-}
-
 	var myStyle = {
-		"color": "red", 
-		"weight": 5
+		"color": "red"
+	};
+
+	var roadStyle = {
+		"color": "grey"
+
 	};
 
 	var myStyle2 = {
 		"color": "green"
 	}
 
-	//var layer1 = L.geoJSON(geojson)//.addTo(mymap);
+	var CMCCGeographicZoneStyle = {
+		
+	}
 
-	//var layer2 = L.geoJSON(zigzag, {
-	//	style: myStyle
-	//});//.addTo(mymap);
 
-	//var roads = L.layerGroup([layer1, layer2]);
-	
-
-	//var overlayMaps = {
-	//	"Roads": roads
-	//};
-
-	//L.control.layers(null, overlayMaps).addTo(mymap);	
-
-	//L.geoJSON(geojson).addTo(mymap);
-
-	//var myLayer = L.geoJSON().addTo(mymap);
-	//myLayer.addData("img/data/map.geojson");
-
-	//var agExtent;
-	//agExtent = L.geoJSON.ajax("img/data/ag_defined_v1/testgeojsonag.geojson").addTo(mymap);
-
-	//var overlayLayers = {
-	//	"swirlRoad": geojson
-
-	//}
-
-	var layer1 = L.geoJSON(geojson)//.addTo(mymap);
-
-	var layer2 = L.geoJSON(zigzag, {
-		style: myStyle
-	});//.addTo(mymap);
-	var layer3 = L.geoJSON(zigzag, {
-		style: myStyle2
-	});//.addTo(mymap);
-	//var layer4;
-
-	//layer4= L.geoJSON.ajax("leafletpractice/data/roadCompleted.geojson").addTo(mymap);
-
-//	var newRoad = new L.Shapefile("newRoad.zip");
-//	newRoad.addTo(mymap);
-
-	//var layerbus;
-	//layerbus = L.geoJSON.ajax("leafletpractice/data/testbusag.geojson").addTo(mymap);
-
-	var newRoad = new L.Shapefile("data/newRoad.zip");
+	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: myStyle});
 	var CMCCCommunities = new L.Shapefile("data/CMCCCommunitiesPoints.zip");
-	var CMCCGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip");
+	var CMCCGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip", {style: CMCCGeographicZoneStyle});
 	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip");
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip");
 	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip");
@@ -695,30 +178,46 @@
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
+	var solarBest = new L.Shapefile("data/solarBest.zip");
+	var solarGood = new L.Shapefile("data/solarGood.zip");
+	var windBest = new L.Shapefile("data/windBest.zip");
+	var windGood = new L.Shapefile("data/windGood.zip");
+	var dams = new L.Shapefile("data/servicesheds_hydro_CMCC/dams.zip");
 	//var allRoads = new L.Shapefile("data/timberConcessions/Roads_2011_BERDS.zip", {style: myStyle});
 
-	var //roads = L.layerGroup([layer1]);
-		//roads2 = L.layerGroup([layer2]);
-		//roads3 = L.layerGroup([layer3]);
-		roads4 = L.layerGroup([newRoad]);
+	var roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
 		CMCCCommPoints = L.layerGroup([CMCCCommunities]);
 		CMCCZone = L.layerGroup([CMCCGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, CFR, FDPortionMPR, PLCArea, RecinosMngtArea]);
 		water = L.layerGroup([waterWays, waterBody, majorRivers]);
+		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 		//allRoads = L.layerGroup([allRoads]); COULD WORK NOT DISPLAY
 
 	
 
 	var overlayMaps = {
 		"New Road": roads4,
+		"<b>Tourism</b>": roads4, 
+		"Archeological/Key Cultural Sites": roads4,
+		"Impacted Tourist Sites": roads4,
+		"Tourism Expansion": roads4,
+		"<b>Mining</b>": roads4,
+		"Mining Areas": roads4,
+		"Mining Expansion": roads4,
+		"<b>Agriculture</b>": roads4,
 		"Current Agriculture Zones": agZone,
-		"CMCCC Communities": CMCCCommPoints,
-		"CMCC Area": CMCCZone,
+		"Ag Expansion": agZone,
+		"<b>Timber</b>": timberConcessions,
 		"Timber": timberConcessions,
-		"River Network and Watersheds": water
+		"Timber Expansion": timberConcessions,
+		"<b>Energy<b>": energySites,
+		"Potential Sites for Renewables": energySites,
+		"River Network and Watersheds": water,
+		"Roads": roads4,
+		"CMCC Area": CMCCZone,
+		"CMCCC Communities": CMCCCommPoints,
 		//"Roads": allRoads
-		//"New Road": roads4
 	};
 
 	L.control.layers(null, overlayMaps, {collapsed: false}).addTo(mymap);
