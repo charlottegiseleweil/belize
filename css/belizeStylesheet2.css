@@ -1,7 +1,4 @@
-		html *{
-   			
-   			font-family: Verdana !important;
-		}
+		
 
 		#mapid {
 			position: absolute;
@@ -12,19 +9,27 @@
 
 		}
 
+		.leaflet-control-layers-expanded { 
+			position: absolute;
+			float: right;
+			z-index: 500;
+			top: 210px;
+			width: 250px;
+			border-radius: 25px;
+			right: 15px;
+			box-shadow: none;
+			overflow: scroll;
+		}
 
 		#panel {
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 300px;
+			width: 400px;
 			top: 15px;
 			right: 15px;
 			height: auto;
-			background-color: #003366;
-			opacity: 0.85;
-			border: 2px;
-			border-color: #F7B733;
+			background-color: #FFFFFF;
 			z-index: 99;	
 			border-radius: 25px;
 			box-shadow: none;
@@ -35,36 +40,23 @@
 			right: 15px;
 		}
 
-		.layerChecks {
-			opacity: 1;
-			color: #DFDCE3;
-		}
-
-
-		#viewerTitle{
-			opacity: 1;
-			color: #AF473C;
-		}
-
 		.LULCpanel {
 			position: absolute;
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 100px;
+			width: 115px;
 			height: 500px;
-			background-color: #003366;
-			color: #DFDCE3;
+			background-color: #994000;
 			z-index: 99;
 			border-radius: 25px;
-			opacity: 0.85;
 
 		}
 
 
-		#LULCPanel3 {
+		#LULCPanel1 {
 			top: 15px;
-			right: 375px;
+			right: 425px;
 			position: absolute;
 
 		}
@@ -72,12 +64,12 @@
 
 		#LULCPanel2 {
 			top: 15px;
-			right: 530px;
+			right: 555px;
 			position: absolute;
 
 		}
 
-		#LULCPanel1 {
+		#LULCPanel3 {
 			top: 15px;
 			right: 685px;
 			position: absolute;
@@ -90,14 +82,12 @@
 			padding: 1.5%;
 			width: 500px;
 			height: 500px;
-			background-color: #003366;
-			color: #DFDCE3;
+			background-color: #ADD8E6;
 			z-index: 100;
 			top: 15px;
-			right: 375px;
+			right: 425px;
 			position: absolute;
 			border-radius: 25px;
-			opacity: 0.85;
 
 		}
 
@@ -124,17 +114,13 @@
 			float: left;
 			padding: 1.5%;
 			width: 250px;
-			height: auto;
-			max-height: 500px;
-			overflow: scroll;
-			background-color: #003366;
-			color: #DFDCE3;
+			height: 100px;
+			background-color: #ADD8E6;
 			z-index: 100;
 			bottom: 50px;
 			left: 15px;
 			position: absolute;
 			border-radius: 25px;
-			opacity: 0.85;
 
 		}
 
@@ -155,7 +141,6 @@
 
 		#viewerTitle {
 			font-size: 38px;
-			color: #F7B733;
 		}
 
 		.dataDownload {
@@ -164,21 +149,13 @@
 			padding: 1.5%;
 			width: 500px;
 			height: 500px;
-			background-color: #003366;
-			color: #DFDCE3;
+			background-color: #ADD8E6;
 			z-index: 100;
-			opacity: 0.85;
 			top: 15px;
-			right: 375px;
+			right: 425px;
 			position: absolute;
 			border-radius: 25px;
 			overflow: scroll;
 
-		}
-
-		.ILImage {
-			border-radius: 8px;
-			z-index: 500;
-			opacity: 1;
 		}
 

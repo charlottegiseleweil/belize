@@ -1,32 +1,26 @@
 <html>
 	<head>
-	   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-	   <title>Belize SDP Viewer Draft</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Belize SDP Viewer Draft</title>
 	
-	  <!-- Leaflet & Plugins -->
-	  <link rel="stylesheet" href="src/Control.MiniMap.css" />
-	
+	<!-- Leaflet & Plugins -->
+	<link rel="stylesheet" href="src/Control.MiniMap.css" />
 
-	  <!-- ONLINE <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>-->
-	  <script src="src/leaflet/leaflet.js"></script>
-	  <script src="js/lib/leaflet.draw.js"></script>
+	<link rel="stylesheet" href="css/belizeStylesheet.css"/>
+	<script src="js/belizeJS.js"></script>
 
-	  <!-- ONLINE <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css"/>-->
-	  <link rel="stylesheet" href="src/leaflet/leaflet.css"/>
+	<!-- ONLINE <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>-->
+	<script src="src/leaflet/leaflet.js"></script>
+	<script src="js/lib/leaflet.draw.js"></script>
 
-	   <script src="src/Control.MiniMap.js" type="text/javascript"></script> 
+	  <!-- ONLINE <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs leaflet/1.3.1/leaflet.css"/>-->
+	<link rel="stylesheet" href="src/leaflet/leaflet.css"/>
 
-	   <link rel="stylesheet" href="css/belizeStylesheet.css">
-	   <script src="js/belizeJS.js"></script>
-	  
+	<script src="src/Control.MiniMap.js" type="text/javascript"></script> 
+
 	<!--jQuery-->
 	<script src="js/lib/jquery-2.1.1.min.js"></script> 
-
-	<!-- CARTO -->
-	<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-	<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
-
 
 	<!--New Code -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -49,20 +43,15 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
-
   
    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
 
    <script src="js/lib/leaflet.shpfile.js"></script>
    <script src="js/lib/shp.js"></script>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
 	
 	</head>
 
@@ -82,34 +71,63 @@
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 }).addTo(mymap);
 
-
-
 </script>
 
-<!--Mini Map -->
-<script>
-	var miniMapLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-});
-	var miniMap = new L.Control.MiniMap(miniMapLayer).addTo(mymap);
+<!--Mini Map - all code for this is in js file-->
 
-</script>
 
 <!-- Selection Panel -->
-<div id="panel" style="position: absolute;
-						right: 15px;
-						z-index: 500;"> 
+<div id="panel"> 
+
 <p id="viewerTitle">Belize SDP Viewer</p>
 
 <p class="panelOption" style="display: inline"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
 <p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" onclick="dataPanelOpen()">Data Download</button></p>
 <p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox">New Road</div>
 
+<div class="layerChecks" id="allToursim"><input type = "checkbox" id="allTourismCheckBox">Tourism</div>
+
+<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Archeological/Key Cultural Sites</div>
+
+<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox">Impacted Toursit Sites</div>
+
+<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox">Tourism Expansion</div>
+
+<div class="layerChecks" id="allMining"><input type = "checkbox" id="allMiningCheckBox">Mining</div>
+
+<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox">Mining Areas</div>
+
+<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox">Mining Expansion</div>
+
+<div class="layerChecks" id="allAgriculture"><input type = "checkbox" id="allAgricultureCheckBox">Agriculture</div>
+
+<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox">Current Agriculture Zones</div>
+
+<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox">Ag Expansion</div>
+
+<div class="layerChecks" id="allTimber"><input type = "checkbox" id="allTimberCheckBox">Timber</div>
+
+<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox">Timber</div>
+
+<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox">Timber Expansion</div>
+
+<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Energy</div>
+
+<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox">Potential Sites for Energy</div>
+
+<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox">Watersheds</div>
+
+<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox">CMCC Areas</div>
+
+<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox">CMCC Communities</div>
+
+<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox">Roads</div>
 
 
 </div>
 
-<!-- Data Download -->
+<!-- Data Download Panel-->
 <div class= "close" id=dataDownloadPanel>Download the sick data
 <button type= "button" class= "exitButton" onclick="dataPanelClose()" >X</button>
 <div>New Road</div>
@@ -131,6 +149,7 @@
 <div>Watersheds</div>
 <div>CMCC Areas</div>
 <div>CMCC Communities</div>
+<div>Roads</div>
 
 </div>
 
@@ -155,11 +174,31 @@
 		
 	}
 
+	var greenIcon = L.icon({
+    iconUrl: 'imgs/solar-panel.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	//L.marker([16.872890378907783, -88.87390136718749], {icon: greenIcon}).addTo(mymap).bindPopup("Hi <img src= 'leafletpractice/imgs/placeholder.png'>");
+
 
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: myStyle});
-	var CMCCCommunities = new L.Shapefile("data/CMCCCommunitiesPoints.zip");
-	var CMCCGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip", {style: CMCCGeographicZoneStyle});
+
+
+	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
+	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
+	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
+
+	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
+
+
+
+	var cmccCommunities = new L.Shapefile("data/CMCCCommunitiesPoints.zip");
+	var cmccGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip", {style: CMCCGeographicZoneStyle});
 	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip");
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip");
 	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip");
@@ -177,40 +216,289 @@
 
 	var roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
-		CMCCCommPoints = L.layerGroup([CMCCCommunities]);
-		CMCCZone = L.layerGroup([CMCCGeographicZone]);
+		cmccCommPoints = L.layerGroup([cmccCommunities]);
+		cmccZone = L.layerGroup([cmccGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, CFR, FDPortionMPR, PLCArea, RecinosMngtArea]);
 		water = L.layerGroup([waterWays, waterBody, majorRivers]);
 		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 		//allRoads = L.layerGroup([allRoads]); COULD WORK NOT DISPLAY
 
+	//document.getElementById("newRoad").onclick = function() {newRoadLayerToggle(newRoad)};
 	
+	document.getElementById("newRoadCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("newRoadIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("newRoadIL");
+			x.className = "close";
+		}
+	}
 
-	var overlayMaps = {
-		"New Road": roads4,
-		"<b>Tourism</b>": roads4, 
-		"Archeological/Key Cultural Sites": roads4,
-		"Impacted Tourist Sites": roads4,
-		"Tourism Expansion": roads4,
-		"<b>Mining</b>": roads4,
-		"Mining Areas": roads4,
-		"Mining Expansion": roads4,
-		"<b>Agriculture</b>": roads4,
-		"Current Agriculture Zones": agZone,
-		"Ag Expansion": agZone,
-		"<b>Timber</b>": timberConcessions,
-		"Timber": timberConcessions,
-		"Timber Expansion": timberConcessions,
-		"<b>Energy<b>": energySites,
-		"Potential Sites for Renewables": energySites,
-		"River Network and Watersheds": water,
-		"Roads": roads4,
-		"CMCC Area": CMCCZone,
-		"CMCCC Communities": CMCCCommPoints,
-		//"Roads": allRoads
-	};
+	document.getElementById("allTourismCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("allTourismIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("allTourismIL");
+			x.className = "close";
+		}
+	}	
 
-	L.control.layers(null, overlayMaps, {collapsed: false}).addTo(mymap);
+	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("tourismArckKeyIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("tourismArckKeyIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("tourismImpactedCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("impactedTourismIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("impactedTourismIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("tourismExpandedCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("tourismExpansionIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("tourismExpansionIL");
+			x.className = "close";
+		}
+	}			
+
+	document.getElementById("allMiningCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("allMiningIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("allMiningIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("miningCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("currentMiningIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("currentMiningIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("miningExpansionCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("miningExpansionIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("miningExpansionIL");
+			x.className = "close";
+		}
+	}			
+
+		document.getElementById("allAgricultureCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("allAgricultureIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("allAgricultureIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("currentAgricultureCheckBox").onclick = function(){
+		if (this.checked){
+			agZones.addTo(mymap);
+			x = document.getElementById("currentAgricultureIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(agZones);
+			x = document.getElementById("currentAgricultureIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("agExpansionCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("agExpansionIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("agExpansionIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("allTimberCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("allTimberIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("allTimberIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("timberCheckBox").onclick = function(){
+		if (this.checked){
+			timberConcessions.addTo(mymap);
+			x = document.getElementById("currentTimberIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(timberConcessions);
+			x = document.getElementById("currentTimberIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("timberExpansionCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("timberExpansionIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("timberExpansionIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("energyCheckBox").onclick = function(){
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("energyIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("energyIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("energySitesCheckBox").onclick = function(){
+		if (this.checked){
+			energySites.addTo(mymap);
+			x = document.getElementById("potentialEnergyIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(energySites);
+			x = document.getElementById("potentialEnergyIL");
+			x.className = "close";
+		}
+	}			
+
+	document.getElementById("watershedsCheckBox").onclick = function(){
+		if (this.checked){
+			water.addTo(mymap);
+			x = document.getElementById("currentAgricultureIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(water);
+			x = document.getElementById("currentAgricultureIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("CMCCAreasCheckBox").onclick = function(){
+		if (this.checked){
+			cmccGeographicZone.addTo(mymap);
+			x = document.getElementById("CMCCAreasIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(cmccGeographicZone);
+			x = document.getElementById("CMCCAreasIL");
+			x.className = "close";
+		}
+	}
+
+	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
+		if (this.checked){
+			cmccCommunities.addTo(mymap);
+			x = document.getElementById("CMCCCommunitiesIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(cmccCommunities);
+			x = document.getElementById("CMCCCommunitiesIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("roadsCheckBox").onclick = function(){
+		if (this.checked){
+			cmccCommunities.addTo(mymap);
+			x = document.getElementById("roadsIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(cmccCommunities);
+			x = document.getElementById("roadsIL");
+			x.className = "close";
+		}
+	}		
+
+	/*function newRoadLayerToggle(layer) {
+		if (this.checked){
+			newRoad.addTo(mymap);
+			x = document.getElementById("newRoadIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(newRoad);
+			x = document.getElementById("newRoadIL");
+			x.className = "close";
+		}
+	}
+
+
+	}*/
+
+	
+	/*function layerOnOff(layer, shouldAddLayer, legendDiv){
+   if (shouldAddLayer) {
+      setTimeout(() => layer.addTo(mymap), 0);
+      $(legendDiv).removeClass('hide');
+   } else {
+      map.removeLayer(layer);
+      $(legendDiv).addClass('hide');
+   }
+}
+
+function createCheckboxForLayer (cssSelector, layer, ledendDiv) {
+   $(cssSelector).change(function(){
+      layerOnOff(layer, this.checked, ledendDiv);
+   });
+}*/
+
+
+
 
 
  </script>
@@ -218,12 +506,37 @@
 
 <!-- Interactvice Legend -->
 <div class="InteractiveLegend" id="interactiveLegend">Interactive Legend
+
+	<div class="close" id="newRoadIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for New Road"></div>
+	<div class="close" id="allTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Tourism"></div>
+	<div class="close" id="tourismArckKeyIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Key/Archeological Sites"></div>
+	<div class="close" id="impactedTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites"></div>
+	<div class="close" id="tourismExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Tourism Expansion"></div>
+	<div class="close" id="allMiningIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Mining Sites"></div>
+	<div class="close" id="currentMiningIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for current Mining Areas"></div>
+	<div class="close" id="miningExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Mining Expansion"></div>
+	<div class="close" id="allAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Agriculture"></div>
+	<div class="close" id="currentAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for current Agriculture Zones"></div>
+	<div class="close" id="agExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for agriculture expansion "></div>
+	<div class="close" id="allTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Timber"></div>
+	<div class="close" id="currentTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for current Timber Sites"></div>
+	<div class="close" id="timberExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for timber expansion sites"></div>
+	<div class="close" id="energyIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for potential energy sites"></div>
+	<div class="close" id="potentialEnergyIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all potential energy sites"></div>
+	<div class="close" id="watershedsIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Water Features"></div>
+	<div class="close" id="CMCCAreasIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for CMCC Areas"></div>
+	<div class="close" id="CMCCCommunitiesIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for CMCC Communities"></div>
+	<div class="close" id="roadsIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Roads in Reagion"></div>
+
+
+
+
 </div>
 
 <!-- LULC Panel
 	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
 
-<div class= "LULCclose" id= "LULCPanel1">case 1 <button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>
+<div class= "LULCclose" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
@@ -234,7 +547,7 @@
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
-<div class= "LULCclose" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose3()">X</button>
+<div class= "LULCclose" id= "LULCPanel1">case 1 <button type= "button" class= "exitButton" onclick="LULCPanelClose3()">X</button>
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
@@ -245,14 +558,6 @@
 <div class= "close" id=AboutPanel>Learn about this viewer, cool work went into it
 <button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button></div>
 
-
-	  <!--<div id="key" class="key hide">
-	  	<p> Key </p>
-	  </div>
-
-	  <div id="zf" class="map-legend hide">  
-	  	<p> map-legend </p>
-	  </div>-->
 
 	 <script src="js/lib/leaflet.shpfile.js"></script>
 	 <script src="js/lib/shp.js"></script>
