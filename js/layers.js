@@ -31,9 +31,31 @@
 		"weight": 0.5,		
 	}
 
+	var waterwaysStyle = {
+		"color": "#FC4A1A",
+		"fillOpacity":0.8,
+		"weight": 0.5,		
+	}
+
 //Icon Declarations
 	var hotelLodgingIcon = L.icon({
     iconUrl: 'imgs/bed.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var tourismSitesIcon = L.icon({
+    iconUrl: 'imgs/bed.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var culturalSitesIcon = L.icon({
+    iconUrl: 'imgs/monument.png',
 
     iconSize:     [32, 37], // size of the icon
     iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
@@ -48,6 +70,45 @@
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});	
 
+	var solarBestIcon = L.icon({
+    iconUrl: 'imgs/sun.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var solarGoodIcon = L.icon({
+    iconUrl: 'imgs/sun-2.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var windBestIcon = L.icon({
+    iconUrl: 'imgs/wind.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var windGoodIcon = L.icon({
+    iconUrl: 'imgs/wind-2.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var tourismSitesIcon = L.icon({
+    iconUrl: 'imgs/leaf.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
 	var cmccCommunityIcon = L.icon({
     iconUrl: 'imgs/home-run.png',
 
@@ -60,12 +121,14 @@
 
 //Layer Set-Up
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
+
+	//var allAgriculture = new L.layerGroup([agZones]); //add expanded ag when available to finish
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: currentAgStyle});
 
 
-	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
-	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
-	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
+	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip", {style: waterwaysStyle});
+	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip", {style: waterwaysStyle});
+	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip", {style: waterwaysStyle});
 
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
@@ -73,7 +136,7 @@
 
 
 	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {pointToLayer:returntourismSitesMarker});
-	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson"); //These were all over, maybe filter, talk to team about which ones they identified for the region?
+	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker}); //These were all over, maybe filter, talk to team about which ones they identified for the region?
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
 	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson");
@@ -88,10 +151,12 @@
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
 	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
 	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker});
-	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson");
-	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson");
+	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
+	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker});
 	var dams = new L.geoJSON.ajax("data/damsGJ.geojson");
 	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
+
+	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 
 	var roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
@@ -130,11 +195,11 @@
 
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
+			allTourism.addTo(mymap);
 			x = document.getElementById("tourismArckKeyIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(newRoad);
+			mymap.removeLayer(allTourism);
 			x = document.getElementById("tourismArckKeyIL");
 			x.className = "close";
 		}
@@ -202,11 +267,11 @@
 
 		document.getElementById("allAgricultureCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
+			allAgriculture.addTo(mymap);
 			x = document.getElementById("allAgricultureIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(newRoad);
+			mymap.removeLayer(allAgriculture);
 			x = document.getElementById("allAgricultureIL");
 			x.className = "close";
 		}
@@ -268,6 +333,18 @@
 		} else {
 			mymap.removeLayer(newRoad);
 			x = document.getElementById("timberExpansionIL");
+			x.className = "close";
+		}
+	}	
+
+	document.getElementById("allEnergySitesCheckBox").onclick = function(){
+		if (this.checked){
+			allEnergy.addTo(mymap);
+			x = document.getElementById("allEnergyIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(allEnergy);
+			x = document.getElementById("allEnergyIL");
 			x.className = "close";
 		}
 	}	
@@ -389,6 +466,24 @@ function returnHotelMarker(json, latlng){
 	});
 }
 
+function returntourismSitesMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: tourismSitesIcon
+	});
+}
+
+function returnCulturalSitesMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: culturalSitesIcon
+	});
+}
+
+function returnCMCCCommunitiesMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: cmccCommunityIcon //update icon
+	});
+}
+
 function returnSolarBestMarker(json, latlng){
 	return L.marker(latlng, {
 		icon: solarBestIcon
@@ -401,10 +496,19 @@ function returnSolarGoodMarker(json, latlng){
 	});
 }
 
-function returntourismSitesMarker(json, latlng){
+function returnWindBestMarker(json, latlng){
 	return L.marker(latlng, {
 		icon: tourismSitesIcon
 	});
 }
+
+function returnWindGoodMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: tourismSitesIcon
+	});
+}
+
+
+
 
 
