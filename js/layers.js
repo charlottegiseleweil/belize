@@ -1,5 +1,8 @@
-	var myStyle = {
-		"color": "red"
+//Layer Styling
+	var currentAgStyle = {
+		"color": "#F7B733",
+		"fillOpacity":0.9,
+		"weight": 0.5,
 	};
 
 	var roadStyle = {
@@ -7,16 +10,46 @@
 
 	};
 
+	var allRoadsStyle = {
+		"color": "#654321",
+		"weight": 0.7,
+	};
+
 	var myStyle2 = {
 		"color": "green"
 	}
 
 	var CMCCGeographicZoneStyle = {
-		
+		"color": "#FC4A1A",
+		"fillOpacity":0,
+		"weight": 0.7,		
 	}
 
-	var greenIcon = L.icon({
-    iconUrl: 'imgs/solar-panel.png',
+	var currentTimberStyle = {
+		"color": "#013220",
+		"fillOpacity":0.8,
+		"weight": 0.5,		
+	}
+
+//Icon Declarations
+	var hotelLodgingIcon = L.icon({
+    iconUrl: 'imgs/bed.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var currentMiningIcon = L.icon({
+    iconUrl: 'imgs/coal.png',
+
+    iconSize:     [32, 37], // size of the icon
+    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});	
+
+	var cmccCommunityIcon = L.icon({
+    iconUrl: 'imgs/home-run.png',
 
     iconSize:     [32, 37], // size of the icon
     iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
@@ -25,9 +58,9 @@
 
 	//L.marker([16.872890378907783, -88.87390136718749], {icon: greenIcon}).addTo(mymap).bindPopup("Hi <img src= 'leafletpractice/imgs/placeholder.png'>");
 
-
+//Layer Set-Up
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
-	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: myStyle});
+	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: currentAgStyle});
 
 
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
@@ -36,44 +69,41 @@
 
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
-	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
-    pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojsonMarkerOptions);
-   		}	//where does feature parameter go?
-}).addTo(mymap);
+	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {pointToLayer:returnHotelMarker});
 
-	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson");
+
+	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {pointToLayer:returntourismSitesMarker});
 	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson"); //These were all over, maybe filter, talk to team about which ones they identified for the region?
+	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
-
-	var cmccCommunities = new L.Shapefile("data/CMCCCommunitiesPoints.zip");
-	var cmccGeographicZone = new L.Shapefile("data/CMCCGeographicScope2.zip", {style: CMCCGeographicZoneStyle});
-	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip");
-	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip");
-	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip");
-	var PLCArea = new L.Shapefile("data/timberConcessions/PLCArea.zip");
-	var RecinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip");
+	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson");
+	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
+	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip", {style: currentTimberStyle});
+	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
+	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip", {style: currentTimberStyle});
+	var PLCArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
+	var RecinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
-	var solarBest = new L.Shapefile("data/solarBest.zip");
-	var solarGood = new L.Shapefile("data/solarGood.zip");
-	var windBest = new L.Shapefile("data/windBest.zip");
-	var windGood = new L.Shapefile("data/windGood.zip");
-	var dams = new L.Shapefile("data/servicesheds_hydro_CMCC/dams.zip");
-	var allRoads = new L.Shapefile("data/allRoads.zip");
+	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
+	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker});
+	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson");
+	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson");
+	var dams = new L.geoJSON.ajax("data/damsGJ.geojson");
+	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
 
 	var roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
 		cmccCommPoints = L.layerGroup([cmccCommunities]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
-		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, CFR, FDPortionMPR, PLCArea, RecinosMngtArea]);
+		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, FDPortionMPR, PLCArea, RecinosMngtArea]);
 		water = L.layerGroup([waterWays, waterBody, majorRivers]);
 		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
 		allRoads = L.layerGroup([allRoads]);
 
 	//document.getElementById("newRoad").onclick = function() {newRoadLayerToggle(newRoad)};
-	
+//Layer Toggling
 	document.getElementById("newRoadCheckBox").onclick = function(){
 		if (this.checked){
 			newRoad.addTo(mymap);
@@ -88,11 +118,11 @@
 
 	document.getElementById("allTourismCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
+			allTourism.addTo(mymap);
 			x = document.getElementById("allTourismIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(newRoad);
+			mymap.removeLayer(allTourism);
 			x = document.getElementById("allTourismIL");
 			x.className = "close";
 		}
@@ -347,7 +377,34 @@ function createCheckboxForLayer (cssSelector, layer, ledendDiv) {
 }*/
 
 //Marker Functions
+//function returnHotelMarker(json, latlng){
+	//return L.circleMarker(latlng, {radius:10, color:'deeppink'});
+//}
+
+
+
 function returnHotelMarker(json, latlng){
-	return L.circleMarker(latlng, {radius:10, color:'deeppink'});
+	return L.marker(latlng, {
+		icon: hotelLodgingIcon
+	});
 }
+
+function returnSolarBestMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: solarBestIcon
+	});
+}
+
+function returnSolarGoodMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: solarGoodIcon
+	});
+}
+
+function returntourismSitesMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: tourismSitesIcon
+	});
+}
+
 

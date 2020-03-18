@@ -3,6 +3,11 @@
    			font-family: Verdana !important;
 		}
 
+		strong *{
+			color: #994000;
+		}
+
+
 		#mapid {
 			position: absolute;
 			top: 0;
@@ -44,6 +49,8 @@
 		#viewerTitle{
 			opacity: 1;
 			color: #AF473C;
+			margin-top: 8px;
+			margin-bottom: 8px;
 		}
 
 		.LULCpanel {
@@ -162,14 +169,14 @@
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 500px;
-			height: 500px;
+			width: auto;
+			height: auto;
 			background-color: #003366;
 			color: #DFDCE3;
 			z-index: 100;
 			opacity: 0.85;
-			top: 15px;
-			right: 375px;
+			top: 125px;
+			right: 355px;
 			position: absolute;
 			border-radius: 25px;
 			overflow: scroll;
@@ -181,4 +188,27 @@
 			z-index: 500;
 			opacity: 1;
 		}
+
+		#allToursim {
+			color: #994000;
+		}
+
+		#allMining {
+			color: #994000;
+		}
+
+		#allAgriculture {
+			color: #994000;
+		}
+
+		#allTimber {
+			color: #994000;
+		}
+
+		#allEnergySites {
+			color: #994000;
+		}
+
+
+
 
