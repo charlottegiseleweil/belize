@@ -72,9 +72,9 @@
 
 <p id="viewerTitle">Belize SDP Viewer</p>
 
-<p class="panelOption" style="display: inline"><button type= "button" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" onclick="dataPanelOpen()">Data Download</button></p>
-<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id=aboutPanelButton onclick="aboutPanelOpen()">About</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" id="LULCScenarioButton" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="dataDownloadButton" onclick="dataPanelOpen()">Data Download</button></p>
+<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">About</button></p>
 
 <div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox">New Road</div>
 <HR>
@@ -107,7 +107,7 @@
 
 <div class="layerChecks" id="allEnergySites"><input type = "checkbox" id="allEnergySitesCheckBox"><strong>Energy</strong></div>
 
-<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Hydro Energy</div>
+<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Dams</div>
 
 <div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox">Potential Sites for Energy</div>
 <HR>
@@ -160,8 +160,8 @@
 <!-- Interactvice Legend -->
 <div class="InteractiveLegend" id="interactiveLegend">Legend
 
-	<div class="close" id="newRoadIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for New Road"></div>
-	<div class="close" id="allTourismIL"><img src="img/tourismLegend.png" alt="Interactive Legend for all Tourism"></div>
+	<div class="close" id="newRoadIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for New Road">New Road</div>
+	<div class="close" id="allTourismIL"><img src="img/tourismLegend.png" alt="Interactive Legend for all Tourism">Tourism</div>
 	<div class="close" id="tourismArckKeyIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Key/Archeological Sites"></div>
 	<div class="close" id="impactedTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites"></div>
 	<div class="close" id="tourismExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Tourism Expansion"></div>

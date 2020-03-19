@@ -6,6 +6,10 @@ function aboutPanelClose(){
 }
 
 function aboutPanelOpen(){
+   dataDownCheck = document.getElementById("dataDownloadPanel");
+   if (dataDownCheck.className == "dataDownload"){
+      alert("it checks!");
+   }
 	x = document.getElementById("AboutPanel");
 	x.className="AboutPanel";
 }
