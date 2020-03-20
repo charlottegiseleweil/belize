@@ -17,6 +17,11 @@
 
 		}
 
+		#interactiveLegendTitle {
+			color: #F7B733 !important; 
+			font-size: 24px;
+
+		}
 
 		#panel {
 			display: inline-block;
@@ -147,6 +152,7 @@
 
 		.panelOption{
 			padding: 0.2%;
+			font-size: 14px;
 		}
 
 		.leaflet-control-layers {

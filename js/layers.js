@@ -39,81 +39,90 @@
 
 //Icon Declarations
 	var hotelLodgingIcon = L.icon({
-    iconUrl: 'imgs/bed.png',
+    iconUrl: 'img/bed.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var tourismSitesIcon = L.icon({
-    iconUrl: 'imgs/bed.png',
+    iconUrl: 'img/leaf.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var culturalSitesIcon = L.icon({
-    iconUrl: 'imgs/monument.png',
+    iconUrl: 'img/monument.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var currentMiningIcon = L.icon({
-    iconUrl: 'imgs/coal.png',
+    iconUrl: 'img/coal.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-	});	
+	});
 
 	var solarBestIcon = L.icon({
-    iconUrl: 'imgs/sun.png',
+    iconUrl: 'img/sun.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var solarGoodIcon = L.icon({
-    iconUrl: 'imgs/sun-2.png',
+    iconUrl: 'img/sun-2.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var windBestIcon = L.icon({
-    iconUrl: 'imgs/wind.png',
+    iconUrl: 'img/wind.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var windGoodIcon = L.icon({
-    iconUrl: 'imgs/wind-2.png',
+    iconUrl: 'img/wind-2.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
 	var tourismSitesIcon = L.icon({
-    iconUrl: 'imgs/leaf.png',
+    iconUrl: 'img/leaf.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
-	var cmccCommunityIcon = L.icon({
-    iconUrl: 'imgs/home-run.png',
 
-    iconSize:     [32, 37], // size of the icon
-    iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+	var cmccCommunityIcon = L.icon({
+    iconUrl: 'img/home-run.png',
+
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var damsIcon = L.icon({
+    iconUrl: 'img/hydro-power.png',
+
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
@@ -139,7 +148,7 @@
 	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker}); //These were all over, maybe filter, talk to team about which ones they identified for the region?
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
-	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson");
+	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip", {style: currentTimberStyle});
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
@@ -153,8 +162,9 @@
 	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker});
 	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
 	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker});
-	var dams = new L.geoJSON.ajax("data/damsGJ.geojson");
+	var dams = new L.geoJSON.ajax("data/damsGJ.geojson", {pointToLayer:returnDamsMarker});
 	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
+	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
 
 	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 
@@ -243,11 +253,11 @@
 
 	document.getElementById("miningCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
+			currentMining.addTo(mymap);
 			x = document.getElementById("currentMiningIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(newRoad);
+			mymap.removeLayer(currentMining);
 			x = document.getElementById("currentMiningIL");
 			x.className = "close";
 		}
@@ -267,11 +277,11 @@
 
 		document.getElementById("allAgricultureCheckBox").onclick = function(){
 		if (this.checked){
-			allAgriculture.addTo(mymap);
+			agZones.addTo(mymap);
 			x = document.getElementById("allAgricultureIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(allAgriculture);
+			mymap.removeLayer(agZones);
 			x = document.getElementById("allAgricultureIL");
 			x.className = "close";
 		}
@@ -376,11 +386,11 @@
 	document.getElementById("watershedsCheckBox").onclick = function(){
 		if (this.checked){
 			water.addTo(mymap);
-			x = document.getElementById("currentAgricultureIL");
+			x = document.getElementById("watershedsIL");
 			x.className = "ILImage";
 		} else {
 			mymap.removeLayer(water);
-			x = document.getElementById("currentAgricultureIL");
+			x = document.getElementById("watershedsIL");
 			x.className = "close";
 		}
 	}	
@@ -478,6 +488,12 @@ function returnCulturalSitesMarker(json, latlng){
 	});
 }
 
+function returncurrentMiningMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: currentMiningIcon
+	});
+}
+
 function returnCMCCCommunitiesMarker(json, latlng){
 	return L.marker(latlng, {
 		icon: cmccCommunityIcon //update icon
@@ -498,13 +514,19 @@ function returnSolarGoodMarker(json, latlng){
 
 function returnWindBestMarker(json, latlng){
 	return L.marker(latlng, {
-		icon: tourismSitesIcon
+		icon: windBestIcon
 	});
 }
 
 function returnWindGoodMarker(json, latlng){
 	return L.marker(latlng, {
-		icon: tourismSitesIcon
+		icon: windGoodIcon
+	});
+}
+
+function returnDamsMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: damsIcon
 	});
 }
 

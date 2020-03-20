@@ -50,106 +50,6 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
-
-    <!--<script>
-
-	function dataDownloadCheck(){
-    	dataDownCheck = document.getElementById("dataDownloadPanel");
-   		if (dataDownCheck.className == "dataDownload"){
-      		dataDownCheck.className="close";
-   		}		
-	}
-	function aboutPanelCheck(){
-		aboutCheck = document.getElementById("AboutPanel");
-		if (aboutCheck.className == "AboutPanel"){
-			aboutCheck.className = "close";
-		}
-	}
-	function LULC1Check(){
-		lulc1Check = document.getElementById("LULCPanel1");
-		if (lulc1Check.className == "LULCpanel"){
-			lulc1Check.className="close";
-		}
-	}
-	function LULC2Check(){
-		lulc2Check = document.getElementById("LULCPanel2");
-		if (lulc2Check.className == "LULCpanel"){
-			lulc2Check.className="close";
-		}
-	}
-	function LULC3Check(){
-		lulc3Check = document.getElementById("LULCPanel3");
-		if (lulc3Check.className == "LULCpanel"){
-			lulc3Check.className="close";
-		}
-	}
-
-	//About Panel
-    function aboutPanelClose(){
-		x = document.getElementById("AboutPanel");
-		x.className="close";
-	}
-
-	function aboutPanelOpen(){
-		dataDownloadCheck();
-   		LULC1Check();
-   		LULC2Check();
-   		LULC3Check();
-		x = document.getElementById("AboutPanel");
-		x.className="AboutPanel";
-	}
-
-
-	//Data Download Panel
-	function dataPanelClose(){
-   		x = document.getElementById("dataDownloadPanel");
-   		x.className="close";
-	}
-
-	function dataPanelOpen(){
-		aboutPanelCheck();
-		LULC1Check();
-   		LULC2Check();
-   		LULC3Check();
-   		x = document.getElementById("dataDownloadPanel");
-   		x.className="dataDownload";
-	}
-
-	//LULC Panel
-	function LULCPanelClose1(){ //can probably do a get element by class for all panels for this later
-    	x = document.getElementById("LULCPanel1");
-    	x.className="LULCclose";
-    }
-
-   	function LULCPanelClose2(){
-    	x = document.getElementById("LULCPanel2");
-    	x.className="LULCclose";
-    }
-
-   	function LULCPanelClose3(){
-    	x = document.getElementById("LULCPanel3");
-    	x.className="LULCclose";
-	}
-
-   	function LULCPanelClose(){
-    	LULCPanelClose1();
-    	LULCPanelClose2();
-    	LULCPanelClose3();
-   	}
-
-	function LULCPanelOpen(){
-		aboutPanelCheck();
-		dataDownloadCheck();
-   		x =document.getElementById("LULCPanel1");
-   		x.className="LULCpanel";
-   		y =document.getElementById("LULCPanel2");
-   		y.className="LULCpanel";
-   		z =document.getElementById("LULCPanel3");
-   		z.className="LULCpanel";
-	}
-
-
-    </script>-->
 	
 	</head>
 
@@ -181,7 +81,7 @@
 
 <div class="layerChecks" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"><strong>Tourism</strong></div>
 
-<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Archeological/Key Cultural Sites</div>
+<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Nature/Key Cultural Sites</div>
 
 <div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox">Impacted Toursit Sites</div>
 
@@ -260,37 +160,55 @@
 
 
 <!-- Interactvice Legend -->
-<div class="InteractiveLegend" id="interactiveLegend">Legend
+<div class="InteractiveLegend" id="interactiveLegend"><span id="InteractiveLegendTitle">Legend</span>
 
 	<div class="close" id="newRoadIL">
-		<div><img src="img/placeholdersmall.png" alt="Interactive Legend for New Road">New Road</div>
+		<div><img src="img/newRoadLegend.png" alt="Interactive Legend for New Road" height="20" width="20"> New Road</div>
 	</div>
 
 	<div class="close" id="allTourismIL">
-		<div><img src="img/bed.png" alt="Interactive Legend for all Tourism">Lodging/Hotel<div>
-		<div><img src="img/leaf.png" alt="Interactive Legend for all Tourism">Nature Sites<div>
-		<div><img src="img/monument.png" alt="Interactive Legend for all Tourism">Cultural Sites<div>
+		<div><img src="img/bed.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Lodging/Hotel<div>
+		<div><img src="img/leaf.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Nature Sites<div>
+		<div><img src="img/monument.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Cultural Sites<div>
 	</div>
-	<div class="close" id="tourismArckKeyIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Key/Archeological Sites">Archeological/Key Cultural Sites</div>
-	<div class="close" id="impactedTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites">Impacted Tourist Sites</div>
-	<div class="close" id="tourismExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Tourism Expansion">Tourism Expansion</div>
-	<div class="close" id="allMiningIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Mining Sites">Mining</div>
-	<div class="close" id="currentMiningIL"><img src="img/currentMiningLegend.png" alt="Interactive Legend for current Mining Areas">Mining Areas</div>
-	<div class="close" id="miningExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Mining Expansion">Mining Expansion</div>
-	<div class="close" id="allAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Agriculture">Agriculture</div>
-	<div class="close" id="currentAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for current Agriculture Zones">Current Agriculture Zones</div>
-	<div class="close" id="agExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for agriculture expansion ">Agriculture Expansion</div>
-	<div class="close" id="allTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Timber">Timber</div>
-	<div class="close" id="currentTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for current Timber Sites">Timber</div>
-	<div class="close" id="timberExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for timber expansion sites">Timber Expansion</div>
 
-	<div class="close" id="allEnergyIL"><img src="img/damLocationLegend.png" alt="Interactive Legend for potential energy sites">Energy</div>
-	<div class="close" id="energyIL"><img src="img/damLocationLegend.png" alt="Interactive Legend for potential energy sites">Dams</div>
-	<div class="close" id="potentialEnergyIL"><img src="img/potentialEnergyLegend.png" alt="Interactive Legend for all potential energy sites">Potential Sites for Energy</div>
-	<div class="close" id="watershedsIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Water Features">Waterways</div>
-	<div class="close" id="CMCCAreasIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for CMCC Areas"></div>
-	<div class="close" id="CMCCCommunitiesIL"><img src="img/cmccCommunityLegend.png" alt="Interactive Legend for CMCC Communities"></div>
-	<div class="close" id="roadsIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Roads in Reagion"></div>
+	<div class="close" id="tourismArckKeyIL">
+		<div><img src="img/bed.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Lodging/Hotel<div>
+		<div><img src="img/leaf.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Nature Sites<div>
+		<div><img src="img/monument.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Cultural Sites<div>
+	</div>
+
+	<div class="close" id="impactedTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Impacted Tourist Sites</div>
+	<div class="close" id="tourismExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Tourism Expansion" height="20" width="20"> Tourism Expansion</div>
+	<div class="close" id="allMiningIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Mining Sites" height="20" width="20"> Mining</div>
+	<div class="close" id="currentMiningIL"><img src="img/coal.png" alt="Interactive Legend for current Mining Areas" height="20" width="20"> Mining Areas</div>
+	<div class="close" id="miningExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Mining Expansion" height="20" width="20"> Mining Expansion</div>
+	<div class="close" id="allAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Agriculture" height="20" width="20"> Agriculture</div>
+	<div class="close" id="currentAgricultureIL"><img src="img/agricultureZoneLegend.png" alt="Interactive Legend for current Agriculture Zones" height="20" width="20"> Current Agriculture Zones</div>
+	<div class="close" id="agExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for agriculture expansion " height="20" width="20"> Agriculture Expansion</div>
+	<div class="close" id="allTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Timber" height="20" width="20"> Timber</div>
+	<div class="close" id="currentTimberIL"><img src="img/timberLegend.png" alt="Interactive Legend for current Timber Sites" height="20" width="20"> Timber</div>
+	<div class="close" id="timberExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for timber expansion sites" height="20" width="20"> Timber Expansion</div>
+
+	<div class="close" id="allEnergyIL">
+		<div><img src="img/hydro-power.png" alt="Interactive Legend for potential energy sites" height="20" width="20"> Dams</div>
+		<div><img src="img/sun.png" alt="Interactive Legend for all potential energy sites" height="20" width="20">  Solar Best</div>
+		<div><img src="img/sun-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Solar Good</div>
+		<div><img src="img/wind.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Best Sites for Windmills</div>
+		<div><img src="img/wind-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Good Sites for Windmills</div>
+	</div>
+
+	<div class="close" id="energyIL"><img src="img/hydro-power.png" alt="Interactive Legend for potential energy sites" height="20" width="20"> Dams</div>
+	<div class="close" id="potentialEnergyIL">
+		<div><img src="img/sun.png" alt="Interactive Legend for all potential energy sites" height="20" width="20">  Solar Best</div>
+		<div><img src="img/sun-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Solar Good</div>
+		<div><img src="img/wind.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Best Sites for Windmills</div>
+		<div><img src="img/wind-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Good Sites for Windmills</div>
+	</div>
+	<div class="close" id="watershedsIL"><img src="img/LegendIcons.png" alt="Interactive Legend for Water Features"height="20" width="20"> Waterways </div>
+	<div class="close" id="CMCCAreasIL"><img src="img/cmccRegionLegend.png" alt="Interactive Legend for CMCC Areas" height="20" width="20"> CMCC Geographic Zone</div>
+	<div class="close" id="CMCCCommunitiesIL"><img src="img/home-run.png" alt="Interactive Legend for CMCC Communities" height="20" width="20"> CMCC Communities</div>
+	<div class="close" id="roadsIL"><img src="img/roadLegend.png" alt="Interactive Legend for Roads in Reagion" height="20" width="20"> Roads</div>
 
 
 
