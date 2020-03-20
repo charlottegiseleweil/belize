@@ -2,38 +2,27 @@
 	<head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-	<title>Belize SDP Viewer Draft</title>
+	<title>SDP CMCC Belize</title>
 	
 	<!-- Leaflet & Plugins -->
-	<link rel="stylesheet" href="src/Control.MiniMap.css" />
-
-	<link rel="stylesheet" href="css/belizeStylesheet.css"/>
-	<script src="js/belizeJS.js"></script>
-
-	<!-- ONLINE <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>-->
 	<script src="src/leaflet/leaflet.js"></script>
 	<script src="js/lib/leaflet.draw.js"></script>
-
-	  <!-- ONLINE <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs leaflet/1.3.1/leaflet.css"/>-->
 	<link rel="stylesheet" href="src/leaflet/leaflet.css"/>
-
+	<link rel="stylesheet" href="src/Control.MiniMap.css" />
 	<script src="src/Control.MiniMap.js" type="text/javascript"></script> 
+	
 
 	<!--jQuery-->
 	<script src="js/lib/jquery-2.1.1.min.js"></script> 
 
-	<!--New Code -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
-   <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
+	<!--Others Libs-->
+	<script src="js/lib/includeHTML.js"></script>
 
-   <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
-   <script src="js/lib/leaflet.shpfile.js"></script>
-   
+	<!-- My CSS -->
+	<link rel="stylesheet" href="css/belizeStylesheet.css"/>
+
+	
+	<!-- ANDREA, WHAT IS THIS ?? YOU HAD IT DUPLICATE - WHAT IS IT?!-->
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
@@ -41,14 +30,14 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
-  
-   <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
-
-   <script src="js/lib/leaflet.shpfile.js"></script>
-   <script src="js/lib/shp.js"></script>
 
 
-    <!-- Compiled and minified JavaScript -->
+  	<!--Leaflet Shp-->
+   	<script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> <!-- ANDREA: IS THIS SHP.JS USEFUL FROM ONLINE SINCE YOU HAVE IT LOCALLY?-->
+   	<script src="js/lib/leaflet.shpfile.js"></script>
+	<script src="js/lib/shp.js"></script> <!-- ANDREA: SEE, YOU HAVE IT LOCALLY!-->
+
+    <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
 	
 	</head>
@@ -57,167 +46,75 @@
 
 	<body>
 
-	<!-- Base Map-->
-
+<!-- Base Map-->
 <div id="mapid"></div>
 
 
 <script src="js/maps.js"></script>
 
-<!--Mini Map - all code for this is in js file-->
-<script src="js/maps.js"></script>
-
 <!-- Selection Panel -->
 <div id="panel"> 
+	<!-- Or just do this: <div w3-include-html="html/panel.html"></div>-->
+	
+	<!-- Title -->
+	<h1 id="viewerTitle">Sustainable Development in the Caracol-Chiquibul-Mountain Pine Ridge Area, Belize</h1>
 
-<p id="viewerTitle">Belize SDP Viewer</p>
+	<!-- Buttons -->
+	<p class="panelOption" style="display: inline"><button type= "button" id="LULCScenarioButton" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
+	<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="dataDownloadButton" onclick="dataPanelOpen()">Data Download</button></p>
+	<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">About</button></p>
 
-<p class="panelOption" style="display: inline"><button type= "button" id="LULCScenarioButton" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="dataDownloadButton" onclick="dataPanelOpen()">Data Download</button></p>
-<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">About</button></p>
+	<br>
+	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox">Improved Caracol Road</div>
+	<hr>
+	<div class="layerChecks" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"><strong>Tourism</strong></div>
+	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Nature/Key Cultural Sites</div>
+	<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox">Impacted Toursit Sites</div>
+	<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox">Tourism Expansion</div>
+	<br>
+	<div class="layerChecks" id="allMining"><input type = "checkbox" id="allMiningCheckBox"><strong>Mining</strong></div>
+	<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox">Mining Areas</div>
+	<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox">Mining Expansion</div>
+	<br>
+	<div class="layerChecks" id="allAgriculture"><input type = "checkbox" id="allAgricultureCheckBox"><strong>Agriculture</strong></div>
+	<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox">Current Agriculture Zones</div>
+	<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox">Agriculture Expansion</div>
+	<br>
+	<div class="layerChecks" id="allTimber"><input type = "checkbox" id="allTimberCheckBox"><strong>Timber</strong></div>
+	<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox">Timber</div>
+	<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox">Timber Expansion</div>
+	<br>
+	<div class="layerChecks" id="allEnergySites"><input type = "checkbox" id="allEnergySitesCheckBox"><strong>Energy</strong></div>
+	<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Dams</div>
+	<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox">Potential Sites for Energy</div>
+	<br><hr>
+	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox">Waterways</div>
+	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox">CMCC Areas</div>
+	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox">CMCC Communities</div>
+	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox">All roads</div>
 
-<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox">New Road</div>
-<HR>
+</div><!-- Close selection Panel  -->
 
-<div class="layerChecks" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"><strong>Tourism</strong></div>
-
-<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Nature/Key Cultural Sites</div>
-
-<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox">Impacted Toursit Sites</div>
-
-<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox">Tourism Expansion</div>
-
-<div class="layerChecks" id="allMining"><input type = "checkbox" id="allMiningCheckBox"><strong>Mining</strong></div>
-
-<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox">Mining Areas</div>
-
-<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox">Mining Expansion</div>
-
-<div class="layerChecks" id="allAgriculture"><input type = "checkbox" id="allAgricultureCheckBox"><strong>Agriculture</strong></div>
-
-<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox">Current Agriculture Zones</div>
-
-<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox">Agriculture Expansion</div>
-
-<div class="layerChecks" id="allTimber"><input type = "checkbox" id="allTimberCheckBox"><strong>Timber</strong></div>
-
-<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox">Timber</div>
-
-<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox">Timber Expansion</div>
-
-<div class="layerChecks" id="allEnergySites"><input type = "checkbox" id="allEnergySitesCheckBox"><strong>Energy</strong></div>
-
-<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Dams</div>
-
-<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox">Potential Sites for Energy</div>
-<HR>
-
-<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox">Waterways</div>
-
-<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox">CMCC Areas</div>
-
-<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox">CMCC Communities</div>
-
-<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox">Roads</div>
-
-
-</div>
-<script src="js/belizeJS.js"></script>
 
 <!-- Data Download Panel-->
-<div class= "close" id=dataDownloadPanel>Download the sick data
-<button type= "button" class= "exitButton" onclick="dataPanelClose()" >X</button>
-<div>New Road</div>
-<HR>
-<div>Tourism</div>
-<div>Archeological/Key Cultural Sites</div>
-<div>Impacted Toursit Sites</div>
-<div>Tourism Expansion</div>
-<div>Mining</div>
-<div>Mining Areas</div>
-<div>Mining Expansion</div>
-<div>Agriculture</div>
-<div>Current Agriculture Zones</div>
-<div>Ag Expansion</div>
-<div>Timber</div>
-<div>Timber</div>
-<div>Timber Expansion</div>
-<div>Energy</div>
-<div>Hydro Power</div>
-<div>Potential Sites for Energy</div>
-<HR>
-<div>Watersheds</div>
-<div>CMCC Areas</div>
-<div>CMCC Communities</div>
-<div>Roads</div>
-
-</div>
-<script src="js/dataDownloadControls.js"></script>
-
-<!--Data Layers
- may end up at the same place as the selection panel but could be separate under this heading, includes styling for the layers -->
- <script src="js/layers.js"></script>
-
-
-<!-- Interactvice Legend -->
-<div class="InteractiveLegend" id="interactiveLegend"><span id="InteractiveLegendTitle">Legend</span>
-
-	<div class="close" id="newRoadIL">
-		<div><img src="img/newRoadLegend.png" alt="Interactive Legend for New Road" height="20" width="20"> New Road</div>
-	</div>
-
-	<div class="close" id="allTourismIL">
-		<div><img src="img/bed.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Lodging/Hotel<div>
-		<div><img src="img/leaf.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Nature Sites<div>
-		<div><img src="img/monument.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Cultural Sites<div>
-	</div>
-
-	<div class="close" id="tourismArckKeyIL">
-		<div><img src="img/bed.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Lodging/Hotel<div>
-		<div><img src="img/leaf.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Nature Sites<div>
-		<div><img src="img/monument.png" alt="Interactive Legend for all Tourism" height="20" width="20"> Cultural Sites<div>
-	</div>
-
-	<div class="close" id="impactedTourismIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Impacted Tourist Sites</div>
-	<div class="close" id="tourismExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Tourism Expansion" height="20" width="20"> Tourism Expansion</div>
-	<div class="close" id="allMiningIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Mining Sites" height="20" width="20"> Mining</div>
-	<div class="close" id="currentMiningIL"><img src="img/coal.png" alt="Interactive Legend for current Mining Areas" height="20" width="20"> Mining Areas</div>
-	<div class="close" id="miningExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for Mining Expansion" height="20" width="20"> Mining Expansion</div>
-	<div class="close" id="allAgricultureIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Agriculture" height="20" width="20"> Agriculture</div>
-	<div class="close" id="currentAgricultureIL"><img src="img/agricultureZoneLegend.png" alt="Interactive Legend for current Agriculture Zones" height="20" width="20"> Current Agriculture Zones</div>
-	<div class="close" id="agExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for agriculture expansion " height="20" width="20"> Agriculture Expansion</div>
-	<div class="close" id="allTimberIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for all Timber" height="20" width="20"> Timber</div>
-	<div class="close" id="currentTimberIL"><img src="img/timberLegend.png" alt="Interactive Legend for current Timber Sites" height="20" width="20"> Timber</div>
-	<div class="close" id="timberExpansionIL"><img src="img/placeholdersmall.png" alt="Interactive Legend for timber expansion sites" height="20" width="20"> Timber Expansion</div>
-
-	<div class="close" id="allEnergyIL">
-		<div><img src="img/hydro-power.png" alt="Interactive Legend for potential energy sites" height="20" width="20"> Dams</div>
-		<div><img src="img/sun.png" alt="Interactive Legend for all potential energy sites" height="20" width="20">  Solar Best</div>
-		<div><img src="img/sun-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Solar Good</div>
-		<div><img src="img/wind.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Best Sites for Windmills</div>
-		<div><img src="img/wind-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Good Sites for Windmills</div>
-	</div>
-
-	<div class="close" id="energyIL"><img src="img/hydro-power.png" alt="Interactive Legend for potential energy sites" height="20" width="20"> Dams</div>
-	<div class="close" id="potentialEnergyIL">
-		<div><img src="img/sun.png" alt="Interactive Legend for all potential energy sites" height="20" width="20">  Solar Best</div>
-		<div><img src="img/sun-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Solar Good</div>
-		<div><img src="img/wind.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Best Sites for Windmills</div>
-		<div><img src="img/wind-2.png" alt="Interactive Legend for all potential energy sites" height="20" width="20"> Good Sites for Windmills</div>
-	</div>
-	<div class="close" id="watershedsIL"><img src="img/LegendIcons.png" alt="Interactive Legend for Water Features"height="20" width="20"> Waterways </div>
-	<div class="close" id="CMCCAreasIL"><img src="img/cmccRegionLegend.png" alt="Interactive Legend for CMCC Areas" height="20" width="20"> CMCC Geographic Zone</div>
-	<div class="close" id="CMCCCommunitiesIL"><img src="img/home-run.png" alt="Interactive Legend for CMCC Communities" height="20" width="20"> CMCC Communities</div>
-	<div class="close" id="roadsIL"><img src="img/roadLegend.png" alt="Interactive Legend for Roads in Reagion" height="20" width="20"> Roads</div>
-
-
-
-
+<div class= "close" id=dataDownloadPanel>
+	<div w3-include-html="html/dataDownloadPanel.html"></div>
 </div>
 
-<!-- LULC Panel
+
+
+
+
+<!-- Legend -->
+<div class="InteractiveLegend" id="interactiveLegend">
+	<div w3-include-html="html/legend.html"></div>
+</div>
+
+
+
+
+<!-- LULC Panel TO DO !!!
 	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
-
 <div class= "LULCclose" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button>
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
@@ -235,24 +132,37 @@
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
 </div>
-<script src="js/LULCControls.js"></script>
 
-<!--About panel on top of scenarios, also easy to x out of it -->
+<!--About panel on top of scenarios, also easy to x out of it TO DO !!!-->
 <div class= "close" id=AboutPanel>Learn about this viewer, cool work went into it
 <button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button></div>
 
+
+
+
+<!-- JavaScript --> 
+
+<script src="js/belizeJS.js"></script>
+<script src="js/dataDownloadControls.js"></script>
+<!--Data Layers
+ may end up at the same place as the selection panel but could be separate under this heading, includes styling for the layers -->
+ <script src="js/layers.js"></script>
+<script src="js/LULCControls.js"></script>
+
 <script src="js/aboutControls.js"></script>
+<script src="js/lib/leaflet.shpfile.js"></script>
+<script src="js/lib/shp.js"></script>
 
+<script src='js/map_styling.js'> </script>
+<script src='js/map.js'> </script>
+<script src='js/main.js'> </script>
+<script src='js/tabs.js'> </script>
 
-	 <script src="js/lib/leaflet.shpfile.js"></script>
-	 <script src="js/lib/shp.js"></script>
-
-	 <script src='js/map_styling.js'> </script>
-	 <script src='js/map.js'> </script>
-	 <script src='js/main.js'> </script>
-	 <script src='js/tabs.js'> </script>
-
+<script>includeHTML();</script>
 
 	
 	</body>
+
+
+
 </html>

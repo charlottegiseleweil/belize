@@ -51,12 +51,7 @@
 		}
 
 
-		#viewerTitle{
-			opacity: 1;
-			color: #AF473C;
-			margin-top: 8px;
-			margin-bottom: 8px;
-		}
+		
 
 		.LULCpanel {
 			position: absolute;
@@ -166,10 +161,7 @@
 
 		
 
-		#viewerTitle {
-			font-size: 38px;
-			color: #F7B733;
-		}
+		
 
 		.dataDownload {
 			display: inline-block;
