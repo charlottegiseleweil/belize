@@ -37,8 +37,9 @@
    	<script src="js/lib/leaflet.shpfile.js"></script>
 	<script src="js/lib/shp.js"></script> <!-- ANDREA: SEE, YOU HAVE IT LOCALLY!-->
 
-    <!-- Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+    <!-- Materialize > I think this is useless Andrea, right? 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    -->
+    <link rel="stylesheet" href="css/w3template.css"/>
 	
 	</head>
 
@@ -53,51 +54,56 @@
 <script src="js/maps.js"></script>
 
 <!-- Selection Panel -->
-<div id="panel"> 
+<div id="panel" class="panels"> 
 	<!-- Or just do this: <div w3-include-html="html/panel.html"></div>-->
 	
 	<!-- Title -->
-	<h1 id="viewerTitle">Sustainable Development in the Caracol-Chiquibul-Mountain Pine Ridge Area, Belize</h1>
+	<h1 id="viewerTitle">Sustainable Development </h1>
+	<h4>in <i>Caracol-Chiquibul-Mountain Pine Ridge</i>, Belize</h4>
 
 	<!-- Buttons -->
-	<p class="panelOption" style="display: inline"><button type= "button" id="LULCScenarioButton" onclick="LULCPanelOpen()">LULC Scenarios</button></p>
-	<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="dataDownloadButton" onclick="dataPanelOpen()">Data Download</button></p>
-	<p class="panelOption" style="display: inline"><button type= "button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">About</button></p>
+	<div id='buttonsRow'>
+		<button type= "button" class="button" id="LULCScenarioButton" onclick="LULCPanelOpen()">
+			LULC Scenarios</button>
+		<button type= "button" class="button" style="display: inline;" id="dataDownloadButton" onclick="dataPanelOpen()">
+			Data Download</button>
+		<button type= "button" class="button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">
+			About</button>
+	</div>
 
-	<br>
-	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox">Improved Caracol Road</div>
+	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox"> Improved Caracol Road</h5></div>
 	<hr>
-	<div class="layerChecks" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"><strong>Tourism</strong></div>
-	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox">Nature/Key Cultural Sites</div>
-	<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox">Impacted Toursit Sites</div>
-	<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox">Tourism Expansion</div>
+	<div class="layerChecks layerTitle" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"> Tourism</div>
+	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox"> Nature/Key Cultural Sites</div>
+	<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox"> Impacted Toursit Sites</div>
+	<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox"> Tourism Expansion</div>
 	<br>
-	<div class="layerChecks" id="allMining"><input type = "checkbox" id="allMiningCheckBox"><strong>Mining</strong></div>
-	<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox">Mining Areas</div>
-	<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox">Mining Expansion</div>
+	<div class="layerChecks layerTitle" id="allMining"><input type = "checkbox" id="allMiningCheckBox"> Mining</div>
+	<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox"> Mining Areas</div>
+	<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox"> Mining Expansion</div>
 	<br>
-	<div class="layerChecks" id="allAgriculture"><input type = "checkbox" id="allAgricultureCheckBox"><strong>Agriculture</strong></div>
-	<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox">Current Agriculture Zones</div>
-	<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox">Agriculture Expansion</div>
+	<div class="layerChecks layerTitle" id="allAgriculture"><input type = "checkbox" id="allAgricultureCheckBox"> Agriculture</div>
+	<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox"> Current Agriculture Zones</div>
+	<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox"> Agriculture Expansion</div>
 	<br>
-	<div class="layerChecks" id="allTimber"><input type = "checkbox" id="allTimberCheckBox"><strong>Timber</strong></div>
-	<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox">Timber</div>
-	<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox">Timber Expansion</div>
+	<div class="layerChecks layerTitle" id="allTimber"><input type = "checkbox" id="allTimberCheckBox"> Timber</div>
+	<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox"> Timber</div>
+	<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox"> Timber Expansion</div>
 	<br>
-	<div class="layerChecks" id="allEnergySites"><input type = "checkbox" id="allEnergySitesCheckBox"><strong>Energy</strong></div>
-	<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox">Dams</div>
-	<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox">Potential Sites for Energy</div>
+	<div class="layerChecks layerTitle" id="allEnergySites"><input type = "checkbox" id="allEnergySitesCheckBox"> Energy</div>
+	<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox"> Dams</div>
+	<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox"> Potential Sites for Energy</div>
 	<br><hr>
-	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox">Waterways</div>
-	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox">CMCC Areas</div>
-	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox">CMCC Communities</div>
-	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox">All roads</div>
+	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox"> Waterways</div>
+	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox"> CMCC Areas</div>
+	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox"> CMCC Communities</div>
+	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox"> All roads</div>
 
 </div><!-- Close selection Panel  -->
 
 
 <!-- Data Download Panel-->
-<div class= "close" id=dataDownloadPanel>
+<div class= "close panels" id=dataDownloadPanel>
 	<div w3-include-html="html/dataDownloadPanel.html"></div>
 </div>
 
@@ -106,7 +112,7 @@
 
 
 <!-- Legend -->
-<div class="InteractiveLegend" id="interactiveLegend">
+<div class="InteractiveLegend panels" id="interactiveLegend">
 	<div w3-include-html="html/legend.html"></div>
 </div>
 
@@ -115,18 +121,18 @@
 
 <!-- LULC Panel TO DO !!!
 	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
-<div class= "LULCclose" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button>
+<div class= "LULCclose panels" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button>
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
 
-<div class= "LULCclose" id= "LULCPanel2">case 2 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose2()">X</button>-->
+<div class= "LULCclose panels" id= "LULCPanel2">case 2 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose2()">X</button>-->
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
-<div class= "LULCclose" id= "LULCPanel1">case 1 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>-->
+<div class= "LULCclose panels" id= "LULCPanel1">case 1 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>-->
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
@@ -134,7 +140,7 @@
 </div>
 
 <!--About panel on top of scenarios, also easy to x out of it TO DO !!!-->
-<div class= "close" id=AboutPanel>Learn about this viewer, cool work went into it
+<div class= "close panels" id=AboutPanel>Learn about this viewer, cool work went into it
 <button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button></div>
 
 

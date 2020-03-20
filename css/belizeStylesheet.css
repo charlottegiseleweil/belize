@@ -1,10 +1,26 @@
-		html *{
-   			
-   			font-family: Verdana !important;
+h1, h2, h3, h4 {
+  color: lightblue;  /* first colorsheet : #F7B733*/
+}
+
+.panels {
+			background-color: #302e25; /* first colorsheet : #003366*/
 		}
 
-		strong *{
-			color: #994000;
+.layerTitle {
+			color: cadetblue; /* first colorsheet : #darkorange*/
+		} 
+
+p {
+	color:white;   
+}
+
+strong *{
+			color: yellow;   /*cadetblue*/
+		}
+
+html *{
+   			
+   			font-family: Verdana !important;
 		}
 
 
@@ -17,21 +33,18 @@
 
 		}
 
-		#interactiveLegendTitle {
-			color: #F7B733 !important; 
-			font-size: 24px;
-
+		.panels {
+			background-color: #302e25; /*Andrea's: #003366*/
 		}
 
 		#panel {
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 300px;
+			width: 30%;
 			top: 15px;
 			right: 15px;
-			height: auto;
-			background-color: #003366;
+			height: 92%;
 			opacity: 0.85;
 			border: 2px;
 			border-color: #F7B733;
@@ -51,7 +64,13 @@
 		}
 
 
-		
+		.button {
+			border-radius: 8px;
+		    margin: 1vh;
+		    display: inline
+		}
+
+
 
 		.LULCpanel {
 			position: absolute;
@@ -60,7 +79,6 @@
 			padding: 1.5%;
 			width: 100px;
 			height: 500px;
-			background-color: #003366;
 			color: #DFDCE3;
 			z-index: 99;
 			border-radius: 25px;
@@ -97,7 +115,6 @@
 			padding: 1.5%;
 			width: 500px;
 			height: 500px;
-			background-color: #003366;
 			color: #DFDCE3;
 			z-index: 100;
 			top: 15px;
@@ -134,7 +151,6 @@
 			height: auto;
 			max-height: 500px;
 			overflow: scroll;
-			background-color: #003366;
 			color: #DFDCE3;
 			z-index: 98;
 			bottom: 50px;
@@ -169,7 +185,6 @@
 			padding: 1.5%;
 			width: auto;
 			height: auto;
-			background-color: #003366;
 			color: #DFDCE3;
 			z-index: 100;
 			opacity: 0.85;
@@ -185,26 +200,6 @@
 			border-radius: 8px;
 			z-index: 500;
 			opacity: 1;
-		}
-
-		#allToursim {
-			color: #994000;
-		}
-
-		#allMining {
-			color: #994000;
-		}
-
-		#allAgriculture {
-			color: #994000;
-		}
-
-		#allTimber {
-			color: #994000;
-		}
-
-		#allEnergySites {
-			color: #994000;
 		}
 
 
