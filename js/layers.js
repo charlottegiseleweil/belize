@@ -21,8 +21,8 @@
 
 	var CMCCGeographicZoneStyle = {
 		"color": "#FC4A1A",
-		"fillOpacity":0,
-		"weight": 0.7,		
+		"fillOpacity":0.5,
+		"weight": 0.9,		
 	}
 
 	var currentTimberStyle = {
@@ -191,7 +191,7 @@
 		}
 	}
 
-	document.getElementById("allTourismCheckBox").onclick = function(){
+	/*document.getElementById("allTourismCheckBox").onclick = function(){
 		if (this.checked){
 			allTourism.addTo(mymap);
 			x = document.getElementById("allTourismIL");
@@ -201,7 +201,7 @@
 			x = document.getElementById("allTourismIL");
 			x.className = "close";
 		}
-	}	
+	}	*/
 
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		if (this.checked){
@@ -275,7 +275,7 @@
 		}
 	}			
 
-		document.getElementById("allAgricultureCheckBox").onclick = function(){
+	document.getElementById("allAgricultureCheckBox").onclick = function(){
 		if (this.checked){
 			agZones.addTo(mymap);
 			x = document.getElementById("allAgricultureIL");
