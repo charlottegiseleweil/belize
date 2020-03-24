@@ -191,7 +191,7 @@
 		}
 	}
 
-	/*document.getElementById("allTourismCheckBox").onclick = function(){
+	document.getElementById("allTourismCheckBox").onclick = function(){
 		if (this.checked){
 			allTourism.addTo(mymap);
 			x = document.getElementById("allTourismIL");
@@ -201,7 +201,7 @@
 			x = document.getElementById("allTourismIL");
 			x.className = "close";
 		}
-	}	*/
+	}
 
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		if (this.checked){
