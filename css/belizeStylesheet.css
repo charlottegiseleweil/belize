@@ -6,6 +6,10 @@ h2 {
 	margin: 1%;
 }
 
+h1 {
+	font-weight: normal;
+}
+
 .panels {
 			background-color: #302e25; /* first colorsheet : #003366*/
 		}
@@ -140,6 +144,10 @@ html *{
 
 		}
 
+		.dataLink {
+			font-size: 1vh;
+		}
+
 
 		.exitButton {
 			background-color: #994000;
@@ -198,7 +206,7 @@ html *{
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: auto;
+			width: 30%;
 			height: 66.8%;
 			color: #DFDCE3;
 			z-index: 100;

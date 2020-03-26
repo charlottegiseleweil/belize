@@ -191,7 +191,193 @@
 		}
 	}
 
-	document.getElementById("allTourismCheckBox").onclick = function(){
+
+//Large layer clicks
+
+//Tourism
+$(document).ready(function(){
+    $("#allTourismCheckBox").click(function(){
+        $("#tourismArchKeyCheckBox").prop("checked", true);
+        	if (this.checked){
+				allTourism.addTo(mymap);
+				x = document.getElementById("tourismArckKeyIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(allTourism);
+				x = document.getElementById("tourismArckKeyIL");
+				x.className = "close";
+			}
+        $("#tourismImpactedCheckBox").prop("checked", true);
+        	if (this.checked){
+				newRoad.addTo(mymap);
+				x = document.getElementById("impactedTourismIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(newRoad);
+				x = document.getElementById("impactedTourismIL");
+				x.className = "close";
+			}
+        $("#tourismExpandedCheckBox").prop("checked", true);
+    		if (this.checked){
+				newRoad.addTo(mymap);
+				x = document.getElementById("tourismExpansionIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(newRoad);
+				x = document.getElementById("tourismExpansionIL");
+				x.className = "close";
+			}
+    });
+    $("#tourismArchKeyCheckBox").click(function(){
+        $("#allTourismCheckBox").prop("checked", false);
+    });
+    $("#tourismImpactedCheckBox").click(function(){
+        $("#allTourismCheckBox").prop("checked", false);
+    });
+    $("#tourismExpandedCheckBox").click(function(){
+        $("#allTourismCheckBox").prop("checked", false);
+    });
+}); //minor bugs with layer toggling, when road as placeholder is replaced with true layer won't be an issue
+
+//Mining
+$(document).ready(function(){
+    $("#allMiningCheckBox").click(function(){
+        $("#miningCheckBox").prop("checked", true);
+			if (this.checked){
+				currentMining.addTo(mymap);
+				x = document.getElementById("currentMiningIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(currentMining);
+				x = document.getElementById("currentMiningIL");
+				x.className = "close";
+			}
+        $("#miningExpansionCheckBox").prop("checked", true);
+        	if (this.checked){
+				newRoad.addTo(mymap);
+				x = document.getElementById("impactedTourismIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(newRoad);
+				x = document.getElementById("impactedTourismIL");
+				x.className = "close";
+			}
+
+    });
+    $("#miningCheckBox").click(function(){
+        $("#allMiningCheckBox").prop("checked", false);
+    });
+    $("#miningExpansionCheckBox").click(function(){
+        $("#allMiningCheckBox").prop("checked", false);
+    });
+}); 
+
+//Agriculture
+$(document).ready(function(){
+    $("#allAgricultureCheckBox").click(function(){
+        $("#currentAgricultureCheckBox").prop("checked", true);
+			if (this.checked){
+				agZones.addTo(mymap);
+				x = document.getElementById("currentAgricultureIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(agZones);
+				x = document.getElementById("currentAgricultureIL");
+				x.className = "close";
+			}
+        $("#agExpansionCheckBox").prop("checked", true);
+			if (this.checked){
+				newRoad.addTo(mymap);
+				x = document.getElementById("agExpansionIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(newRoad);
+				x = document.getElementById("agExpansionIL");
+				x.className = "close";
+			}
+
+    });
+    $("#currentAgricultureCheckBox").click(function(){
+        $("#allAgricultureCheckBox").prop("checked", false);
+    });
+    $("#agExpansionCheckBox").click(function(){
+        $("#allAgricultureCheckBox").prop("checked", false);
+    });
+}); 
+
+//Timber
+$(document).ready(function(){
+    $("#allTimberCheckBox").click(function(){
+        $("#timberCheckBox").prop("checked", true);
+			if (this.checked){
+				timberConcessions.addTo(mymap);
+				x = document.getElementById("currentTimberIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(timberConcessions);
+				x = document.getElementById("currentTimberIL");
+				x.className = "close";
+			}
+        $("#timberExpansionCheckBox").prop("checked", true);
+			if (this.checked){
+				newRoad.addTo(mymap);
+				x = document.getElementById("timberExpansionIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(newRoad);
+				x = document.getElementById("timberExpansionIL");
+				x.className = "close";
+			}
+
+    });
+    $("#timberCheckBox").click(function(){
+        $("#allTimberCheckBox").prop("checked", false);
+    });
+    $("#timberExpansionCheckBox").click(function(){
+        $("#allTimberCheckBox").prop("checked", false);
+    });
+    $("#alltimberCheckBox").click(function(){
+        $("#allTimberCheckBox").prop("checked", false);
+        $("#timberExpansionCheckBox").prop("checked", false);
+    });
+}); 
+
+
+//Energy
+$(document).ready(function(){
+    $("#allEnergySitesCheckBox").click(function(){
+        $("#energyCheckBox").prop("checked", true);
+			if (this.checked){
+				dams.addTo(mymap);
+				x = document.getElementById("energyIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(dams);
+				x = document.getElementById("energyIL");
+				x.className = "close";
+			}
+        $("#energySitesCheckBox").prop("checked", true);
+			if (this.checked){
+				energySites.addTo(mymap);
+				x = document.getElementById("potentialEnergyIL");
+				x.className = "ILImage";
+			} else {
+				mymap.removeLayer(energySites);
+				x = document.getElementById("potentialEnergyIL");
+				x.className = "close";
+			}
+
+    });
+    $("#energyCheckBox").click(function(){
+        $("#allEnergySitesCheckBox").prop("checked", false);
+    });
+    $("#energySitesCheckBox").click(function(){
+        $("#allEnergySitesCheckBox").prop("checked", false);
+    });
+}); 
+
+
+	/*document.getElementById("allTourismCheckBox").onclick = function(){
 		if (this.checked){
 			allTourism.addTo(mymap);
 			x = document.getElementById("allTourismIL");
@@ -201,7 +387,7 @@
 			x = document.getElementById("allTourismIL");
 			x.className = "close";
 		}
-	}
+	}*/
 
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		if (this.checked){
@@ -239,7 +425,7 @@
 		}
 	}			
 
-	document.getElementById("allMiningCheckBox").onclick = function(){
+	/*document.getElementById("allMiningCheckBox").onclick = function(){
 		if (this.checked){
 			newRoad.addTo(mymap);
 			x = document.getElementById("allMiningIL");
@@ -249,7 +435,7 @@
 			x = document.getElementById("allMiningIL");
 			x.className = "close";
 		}
-	}	
+	}	*/
 
 	document.getElementById("miningCheckBox").onclick = function(){
 		if (this.checked){
@@ -275,7 +461,7 @@
 		}
 	}			
 
-	document.getElementById("allAgricultureCheckBox").onclick = function(){
+	/*document.getElementById("allAgricultureCheckBox").onclick = function(){
 		if (this.checked){
 			agZones.addTo(mymap);
 			x = document.getElementById("allAgricultureIL");
@@ -285,7 +471,7 @@
 			x = document.getElementById("allAgricultureIL");
 			x.className = "close";
 		}
-	}	
+	}*/	
 
 	document.getElementById("currentAgricultureCheckBox").onclick = function(){
 		if (this.checked){
@@ -311,7 +497,7 @@
 		}
 	}	
 
-	document.getElementById("allTimberCheckBox").onclick = function(){
+	/*document.getElementById("allTimberCheckBox").onclick = function(){
 		if (this.checked){
 			newRoad.addTo(mymap);
 			x = document.getElementById("allTimberIL");
@@ -321,7 +507,7 @@
 			x = document.getElementById("allTimberIL");
 			x.className = "close";
 		}
-	}	
+	}	*/
 
 	document.getElementById("timberCheckBox").onclick = function(){
 		if (this.checked){
@@ -347,7 +533,7 @@
 		}
 	}	
 
-	document.getElementById("allEnergySitesCheckBox").onclick = function(){
+	/*document.getElementById("allEnergySitesCheckBox").onclick = function(){
 		if (this.checked){
 			allEnergy.addTo(mymap);
 			x = document.getElementById("allEnergyIL");
@@ -357,7 +543,7 @@
 			x = document.getElementById("allEnergyIL");
 			x.className = "close";
 		}
-	}	
+	}	*/
 
 	document.getElementById("energyCheckBox").onclick = function(){
 		if (this.checked){
