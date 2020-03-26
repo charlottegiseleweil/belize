@@ -6,7 +6,7 @@ h2 {
 	margin: 1%;
 }
 
-h1 {
+h1,h2,h3,h4 {
 	font-weight: normal;
 }
 
@@ -145,7 +145,7 @@ html *{
 		}
 
 		.dataLink {
-			font-size: 1vh;
+			/*font-size: 1vh;*/
 		}
 
 
