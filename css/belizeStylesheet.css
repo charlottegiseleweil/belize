@@ -2,12 +2,16 @@ h1, h2, h3, h4 {
   color: lightblue;  /* first colorsheet : #F7B733*/
 }
 
+h2 {
+	margin: 1%;
+}
+
 .panels {
 			background-color: #302e25; /* first colorsheet : #003366*/
 		}
 
 .layerTitle {
-			color: cadetblue; /* first colorsheet : #darkorange*/
+			color: cadetblue; /* first colorsheet : #darkorange*/ 
 		} 
 
 p {
@@ -42,9 +46,9 @@ html *{
 			float: right;
 			padding: 1.5%;
 			width: 30%;
-			top: 15px;
+			top: 2%;
 			right: 15px;
-			height: 92%;
+			height: 88%;
 			opacity: 0.85;
 			border: 2px;
 			border-color: #F7B733;
@@ -61,13 +65,21 @@ html *{
 		.layerChecks {
 			opacity: 1;
 			color: #DFDCE3;
+
 		}
+
+		.layerTitle {
+			color: lightblue; /* first colorsheet : #darkorange*/ 
+			font-size: 2.7vh;
+		} 
+
 
 
 		.button {
 			border-radius: 8px;
 		    margin: 1vh;
-		    display: inline
+		    display: inline;
+		    font-size: 2vh; 
 		}
 
 
@@ -83,28 +95,29 @@ html *{
 			z-index: 99;
 			border-radius: 25px;
 			opacity: 0.85;
+			background-color: #302e25;
 
 		}
 
 
 		#LULCPanel3 {
-			top: 15px;
-			right: 375px;
+			top: 2%;
+			right: 35%;
 			position: absolute;
 
 		}
 
 
 		#LULCPanel2 {
-			top: 15px;
-			right: 530px;
+			top: 2%;
+			right: 50%;
 			position: absolute;
 
 		}
 
 		#LULCPanel1 {
-			top: 15px;
-			right: 685px;
+			top: 2%;
+			right: 65%;
 			position: absolute;
 
 		}
@@ -113,15 +126,17 @@ html *{
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 500px;
-			height: 500px;
+			width: 40%;
+			height: 70%;
+			overflow: scroll;
 			color: #DFDCE3;
 			z-index: 100;
-			top: 15px;
-			right: 375px;
+			top: 2%;
+			right: 35%;
 			position: absolute;
 			border-radius: 25px;
 			opacity: 0.85;
+			background-color: #302e25;
 
 		}
 
@@ -147,13 +162,13 @@ html *{
 			display: inline-block;
 			float: left;
 			padding: 1.5%;
-			width: 250px;
+			width: 20%;
 			height: auto;
-			max-height: 500px;
+			max-height: 50%;
 			overflow: scroll;
 			color: #DFDCE3;
 			z-index: 98;
-			bottom: 50px;
+			bottom: 5%;
 			left: 15px;
 			position: absolute;
 			border-radius: 25px;
@@ -184,15 +199,16 @@ html *{
 			float: right;
 			padding: 1.5%;
 			width: auto;
-			height: auto;
+			height: 66.8%;
 			color: #DFDCE3;
 			z-index: 100;
 			opacity: 0.85;
-			top: 125px;
-			right: 355px;
+			top: 23.2%;
+			right: 35%;
 			position: absolute;
 			border-radius: 25px;
 			overflow: scroll;
+			background-color: #302e25;
 
 		}
 
