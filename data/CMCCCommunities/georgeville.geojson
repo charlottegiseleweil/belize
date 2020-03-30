@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "georgeville",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "SETTNAME": "Georgeville", "DISTRICT": "Cayo", "TYPE": "Village", "POPULATION": 925.0, "X_COORD": 289303.59375, "Y_COORD": 1901671.0 }, "geometry": { "type": "Point", "coordinates": [ -88.98106, 17.19202 ] } }
+]
+}

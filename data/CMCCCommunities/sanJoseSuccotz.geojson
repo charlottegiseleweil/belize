@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "sanJoseSuccotz",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "SETTNAME": "San Jose Succotz", "DISTRICT": "Cayo", "TYPE": "Village", "POPULATION": 2358.0, "X_COORD": 273490.59375, "Y_COORD": 1889998.0 }, "geometry": { "type": "Point", "coordinates": [ -89.12848, 17.08506 ] } }
+]
+}

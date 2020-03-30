@@ -93,7 +93,7 @@ html *{
 			display: inline-block;
 			float: right;
 			padding: 1.5%;
-			width: 100px;
+			width: 12%;
 			height: 500px;
 			color: #DFDCE3;
 			z-index: 99;
@@ -198,9 +198,14 @@ html *{
 			z-index: 900;
 		}
 
-		
+		.image{
+			opacity: 1;
+			border-radius: 25px;
+		}
 
-		
+		.teamPicture{
+			border-radius: 50%;
+		}
 
 		.dataDownload {
 			display: inline-block;

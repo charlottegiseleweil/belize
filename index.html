@@ -21,25 +21,17 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css/belizeStylesheet.css"/>
 
-	
-	<!-- ANDREA, WHAT IS THIS ?? YOU HAD IT DUPLICATE - WHAT IS IT?!-->
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
+
+   <!-- GeoJSON file plug-in -->
    <script type="text/javascript" src="js/lib/leaflet.ajax.min.js"></script>
 
 
   	<!--Leaflet Shp-->
-   	<script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> <!-- ANDREA: IS THIS SHP.JS USEFUL FROM ONLINE SINCE YOU HAVE IT LOCALLY?-->
-   	<script src="js/lib/leaflet.shpfile.js"></script>
-	<script src="js/lib/shp.js"></script> <!-- ANDREA: SEE, YOU HAVE IT LOCALLY!-->
 
-    <!-- Materialize > I think this is useless Andrea, right? 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    -->
-    <link rel="stylesheet" href="css/w3template.css"/>
+   	<script src="js/lib/leaflet.shpfile.js"></script>
+	<script src="js/lib/shp.js"></script> 
+
+    <link rel="stylesheet" href="css/w3template.css"/> <!--WHY IS THIS ONE HERE? -->
 
 	
 	</head>
@@ -53,6 +45,43 @@
 
 
 <script src="js/maps.js"></script>
+
+<!-- Mini Map--> <!--GET THIS TO WORK-->
+<div id=miniMap></div>
+<script>
+	var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+	});
+	var miniBase = new L.TileLayer(Esri_WorldStreetMap, {minZoom: 0, maxZoom: 14});
+	var miniMap = new L.Control.MiniMap(miniBase, { toggleDisplay: true }).addTo(mymap); 
+</script>
+
+<!-- Layers - should be own html file like the data download and legend --> 
+<!--<div w3-include-html="html/popupInfo.html"></div>-->
+
+<div id = "arenalPopup">Arenal <br> <img src="img/popupIMG/arenal.png" alt="Interactive Legend for impacted Tourism Sites"  width="110"> <br> Region of incresaed natural tourism, on the border of Guatemala and Belize.</div>
+
+<div id = "benqueViejoPopup"> Benque Viejo<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "cristyReyPopup"> Cristo Rey<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "elProgressoPopup"> El Progresso <br> <img src="img/popupIMG/elProgresso.png" alt="Interactive Legend for impacted Tourism Sites" width="110"> <br> Poputation: a number</div>
+
+<div id = "georgevillePopup"> Georgeville<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "lowerBartonCreekPopup" > Lower Barton Creek <br> <img src="img/popupIMG/lowerBartonCreek.png" alt="people in the Lower Barton Creek Community" width = "110"> <br> Lower Barton Creek is a small village, that was founded in 1970 by Mennonites from Shipyard in Belize. It is home of the most conservative German speaking "Russian Mennonites" in Belize. It is similar to conservative Mennonite settlements in Bolivia.</div>
+
+<div id = "sanAntonioPopup"> San Antonio<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "sanIgnacioPopup"> San Ignacio<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "sanJoseSuccotzPopup"> San Jose Succoltz<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "santaElenaPopup"> Santa Elena<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "upperBartonCreekPopup"> Upper Barton Creek<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+
 
 <!-- Selection Panel -->
 <div id="panel" class="panels"> 
@@ -72,7 +101,7 @@
 			About</button>
 	</div>
 
-	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox"> Improved Caracol Road</div> <!-- why does this have end tag for h5? -->
+	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox"> Improved Caracol Road</div> 
 	<hr>
 	<div class="layerChecks layerTitle" id="allToursim"><input type = "checkbox" id="allTourismCheckBox"> Tourism</div>
 	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox"> Nature/Key Cultural Sites</div>
@@ -122,18 +151,18 @@
 
 <!-- LULC Panel TO DO !!!
 	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
-<div class= "LULCclose panels" id= "LULCPanel3">case 3 <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button>
+<div class= "LULCclose panels" id= "LULCPanel3"> <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button><h3>Case 3</h3> 
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
 
-<div class= "LULCclose panels" id= "LULCPanel2">case 2 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose2()">X</button>-->
+<div class= "LULCclose panels" id= "LULCPanel2"><h3>Case 2</h3> <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose2()">X</button>-->
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 </div>
-<div class= "LULCclose panels" id= "LULCPanel1">case 1 <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>-->
+<div class= "LULCclose panels" id= "LULCPanel1"><h3>Case 1</h3> <!--<button type= "button" class= "exitButton" onclick="LULCPanelClose1()">X</button>-->
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
 	<img src="img/placeholdersmall.png" height="100" width="100">
@@ -141,8 +170,21 @@
 </div>
 
 <!--About panel on top of scenarios, also easy to x out of it TO DO !!!-->
-<div class= "close panels" id=AboutPanel>Learn about this viewer, cool work went into it
-<button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button></div>
+<div class= "close panels" id=AboutPanel>
+<button type= "button" class= "exitButton" onclick="aboutPanelClose()" >X</button>
+<h2>About This Project</h2>
+Learn about this viewer, cool work went into it. Developed with stakeholders in the community, to be used for research, communication, and anything you might need. 
+<h3>The SDP</h3>
+Looked at all the scenarios to see how different activities work in the same region. 
+<h3>How to Use the Viewer</h3>
+Click on the checkboxes, can also download data and get information on different management scenarios. 
+<img class = "image" src="img/stakeholdersAbout.png">
+<h3>The Team</h3>
+<br>
+<img class = "image teamPicture" src="img/contrerasAndrea.png" height="100">
+
+	<!--<div w3-include-html="html/about.html"></div>-->
+</div>
 
 
 
@@ -160,10 +202,7 @@
 <script src="js/lib/leaflet.shpfile.js"></script>
 <script src="js/lib/shp.js"></script>
 
-<script src='js/map_styling.js'> </script>
-<script src='js/map.js'> </script>
-<script src='js/main.js'> </script>
-<script src='js/tabs.js'> </script>
+
 
 <script>includeHTML();</script>
 

@@ -1,4 +1,4 @@
-//Layer Styling
+//Layer Styling - these are independent, need separate styling for layers
 	var currentAgStyle = {
 		"color": "#F7B733",
 		"fillOpacity":0.9,
@@ -37,7 +37,7 @@
 		"weight": 0.5,		
 	}
 
-//Icon Declarations
+//Icon Declarations 
 	var hotelLodgingIcon = L.icon({
     iconUrl: 'img/bed.png',
 
@@ -126,9 +126,7 @@
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
-	//L.marker([16.872890378907783, -88.87390136718749], {icon: greenIcon}).addTo(mymap).bindPopup("Hi <img src= 'leafletpractice/imgs/placeholder.png'>");
-
-//Layer Set-Up
+//Layer Data Load In
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
 
 	//var allAgriculture = new L.layerGroup([agZones]); //add expanded ag when available to finish
@@ -149,12 +147,23 @@
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
 	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var arenal = new L.geoJSON.ajax("data/cmccCommunities/arenal.geojson", {pointToLayer: returnCMCCCommunitiesMarker}); //NEED TO CHECK LAYER
+	var benqueViejo = new L.geoJSON.ajax("data/cmccCommunities/benqueViejo.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var cristoRey = new L.geoJSON.ajax("data/cmccCommunities/cristoRey.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var elProgresso = new L.geoJSON.ajax("data/cmccCommunities/elProgresso.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var georgeville = new L.geoJSON.ajax("data/cmccCommunities/georgeville.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var lowerBartonCreek = new L.geoJSON.ajax("data/cmccCommunities/lowerBartonCreek.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var sanAntonio = new L.geoJSON.ajax("data/cmccCommunities/sanAntonio.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var sanIgnacio = new L.geoJSON.ajax("data/cmccCommunities/sanIgnacio.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var sanJoseSuccotz = new L.geoJSON.ajax("data/cmccCommunities/sanJoseSuccotz.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var santaElena = new L.geoJSON.ajax("data/cmccCommunities/santaElena.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var upperBartonCreek = new L.geoJSON.ajax("data/cmccCommunities/upperBartonCreek.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip", {style: currentTimberStyle});
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
-	var FDPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip", {style: currentTimberStyle});
-	var PLCArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
-	var RecinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
+	var fdPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip", {style: currentTimberStyle});
+	var plcArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
+	var recinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip");
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip");
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip");
@@ -170,26 +179,81 @@
 
 	var roads4 = L.layerGroup([newRoad]);
 		agZone = L.layerGroup([agZones]);
-		cmccCommPoints = L.layerGroup([cmccCommunities]);
+		cmccCommPoints = L.layerGroup([arenal, benqueViejo, cristoRey, elProgresso, georgeville, lowerBartonCreek, sanAntonio, sanIgnacio, sanJoseSuccotz, santaElena, upperBartonCreek]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
-		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, FDPortionMPR, PLCArea, RecinosMngtArea]);
+		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
 		water = L.layerGroup([waterWays, waterBody, majorRivers]);
 		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
 		allRoads = L.layerGroup([allRoads]);
 
-	//document.getElementById("newRoad").onclick = function() {newRoadLayerToggle(newRoad)};
+//Additional Info Pop-ups
+
+//CMCC Communitites
+arenal.bindPopup(document.getElementById("arenalPopup"));
+benqueViejo.bindPopup(document.getElementById("benqueViejoPopup"));
+cristoRey.bindPopup(document.getElementById("cristoReyPopup"));
+elProgresso.bindPopup(document.getElementById("elProgressoPopup"));
+georgeville.bindPopup(document.getElementById("georgevillePopup"));
+lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup"));
+sanAntonio.bindPopup(document.getElementById("sanAntonioPopup"));
+sanIgnacio.bindPopup(document.getElementById("sanIgnacioPopup"));
+sanJoseSuccotz.bindPopup(document.getElementById("sanJoseSuccotzPopup"));
+santaElena.bindPopup(document.getElementById("santaElenaPopup"));
+upperBartonCreek.bindPopup(document.getElementById("upperBartonCreekPopup"));
+
+//Timber
+bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>");
+fdPortionMPR.bindPopup("<b>FD Portion MPR</b>");
+plcArea.bindPopup("<b>PLC Area</b>");
+recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
+
+
+	//document.getElementById("newRoadCheckBox").onclick = function() {newRoadLayerToggle(newRoad)};
+
+
 //Layer Toggling
 	document.getElementById("newRoadCheckBox").onclick = function(){
-		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("newRoadIL");
-			x.className = "ILImage";
+		if (this.checked){ 
+			toggleOn(newRoad);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("newRoadIL");
-			x.className = "close";
+			toggleOff(newRoad);
 		}
 	}
+
+function newRoadOnOff(layer){
+		if (this.checked){
+			toggleOn(layer);
+		}else {
+			toggleOff(layer);
+		}
+}
+
+function toggleOn(layer) {
+	layer.addTo(mymap);
+	x = document.getElementById("newRoadIL");
+	x.className = "ILImage";
+}
+
+function toggleOff(layer) {
+	mymap.removeLayer(layer); //toggle off()
+	x = document.getElementById("newRoadIL");
+	x.className = "close";
+}
+/*document.getElementById("newRoadCheckBox").addEventListener('click', turnOnLayerLegend(newRoad));	
+
+
+function turnOnLayerLegend (layerName) {
+	if (this.checked){
+		layerName.addTo(mymap);
+		x = document.getElementById("newRoadIL");
+		x.className = "ILImage";
+	} else {
+		mymap.removeLayer(layerName);
+		x = document.getElementById("newRoadIL");
+		x.className = "close";
+	}
+}*/
+
 
 
 //Large layer clicks
@@ -202,30 +266,23 @@ $(document).ready(function(){
 				allTourism.addTo(mymap);
 				x = document.getElementById("tourismArckKeyIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(allTourism);
-				x = document.getElementById("tourismArckKeyIL");
-				x.className = "close";
+
+
+
 			}
         $("#tourismImpactedCheckBox").prop("checked", true);
         	if (this.checked){
 				newRoad.addTo(mymap);
 				x = document.getElementById("impactedTourismIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(newRoad);
-				x = document.getElementById("impactedTourismIL");
-				x.className = "close";
+
 			}
         $("#tourismExpandedCheckBox").prop("checked", true);
     		if (this.checked){
 				newRoad.addTo(mymap);
 				x = document.getElementById("tourismExpansionIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(newRoad);
-				x = document.getElementById("tourismExpansionIL");
-				x.className = "close";
+
 			}
     });
     $("#tourismArchKeyCheckBox").click(function(){
@@ -247,20 +304,14 @@ $(document).ready(function(){
 				currentMining.addTo(mymap);
 				x = document.getElementById("currentMiningIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(currentMining);
-				x = document.getElementById("currentMiningIL");
-				x.className = "close";
+
 			}
         $("#miningExpansionCheckBox").prop("checked", true);
         	if (this.checked){
 				newRoad.addTo(mymap);
 				x = document.getElementById("impactedTourismIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(newRoad);
-				x = document.getElementById("impactedTourismIL");
-				x.className = "close";
+
 			}
 
     });
@@ -280,20 +331,14 @@ $(document).ready(function(){
 				agZones.addTo(mymap);
 				x = document.getElementById("currentAgricultureIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(agZones);
-				x = document.getElementById("currentAgricultureIL");
-				x.className = "close";
+
 			}
         $("#agExpansionCheckBox").prop("checked", true);
 			if (this.checked){
 				newRoad.addTo(mymap);
 				x = document.getElementById("agExpansionIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(newRoad);
-				x = document.getElementById("agExpansionIL");
-				x.className = "close";
+
 			}
 
     });
@@ -313,20 +358,14 @@ $(document).ready(function(){
 				timberConcessions.addTo(mymap);
 				x = document.getElementById("currentTimberIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(timberConcessions);
-				x = document.getElementById("currentTimberIL");
-				x.className = "close";
+
 			}
         $("#timberExpansionCheckBox").prop("checked", true);
 			if (this.checked){
 				newRoad.addTo(mymap);
 				x = document.getElementById("timberExpansionIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(newRoad);
-				x = document.getElementById("timberExpansionIL");
-				x.className = "close";
+
 			}
 
     });
@@ -351,20 +390,12 @@ $(document).ready(function(){
 				dams.addTo(mymap);
 				x = document.getElementById("energyIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(dams);
-				x = document.getElementById("energyIL");
-				x.className = "close";
 			}
         $("#energySitesCheckBox").prop("checked", true);
 			if (this.checked){
 				energySites.addTo(mymap);
 				x = document.getElementById("potentialEnergyIL");
 				x.className = "ILImage";
-			} else {
-				mymap.removeLayer(energySites);
-				x = document.getElementById("potentialEnergyIL");
-				x.className = "close";
 			}
 
     });
@@ -595,17 +626,17 @@ $(document).ready(function(){
 
 	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		if (this.checked){
-			cmccCommunities.addTo(mymap);
+			cmccCommPoints.addTo(mymap);
 			x = document.getElementById("CMCCCommunitiesIL");
 			x.className = "ILImage";
 		} else {
-			mymap.removeLayer(cmccCommunities);
+			mymap.removeLayer(cmccCommPoints);
 			x = document.getElementById("CMCCCommunitiesIL");
 			x.className = "close";
 		}
 	}	
 
-	document.getElementById("roadsCheckBox").onclick = function(){
+	/*document.getElementById("roadsCheckBox").onclick = function(){
 		if (this.checked){
 			allRoads.addTo(mymap);
 			x = document.getElementById("roadsIL");
@@ -615,7 +646,21 @@ $(document).ready(function(){
 			x = document.getElementById("roadsIL");
 			x.className = "close";
 		}
-	}		
+	}	*/	
+
+	document.getElementById("roadsCheckBox").onclick = function(){allRoadToggle(allRoads)};
+
+	function allRoadToggle(layer){
+		if (this.checked){
+			layer.addTo(mymap);
+			x = document.getElementById("roadsIL");
+			x.className = "ILImage";
+		} else {
+			mymap.removeLayer(layer);
+			x = document.getElementById("roadsIL");
+			x.className = "close";
+		}
+	}
 
 	/*function newRoadLayerToggle(layer) {
 		if (this.checked){
@@ -655,6 +700,13 @@ function createCheckboxForLayer (cssSelector, layer, ledendDiv) {
 //}
 
 
+//Icon setups 
+//function below should replace all others in this list, json and latlng values do not translate well when moved up top
+function returnIconMarker (json, latlng, iconName){
+	return L.marker(latlng, {
+		icon: iconName
+	});
+}
 
 function returnHotelMarker(json, latlng){
 	return L.marker(latlng, {
@@ -682,7 +734,7 @@ function returncurrentMiningMarker(json, latlng){
 
 function returnCMCCCommunitiesMarker(json, latlng){
 	return L.marker(latlng, {
-		icon: cmccCommunityIcon //update icon
+		icon: cmccCommunityIcon //update icon - add pop-up with info
 	});
 }
 
