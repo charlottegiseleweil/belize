@@ -212,31 +212,33 @@ recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
 
 //Layer Toggling
-	document.getElementById("newRoadCheckBox").onclick = function(){
-		if (this.checked){ 
-			toggleOn(newRoad);
-		} else {
-			toggleOff(newRoad);
-		}
-	}
+	newRoadIL = "newRoadIL"
+	document.getElementById("newRoadCheckBox").addEventListener('click', function(){
+		toggleOn(newRoad, newRoadIL)
+	}, false);
 
-function newRoadOnOff(layer){
+function newRoadOnOff(layer, elementIL){ // works up to this function inside of function() above
 		if (this.checked){
-			toggleOn(layer);
+			layer.addTo(mymap);
+			x = document.getElementById(elementIL);
+			x.className = "ILImage";
 		}else {
-			toggleOff(layer);
+			mymap.removeLayer(layer); //toggle off()
+			x = document.getElementById(elementIL);
+			x.className = "close";
 		}
 }
 
-function toggleOn(layer) {
+
+function toggleOn(layer, elementIL) { // this one works well above too
 	layer.addTo(mymap);
-	x = document.getElementById("newRoadIL");
+	x = document.getElementById(elementIL);
 	x.className = "ILImage";
 }
 
-function toggleOff(layer) {
+function toggleOff(layer, elementIL) {
 	mymap.removeLayer(layer); //toggle off()
-	x = document.getElementById("newRoadIL");
+	x = document.getElementById(elementIL);
 	x.className = "close";
 }
 /*document.getElementById("newRoadCheckBox").addEventListener('click', turnOnLayerLegend(newRoad));	

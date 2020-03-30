@@ -1,5 +1,5 @@
 h1, h2, h3, h4 {
-  color: lightblue;  /* first colorsheet : #F7B733*/
+  color: #E1AD01;  /* first colorsheet : #F7B733*/
 }
 
 h2 {
@@ -73,10 +73,17 @@ html *{
 		}
 
 		.layerTitle {
-			color: lightblue; /* first colorsheet : #darkorange*/ 
+			color: #E34234; /* first colorsheet : #darkorange*/ 
 			font-size: 2.7vh;
 		} 
 
+		#miniMap {
+			position: absolute;
+			display: inline-block;
+			float: left;
+			left: 15px;
+			top: 8%;
+		}
 
 
 		.button {
@@ -232,5 +239,8 @@ html *{
 		}
 
 
-
+.leaflet-right .leaflet-control {
+	float: left;
+	left: 15px;
+	top: 2%;
 
