@@ -220,18 +220,28 @@ recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 //Layer Toggling
 	//half function set up
 
-$('#newRoadCheckBox').prop('checked', true);
+
+
+newRoadIL = "newRoadIL"
+//$(document).ready(function(){
+//    $("#newRoadCheckBox").load(function(){
+		$('#newRoadCheckBox').prop('checked', true);
+//			if (this.checked){
+//				newRoad.addTo(mymap);
+//				x = document.getElementById("newRoadIL");
+//				x.className = "ILImage";
+//			}
+//		})
+//document.getElementById("newRoadIL").addEventListener('load', function(){
+//	newRoad.addTo(mymap);
+//}, false);
 
 
 document.getElementById("newRoadCheckBox").onclick = function(){
 	if (this.checked){
-		newRoad.addTo(mymap);
-		x = document.getElementById("newRoadIL");
-		x.className = "ILImage";
+		toggleOn(newRoad, newRoadIL);
 	} else {
-		mymap.removeLayer(newRoad);
-		x = document.getElementById("newRoadIL");
-		x.className = "close";
+		toggleOff(newRoad, newRoadIL);
 	}
 }	
 /*	newRoadIL = "newRoadIL"
@@ -249,7 +259,7 @@ function newRoadOnOff(layer, elementIL){ // works up to this function inside of 
 			x = document.getElementById(elementIL);
 			x.className = "close";
 		}
-}
+}*/
 
 
 function toggleOn(layer, elementIL) { // this one works well above too
@@ -263,7 +273,7 @@ function toggleOff(layer, elementIL) {
 	x = document.getElementById(elementIL);
 	x.className = "close";
 }
-*/
+
 /*document.getElementById("newRoadCheckBox").addEventListener('click', turnOnLayerLegend(newRoad));	
 
 
@@ -444,19 +454,16 @@ $(document).ready(function(){
 			x.className = "close";
 		}
 	}*/
-
+	tourismArchKeyIL = "tourismArckKeyIL"
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		if (this.checked){
-			allTourism.addTo(mymap);
-			x = document.getElementById("tourismArckKeyIL");
-			x.className = "ILImage";
+			toggleOn(allTourism, tourismArchKeyIL);
 		} else {
-			mymap.removeLayer(allTourism);
-			x = document.getElementById("tourismArckKeyIL");
-			x.className = "close";
+			toggleOff(allTourism, tourismArchKeyIL);
 		}
 	}	
 
+	
 	document.getElementById("tourismImpactedCheckBox").onclick = function(){
 		if (this.checked){
 			newRoad.addTo(mymap);
