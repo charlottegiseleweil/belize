@@ -190,17 +190,17 @@
 //Additional Info Pop-ups
 
 //CMCC Communitites
-arenal.bindPopup("Arenal");//document.getElementById("arenalPopup"));
-benqueViejo.bindPopup("Benque Viejo");//document.getElementById("benqueViejoPopup"));
-cristoRey.bindPopup("Cristo Rey");//document.getElementById("Cristo Rey");//"cristoReyPopup"));
-elProgresso.bindPopup(document.getElementById("elProgressoPopup");
-georgeville.bindPopup(document.getElementById("georgevillePopup");
-lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup");
-sanAntonio.bindPopup("San Antonio");//document.getElementById("sanAntonioPopup"));
-sanIgnacio.bindPopup("San Ignacio");//document.getElementById("sanIgnacioPopup"));
-sanJoseSuccotz.bindPopup("San Jose Succoltz");//document.getElementById("sanJoseSuccotzPopup"));
-santaElena.bindPopup("Santa Elena");//document.getElementById("santaElenaPopup"));
-upperBartonCreek.bindPopup("Upper Barton Creek");//document.getElementById("upperBartonCreekPopup"));
+arenal.bindPopup(document.getElementById("arenalPopup"));
+benqueViejo.bindPopup(document.getElementById("benqueViejoPopup"));
+cristoRey.bindPopup(document.getElementById("cristoReyPopup"));
+elProgresso.bindPopup(document.getElementById("elProgressoPopup"));
+georgeville.bindPopup(document.getElementById("georgevillePopup"));
+lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup"));
+sanAntonio.bindPopup(document.getElementById("sanAntonioPopup"));
+sanIgnacio.bindPopup(document.getElementById("sanIgnacioPopup"));
+sanJoseSuccotz.bindPopup(document.getElementById("sanJoseSuccotzPopup"));
+santaElena.bindPopup(document.getElementById("santaElenaPopup"));
+upperBartonCreek.bindPopup(document.getElementById("upperBartonCreekPopup"));
 
 //Timber
 bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>");
@@ -331,116 +331,13 @@ $(document).ready(function(){
     });
 }); //minor bugs with layer toggling, when road as placeholder is replaced with true layer won't be an issue
 
-//Mining
-$(document).ready(function(){
-    $("#allMiningCheckBox").click(function(){
-        $("#miningCheckBox").prop("checked", true);
-			if (this.checked){
-				currentMining.addTo(mymap);
-				x = document.getElementById("currentMiningIL");
-				x.className = "ILImage";
-
-			}
-        $("#miningExpansionCheckBox").prop("checked", true);
-        	if (this.checked){
-				newRoad.addTo(mymap);
-				x = document.getElementById("impactedTourismIL");
-				x.className = "ILImage";
-
-			}
-
-    });
-    $("#miningCheckBox").click(function(){
-        $("#allMiningCheckBox").prop("checked", false);
-    });
-    $("#miningExpansionCheckBox").click(function(){
-        $("#allMiningCheckBox").prop("checked", false);
-    });
-}); 
-
-//Agriculture
-$(document).ready(function(){
-    $("#allAgricultureCheckBox").click(function(){
-        $("#currentAgricultureCheckBox").prop("checked", true);
-			if (this.checked){
-				agZones.addTo(mymap);
-				x = document.getElementById("currentAgricultureIL");
-				x.className = "ILImage";
-
-			}
-        $("#agExpansionCheckBox").prop("checked", true);
-			if (this.checked){
-				newRoad.addTo(mymap);
-				x = document.getElementById("agExpansionIL");
-				x.className = "ILImage";
-
-			}
-
-    });
-    $("#currentAgricultureCheckBox").click(function(){
-        $("#allAgricultureCheckBox").prop("checked", false);
-    });
-    $("#agExpansionCheckBox").click(function(){
-        $("#allAgricultureCheckBox").prop("checked", false);
-    });
-}); 
-
-//Timber
-$(document).ready(function(){
-    $("#allTimberCheckBox").click(function(){
-        $("#timberCheckBox").prop("checked", true);
-			if (this.checked){
-				timberConcessions.addTo(mymap);
-				x = document.getElementById("currentTimberIL");
-				x.className = "ILImage";
-
-			}
-        $("#timberExpansionCheckBox").prop("checked", true);
-			if (this.checked){
-				newRoad.addTo(mymap);
-				x = document.getElementById("timberExpansionIL");
-				x.className = "ILImage";
-
-			}
-
-    });
-    $("#timberCheckBox").click(function(){
-        $("#allTimberCheckBox").prop("checked", false);
-    });
-    $("#timberExpansionCheckBox").click(function(){
-        $("#allTimberCheckBox").prop("checked", false);
-    });
-    $("#alltimberCheckBox").click(function(){
-        $("#allTimberCheckBox").prop("checked", false);
-        $("#timberExpansionCheckBox").prop("checked", false);
-    });
-}); 
 
 
-//Energy
-$(document).ready(function(){
-    $("#allEnergySitesCheckBox").click(function(){
-        $("#energyCheckBox").prop("checked", true);
-			if (this.checked){
-				dams.addTo(mymap);
-				x = document.getElementById("energyIL");
-				x.className = "ILImage";
-			}
-        $("#energySitesCheckBox").prop("checked", true);
-			if (this.checked){
-				energySites.addTo(mymap);
-				x = document.getElementById("potentialEnergyIL");
-				x.className = "ILImage";
-			}
 
-    });
-    $("#energyCheckBox").click(function(){
-        $("#allEnergySitesCheckBox").prop("checked", false);
-    });
-    $("#energySitesCheckBox").click(function(){
-        $("#allEnergySitesCheckBox").prop("checked", false);
-    });
-}); 
+
+
+
+
 
 
 	/*document.getElementById("allTourismCheckBox").onclick = function(){
