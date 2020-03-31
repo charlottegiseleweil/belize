@@ -212,6 +212,12 @@ recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
 
 //Layer Toggling
+        $("#newRoadCheckBox").prop("checked", true);
+        	if (this.checked){
+				allTourism.addTo(mymap);
+				x = document.getElementById("tourismArckKeyIL");
+				x.className = "ILImage";
+
 	newRoadIL = "newRoadIL"
 	document.getElementById("newRoadCheckBox").addEventListener('click', function(){
 		toggleOn(newRoad, newRoadIL)

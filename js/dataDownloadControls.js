@@ -1,5 +1,5 @@
    
-   /*//Layer Checks
+   //Layer Checks
    function dataDownloadCheck(){
       dataDownCheck = document.getElementById("dataDownloadPanel");
          if (dataDownCheck.className == "dataDownload"){
@@ -45,5 +45,5 @@
          LULC3Check();
          x = document.getElementById("dataDownloadPanel");
          x.className="dataDownload";
-   }*/
+   }
 
