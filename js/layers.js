@@ -360,28 +360,22 @@ $(document).ready(function(){
 		}
 	}	
 
-	
+	impactedTourismIL = "impactedTourismIL"
 	document.getElementById("tourismImpactedCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("impactedTourismIL");
-			x.className = "ILImage";
+			toggleOn(newRoad, impactedTourismIL);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("impactedTourismIL");
-			x.className = "close";
+			toggleOff(newRoad, impactedTourismIL);
+
 		}
 	}	
 
+	tourismExpansionIL = "tourismExpansionIL"
 	document.getElementById("tourismExpandedCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("tourismExpansionIL");
-			x.className = "ILImage";
+			toggleOn(newRoad, tourismExpansionIL);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("tourismExpansionIL");
-			x.className = "close";
+			toggleOff(newRoad, tourismExpansionIL);
 		}
 	}			
 
@@ -397,27 +391,21 @@ $(document).ready(function(){
 		}
 	}	*/
 
+	currentMiningIL = "currentMiningIL"
 	document.getElementById("miningCheckBox").onclick = function(){
 		if (this.checked){
-			currentMining.addTo(mymap);
-			x = document.getElementById("currentMiningIL");
-			x.className = "ILImage";
+			toggleOn(currentMining, currentMiningIL);
 		} else {
-			mymap.removeLayer(currentMining);
-			x = document.getElementById("currentMiningIL");
-			x.className = "close";
+			toggleOff(currentMining, currentMiningIL);
 		}
 	}	
 
+	miningExpansionIL = "miningExpansionIL"
 	document.getElementById("miningExpansionCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("miningExpansionIL");
-			x.className = "ILImage";
+			toggleOn(newRoad, miningExpansionIL);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("miningExpansionIL");
-			x.className = "close";
+			toggleOff(newRoad, miningExpansionIL);
 		}
 	}			
 
@@ -433,27 +421,21 @@ $(document).ready(function(){
 		}
 	}*/	
 
+	currentAgricultureIL = "currentAgricultureIL"
 	document.getElementById("currentAgricultureCheckBox").onclick = function(){
 		if (this.checked){
-			agZones.addTo(mymap);
-			x = document.getElementById("currentAgricultureIL");
-			x.className = "ILImage";
+			toggleOn(agZones, currentAgricultureIL);
 		} else {
-			mymap.removeLayer(agZones);
-			x = document.getElementById("currentAgricultureIL");
-			x.className = "close";
+			toggleOff(agZones, currentAgricultureIL);
 		}
 	}	
 
+	agExpansionIL = "agExpansionIL"
 	document.getElementById("agExpansionCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("agExpansionIL");
-			x.className = "ILImage";
+			toggleOn(newRoad, agExpansionIL);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("agExpansionIL");
-			x.className = "close";
+			toggleOff(newRoad, agExpansionIL);
 		}
 	}	
 
@@ -469,27 +451,21 @@ $(document).ready(function(){
 		}
 	}	*/
 
+	currentTimberIL = "currentTimberIL"
 	document.getElementById("timberCheckBox").onclick = function(){
 		if (this.checked){
-			timberConcessions.addTo(mymap);
-			x = document.getElementById("currentTimberIL");
-			x.className = "ILImage";
+			toggleOn(timberConcessions, currentTimberIL);
 		} else {
-			mymap.removeLayer(timberConcessions);
-			x = document.getElementById("currentTimberIL");
-			x.className = "close";
+			toggleOff(timberConcessions, currentTimberIL);
 		}
 	}	
 
+	timberExpansionIL = "timberExpansionIL"
 	document.getElementById("timberExpansionCheckBox").onclick = function(){
 		if (this.checked){
-			newRoad.addTo(mymap);
-			x = document.getElementById("timberExpansionIL");
-			x.className = "ILImage";
+			toggleOn(newRoad, timberExpansionIL);
 		} else {
-			mymap.removeLayer(newRoad);
-			x = document.getElementById("timberExpansionIL");
-			x.className = "close";
+			toggleOff(newRoad, timberExpansionIL);
 		}
 	}	
 
@@ -505,75 +481,57 @@ $(document).ready(function(){
 		}
 	}	*/
 
+	energyIL = "energyIL"
 	document.getElementById("energyCheckBox").onclick = function(){
 		if (this.checked){
-			dams.addTo(mymap);
-			x = document.getElementById("energyIL");
-			x.className = "ILImage";
+			toggleOn(dams, energyIL);
 		} else {
-			mymap.removeLayer(dams);
-			x = document.getElementById("energyIL");
-			x.className = "close";
+			toggleOff(dams, energyIL);
 		}
 	}	
 
+	potentialEnergyIL = "potentialEnergyIL"
 	document.getElementById("energySitesCheckBox").onclick = function(){
 		if (this.checked){
-			energySites.addTo(mymap);
-			x = document.getElementById("potentialEnergyIL");
-			x.className = "ILImage";
+			toggleOn(energySites, potentialEnergyIL);
 		} else {
-			mymap.removeLayer(energySites);
-			x = document.getElementById("potentialEnergyIL");
-			x.className = "close";
+			toggleOff(energySites, potentialEnergyIL);
 		}
 	}			
 
+	watershedsIL = "watershedsIL"
 	document.getElementById("watershedsCheckBox").onclick = function(){
 		if (this.checked){
-			water.addTo(mymap);
-			x = document.getElementById("watershedsIL");
-			x.className = "ILImage";
+			toggleOn(water, watershedsIL);
 		} else {
-			mymap.removeLayer(water);
-			x = document.getElementById("watershedsIL");
-			x.className = "close";
+			toggleOff(water, watershedsIL);
 		}
 	}	
 
+	CMCCAreasIL = "CMCCAreasIL"
 	document.getElementById("CMCCAreasCheckBox").onclick = function(){
 		if (this.checked){
-			cmccGeographicZone.addTo(mymap);
-			x = document.getElementById("CMCCAreasIL");
-			x.className = "ILImage";
+			toggleOn(cmccGeographicZone, CMCCAreasIL);
 		} else {
-			mymap.removeLayer(cmccGeographicZone);
-			x = document.getElementById("CMCCAreasIL");
-			x.className = "close";
+			toggleOff(cmccGeographicZone, CMCCAreasIL);
 		}
 	}
 
+	CMCCCommunitiesIL = "CMCCCommunitiesIL"
 	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		if (this.checked){
-			cmccCommPoints.addTo(mymap);
-			x = document.getElementById("CMCCCommunitiesIL");
-			x.className = "ILImage";
+			toggleOn(cmccCommPoints, CMCCCommunitiesIL);
 		} else {
-			mymap.removeLayer(cmccCommPoints);
-			x = document.getElementById("CMCCCommunitiesIL");
-			x.className = "close";
+			toggleOff(cmccCommPoints, CMCCCommunitiesIL);
 		}
 	}	
 
+	roadsIL = "roadsIL"
 	document.getElementById("roadsCheckBox").onclick = function(){
 		if (this.checked){
-			allRoads.addTo(mymap);
-			x = document.getElementById("roadsIL");
-			x.className = "ILImage";
+			toggleOn(allRoads, roadsIL);
 		} else {
-			mymap.removeLayer(allRoads);
-			x = document.getElementById("roadsIL");
-			x.className = "close";
+			toggleOff(allRoads, roadsIL);
 		}
 	}	
 
