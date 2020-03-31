@@ -152,7 +152,9 @@ html *{
 		}
 
 		.dataLink {
-			/*font-size: 1vh;*/
+			color: #DFDCE3;
+			font-size: 2.5vh;
+			font-color: #E1AD01 ;
 		}
 
 

@@ -186,20 +186,21 @@
 		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
 		allRoads = L.layerGroup([allRoads]);
 
+
 //Additional Info Pop-ups
 
 //CMCC Communitites
-arenal.bindPopup(document.getElementById("arenalPopup"));
-benqueViejo.bindPopup(document.getElementById("benqueViejoPopup"));
-cristoRey.bindPopup(document.getElementById("cristoReyPopup"));
-elProgresso.bindPopup(document.getElementById("elProgressoPopup"));
-georgeville.bindPopup(document.getElementById("georgevillePopup"));
-lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup"));
-sanAntonio.bindPopup(document.getElementById("sanAntonioPopup"));
-sanIgnacio.bindPopup(document.getElementById("sanIgnacioPopup"));
-sanJoseSuccotz.bindPopup(document.getElementById("sanJoseSuccotzPopup"));
-santaElena.bindPopup(document.getElementById("santaElenaPopup"));
-upperBartonCreek.bindPopup(document.getElementById("upperBartonCreekPopup"));
+arenal.bindPopup("Arenal");//document.getElementById("arenalPopup"));
+benqueViejo.bindPopup("Benque Viejo");//document.getElementById("benqueViejoPopup"));
+cristoRey.bindPopup("Cristo Rey");//document.getElementById("Cristo Rey");//"cristoReyPopup"));
+elProgresso.bindPopup("El Progresso");//document.getElementById("elProgressoPopup"));
+georgeville.bindPopup("Georgeville");//document.getElementById("georgevillePopup"));
+lowerBartonCreek.bindPopup("Lower Barton Creek"); //document.getElementById("lowerBartonCreekPopup"));
+sanAntonio.bindPopup("San Antonio");//document.getElementById("sanAntonioPopup"));
+sanIgnacio.bindPopup("San Ignacio");//document.getElementById("sanIgnacioPopup"));
+sanJoseSuccotz.bindPopup("San Jose Succoltz");//document.getElementById("sanJoseSuccotzPopup"));
+santaElena.bindPopup("Santa Elena");//document.getElementById("santaElenaPopup"));
+upperBartonCreek.bindPopup("Upper Barton Creek");//document.getElementById("upperBartonCreekPopup"));
 
 //Timber
 bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>");
@@ -207,24 +208,39 @@ fdPortionMPR.bindPopup("<b>FD Portion MPR</b>");
 plcArea.bindPopup("<b>PLC Area</b>");
 recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
+//Tourism
+//Hotels
+//Natural Sites
+//Archeological/Cultural Sites
+
 
 	//document.getElementById("newRoadCheckBox").onclick = function() {newRoadLayerToggle(newRoad)};
 
 
 //Layer Toggling
-        $("#newRoadCheckBox").prop("checked", true);
-        	if (this.checked){
-				allTourism.addTo(mymap);
-				x = document.getElementById("tourismArckKeyIL");
-				x.className = "ILImage";
+	//half function set up
 
-	newRoadIL = "newRoadIL"
+$('#newRoadCheckBox').prop('checked', true);
+
+
+document.getElementById("newRoadCheckBox").onclick = function(){
+	if (this.checked){
+		newRoad.addTo(mymap);
+		x = document.getElementById("newRoadIL");
+		x.className = "ILImage";
+	} else {
+		mymap.removeLayer(newRoad);
+		x = document.getElementById("newRoadIL");
+		x.className = "close";
+	}
+}	
+/*	newRoadIL = "newRoadIL"
 	document.getElementById("newRoadCheckBox").addEventListener('click', function(){
 		toggleOn(newRoad, newRoadIL)
 	}, false);
 
 function newRoadOnOff(layer, elementIL){ // works up to this function inside of function() above
-		if (this.checked){
+		if (this.checked){ //this points the the checkbox, element you get by id
 			layer.addTo(mymap);
 			x = document.getElementById(elementIL);
 			x.className = "ILImage";
@@ -247,6 +263,7 @@ function toggleOff(layer, elementIL) {
 	x = document.getElementById(elementIL);
 	x.className = "close";
 }
+*/
 /*document.getElementById("newRoadCheckBox").addEventListener('click', turnOnLayerLegend(newRoad));	
 
 
@@ -644,7 +661,7 @@ $(document).ready(function(){
 		}
 	}	
 
-	/*document.getElementById("roadsCheckBox").onclick = function(){
+	document.getElementById("roadsCheckBox").onclick = function(){
 		if (this.checked){
 			allRoads.addTo(mymap);
 			x = document.getElementById("roadsIL");
@@ -654,21 +671,9 @@ $(document).ready(function(){
 			x = document.getElementById("roadsIL");
 			x.className = "close";
 		}
-	}	*/	
+	}	
 
-	document.getElementById("roadsCheckBox").onclick = function(){allRoadToggle(allRoads)};
 
-	function allRoadToggle(layer){
-		if (this.checked){
-			layer.addTo(mymap);
-			x = document.getElementById("roadsIL");
-			x.className = "ILImage";
-		} else {
-			mymap.removeLayer(layer);
-			x = document.getElementById("roadsIL");
-			x.className = "close";
-		}
-	}
 
 	/*function newRoadLayerToggle(layer) {
 		if (this.checked){
@@ -775,8 +780,3 @@ function returnDamsMarker(json, latlng){
 		icon: damsIcon
 	});
 }
-
-
-
-
-

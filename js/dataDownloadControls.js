@@ -32,7 +32,7 @@
    }
 
 
-   //Data Download Panel
+/*   //Data Download Panel
    function dataPanelClose(){
          x = document.getElementById("dataDownloadPanel");
          x.className="close";
@@ -45,5 +45,23 @@
          LULC3Check();
          x = document.getElementById("dataDownloadPanel");
          x.className="dataDownload";
-   }
+   } */
 
+
+/*//Data Download Button
+document.getElementById('dataDownloadButton').addEventListener('click', function(){
+      dataLinksClose()
+   }, false);
+
+function dataLinksClose(){
+   var x = document.getElementsByClassName("dataLink");
+   x.className="close";
+}*/
+
+   function dataLinksClose(){
+      x = document.getElementsByClassName("dataLink");
+      var i;
+      for (i = 0; i < x.length; i++){
+            x[i].className = "close";
+         }
+      }
