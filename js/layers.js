@@ -193,9 +193,9 @@
 arenal.bindPopup("Arenal");//document.getElementById("arenalPopup"));
 benqueViejo.bindPopup("Benque Viejo");//document.getElementById("benqueViejoPopup"));
 cristoRey.bindPopup("Cristo Rey");//document.getElementById("Cristo Rey");//"cristoReyPopup"));
-elProgresso.bindPopup("El Progresso");//document.getElementById("elProgressoPopup"));
-georgeville.bindPopup("Georgeville");//document.getElementById("georgevillePopup"));
-lowerBartonCreek.bindPopup("Lower Barton Creek"); //document.getElementById("lowerBartonCreekPopup"));
+elProgresso.bindPopup(document.getElementById("elProgressoPopup");
+georgeville.bindPopup(document.getElementById("georgevillePopup");
+lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup");
 sanAntonio.bindPopup("San Antonio");//document.getElementById("sanAntonioPopup"));
 sanIgnacio.bindPopup("San Ignacio");//document.getElementById("sanIgnacioPopup"));
 sanJoseSuccotz.bindPopup("San Jose Succoltz");//document.getElementById("sanJoseSuccotzPopup"));
