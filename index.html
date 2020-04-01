@@ -14,7 +14,6 @@
 
 	<!--jQuery-->
 	<script src="js/lib/jquery-2.1.1.min.js"></script> 
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 	<!--Others Libs-->
 	<script src="js/lib/includeHTML.js"></script>
@@ -34,15 +33,6 @@
 
     <link rel="stylesheet" href="css/w3template.css"/> <!--WHY IS THIS ONE HERE? -->
 
-	
-	<!--<script>
-		$(document).ready(function(){
-			$("#dataDownloadButton").click(function(){
-				$("a").toggleClass("close");
-			});
-		});
-
-	</script>-->
 
 
 
@@ -60,13 +50,13 @@
 
 <!-- Mini Map--> <!--GET THIS TO WORK-->
 <div id="miniMap">
-<script>
+<!--<script>
 	var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 	});
 	var miniBase = new L.TileLayer(Esri_WorldStreetMap, {minZoom: 0, maxZoom: 14});
 	var miniMap = new L.Control.MiniMap(miniBase, { toggleDisplay: true }).addTo(mymap); 
-</script>
+</script>-->
 </div>
 
 <!-- Layers - should be own html file like the data download and legend --> 
@@ -158,7 +148,10 @@
 <!-- Legend -->
 <div class="InteractiveLegend panels" id="interactiveLegend">
 	<div w3-include-html="html/legend.html"></div>
-</div>
+
+	</div>
+
+
 
 
 
@@ -193,7 +186,7 @@ Learn about this viewer, cool work went into it. Developed with stakeholders in 
 Looked at all the scenarios to see how different activities work in the same region. 
 <h3>How to Use the Viewer</h3>
 Click on the checkboxes, can also download data and get information on different management scenarios. 
-<img class = "image" src="img/stakeholdersAbout.png">
+<img class = "image" src="img/stakeholdersAbout.png" width= 100%>
 <h3>The Team</h3>
 <br>
 <img class = "image teamPicture" src="img/contrerasAndrea.png" height="100"> 

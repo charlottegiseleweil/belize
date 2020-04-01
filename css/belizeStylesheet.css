@@ -221,23 +221,7 @@ html *{
 			border-radius: 50%;
 		}
 
-		.dataDownload {
-			display: inline-block;
-			float: right;
-			padding: 1.5%;
-			width: 30%;
-			height: 66.8%;
-			color: #DFDCE3;
-			z-index: 100;
-			opacity: 0.85;
-			top: 23.2%;
-			right: 35%;
-			position: absolute;
-			border-radius: 25px;
-			overflow: scroll;
-			background-color: #302e25;
 
-		}
 
 		.buttonOn {
 			color: #E34234;
@@ -250,8 +234,4 @@ html *{
 		}
 
 
-.leaflet-right .leaflet-control {
-	float: left;
-	left: 15px;
-	top: 2%;
 
