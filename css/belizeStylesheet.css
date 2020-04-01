@@ -232,6 +232,12 @@ html *{
 			z-index: 500;
 			opacity: 1;
 		}
+		.leaflet-right .leaflet-control {
+    		float: left;
+    		left: 15px;
+		}
 
-
+		.leaflet-bottom {
+			position: none;
+		}
 

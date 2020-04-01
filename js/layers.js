@@ -132,7 +132,6 @@
 //Layer Data Load In
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
 
-	//var allAgriculture = new L.layerGroup([agZones]); //add expanded ag when available to finish
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: currentAgStyle});
 
 
@@ -166,10 +165,8 @@
 	var plcArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
 	var recinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
 
-	//var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
 	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker});
 	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
-	//var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
 	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker});
 	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
 
@@ -252,9 +249,10 @@ newRoadIL = "newRoadIL"
 $(document).ready(function(){
 	$("#newRoadCheckBox").prop("checked", true);
 			newRoad.addTo(mymap);
-			x = document.getElementById(newRoadIL);
-			x.className = "ILImage";
+			//x = document.getElementById(newRoadIL); //need onload setting, but not quite working
+			//x.className = "ILImage";
 	});
+
 
 //document.getElementById("newRoadCheckBox").onclick = function(){
 //	layerToggle();

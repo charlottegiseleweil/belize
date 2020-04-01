@@ -1,13 +1,16 @@
+<!DOCTYPE html>
 <html>
 	<head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 	<title>SDP CMCC Belize</title>
 	
-	<!-- Leaflet & Plugins -->
-	<script src="src/leaflet/leaflet.js"></script>
+	<!-- Leaflet & Mini Map Plugins -->
+	<!--<link rel="stylesheet" href="src/leaflet/leaflet.css"/>
+	<script src="src/leaflet/leaflet.js"></script>-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js" type="text/javascript"></script>
 	<script src="js/lib/leaflet.draw.js"></script>
-	<link rel="stylesheet" href="src/leaflet/leaflet.css"/>
 	<link rel="stylesheet" href="src/Control.MiniMap.css" />
 	<script src="src/Control.MiniMap.js" type="text/javascript"></script> 
 	
@@ -42,22 +45,12 @@
 
 	<body>
 
-<!-- Base Map-->
+<!-- Base Map and Mini Map-->
 <div id="mapid"></div>
 
 
 <script src="js/maps.js"></script>
 
-<!-- Mini Map--> <!--GET THIS TO WORK-->
-<div id="miniMap">
-<!--<script>
-	var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-	});
-	var miniBase = new L.TileLayer(Esri_WorldStreetMap, {minZoom: 0, maxZoom: 14});
-	var miniMap = new L.Control.MiniMap(miniBase, { toggleDisplay: true }).addTo(mymap); 
-</script>-->
-</div>
 
 <!-- Layers - should be own html file like the data download and legend --> 
 <!--<div w3-include-html="html/popupInfo.html"></div>-->
