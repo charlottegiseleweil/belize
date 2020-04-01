@@ -14,6 +14,7 @@
 
 	<!--jQuery-->
 	<script src="js/lib/jquery-2.1.1.min.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 	<!--Others Libs-->
 	<script src="js/lib/includeHTML.js"></script>
@@ -32,7 +33,19 @@
 	<script src="js/lib/shp.js"></script> 
 
     <link rel="stylesheet" href="css/w3template.css"/> <!--WHY IS THIS ONE HERE? -->
+
 	
+	<!--<script>
+		$(document).ready(function(){
+			$("#dataDownloadButton").click(function(){
+				$("a").toggleClass("close");
+			});
+		});
+
+	</script>-->
+
+
+
 	</head>
 
 
@@ -95,42 +108,42 @@
 	<div id='buttonsRow'>
 		<button type= "button" class="button" id="LULCScenarioButton" onclick="LULCPanelOpen()">
 			LULC Scenarios</button>
-		<button type= "button" class="button" style="display: inline;" id="dataDownloadButton" onclick="dataLinksClose()">
+		<button type= "button" class="button" style="display: inline;" id="dataDownloadButton">
 			Data Download</button>
 		<button type= "button" class="button" style="display: inline;" id="aboutPanelButton" onclick="aboutPanelOpen()">
 			About</button>
 	</div>
-	<div><a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">Download all Data</a></div>
-	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox"> Improved Caracol Road <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1V0FloPb6komF2otgE1WXzIzs2d2v3btT" target="_blank">download</a></div> 
+	<div><a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">Download all Data</a></div>
+	<div class="layerChecks" id="newRoad"><input type = "checkbox" id="newRoadCheckBox"> Improved Caracol Road <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1V0FloPb6komF2otgE1WXzIzs2d2v3btT" target="_blank">download</a></div> 
 	<hr>
-	<div class="layerChecks layerTitle" id="allToursim"><!--<input type = "checkbox" id="allTourismCheckBox">--> Tourism <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox"> Nature/Key Cultural Sites <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
-	<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox"> Impacted Toursit Sites <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox"> Tourism Expansion <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks layerTitle" id="allToursim"><!--<input type = "checkbox" id="allTourismCheckBox">--> Tourism <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox"> Nature/Key Cultural Sites <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
+	<div class="layerChecks" id="tourismImpacted"><input type = "checkbox" id="tourismImpactedCheckBox"> Impacted Toursit Sites <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="tourismExpanded"><input type = "checkbox" id="tourismExpandedCheckBox"> Tourism Expansion <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<br>
-	<div class="layerChecks layerTitle" id="allMining"><!--<input type = "checkbox" id="allMiningCheckBox">--> Mining <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox"> Mining Areas <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
-	<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox"> Mining Expansion <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks layerTitle" id="allMining"><!--<input type = "checkbox" id="allMiningCheckBox">--> Mining <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="mining"><input type = "checkbox" id="miningCheckBox"> Mining Areas <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
+	<div class="layerChecks" id="miningExpansion"><input type = "checkbox" id="miningExpansionCheckBox"> Mining Expansion <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<br>
-	<div class="layerChecks layerTitle" id="allAgriculture"><!--<input type = "checkbox" id="allAgricultureCheckBox">--> Agriculture <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox"> Current Agriculture Zones <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/14-B0XoD_B34A1HNPA1ADXL8zTRNtHhni" target="_blank">download</a></div>
-	<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox"> Agriculture Expansion <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks layerTitle" id="allAgriculture"><!--<input type = "checkbox" id="allAgricultureCheckBox">--> Agriculture <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="currentAgriculture"><input type = "checkbox" id="currentAgricultureCheckBox"> Current Agriculture Zones <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/14-B0XoD_B34A1HNPA1ADXL8zTRNtHhni" target="_blank">download</a></div>
+	<div class="layerChecks" id="agExpansion"><input type = "checkbox" id="agExpansionCheckBox"> Agriculture Expansion <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<br>
-	<div class="layerChecks layerTitle" id="allTimber"><!--<input type = "checkbox" id="allTimberCheckBox">--> Timber <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox"> Timber <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/11ZNFj_sFEQt0Ga2UZYNG32LCjFNn_XYs" target="_blank">download</a></div>
-	<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox"> Timber Expansion <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks layerTitle" id="allTimber"><!--<input type = "checkbox" id="allTimberCheckBox">--> Timber <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="timber"><input type = "checkbox" id="timberCheckBox"> Timber <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/11ZNFj_sFEQt0Ga2UZYNG32LCjFNn_XYs" target="_blank">download</a></div>
+	<div class="layerChecks" id="timberExpansion"><input type = "checkbox" id="timberExpansionCheckBox"> Timber Expansion <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<br>
-	<div class="layerChecks layerTitle" id="allEnergySites"><!--<input type = "checkbox" id="allEnergySitesCheckBox">--> Energy <a class="dataLink" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox"> Dams <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1zMza4WgsOqHOu24gLGc56WEPgGjvH9-7" target="_blank">download</a></div>
-	<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox"> Potential Sites for Energy <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1TJpe9DCD0bUNnqNIokSl8bzXuqpY3WNs" target="_blank">download</a></div>
+	<div class="layerChecks layerTitle" id="allEnergySites"><!--<input type = "checkbox" id="allEnergySitesCheckBox">--> Energy <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="energy"><input type = "checkbox" id="energyCheckBox"> Dams <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1zMza4WgsOqHOu24gLGc56WEPgGjvH9-7" target="_blank">download</a></div>
+	<div class="layerChecks" id="energySites"><input type = "checkbox" id="energySitesCheckBox"> Potential Sites for Energy <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1TJpe9DCD0bUNnqNIokSl8bzXuqpY3WNs" target="_blank">download</a></div>
 	<br><hr>
-	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox"> Waterways <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
-	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox"> CMCC Areas <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1_pYYG3XhhD-jM0y9RYTMMLQg_gdSMDKX" target="_blank">download</a></div>
-	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox"> CMCC Communities <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/1_pYYG3XhhD-jM0y9RYTMMLQg_gdSMDKX" target="_blank">download</a></div>
-	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox"> All roads <a class="dataLink" href="https://drive.google.com/drive/u/1/folders/14ueWmkoxeAMorb77Y_GdXCsfNnbcf4JZ" target="_blank">download</a></div>
+	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox"> Waterways <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1jUa8YvVNxXq0VrOufJfGgqdT3zF43eql" target="_blank">download</a></div>
+	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox"> CMCC Areas <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1_pYYG3XhhD-jM0y9RYTMMLQg_gdSMDKX" target="_blank">download</a></div>
+	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox"> CMCC Communities <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/1_pYYG3XhhD-jM0y9RYTMMLQg_gdSMDKX" target="_blank">download</a></div>
+	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox"> All roads <a class="dataLinkClose" href="https://drive.google.com/drive/u/1/folders/14ueWmkoxeAMorb77Y_GdXCsfNnbcf4JZ" target="_blank">download</a></div>
 
 </div><!-- Close selection Panel  -->
-
+<script src = "js/dataDownloadControls.js"></script>
 
 <!-- Data Download Panel-->
 <div class= "close panels" id=dataDownloadPanel>

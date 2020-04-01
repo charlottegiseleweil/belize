@@ -13,7 +13,6 @@ h1,h2,h3,h4 {
 .panels {
 			background-color: #302e25; /* first colorsheet : #003366*/
 		}
-
 .layerTitle {
 			color: cadetblue; /* first colorsheet : #darkorange*/ 
 		} 
@@ -72,7 +71,7 @@ html *{
 
 		}
 
-		.layerTitle {
+		h4, .layerTitle {
 			color: #E34234; /* first colorsheet : #darkorange*/ 
 			font-size: 2.7vh;
 		} 
@@ -151,10 +150,16 @@ html *{
 
 		}
 
+
+		.dataLinkClose {
+			display: none;
+		}
+
 		.dataLink {
 			color: #DFDCE3;
 			font-size: 2.5vh;
-			font-color: #E1AD01 ;
+			color: #E1AD01 ;
+			display: inline-block;
 		}
 
 
@@ -232,6 +237,10 @@ html *{
 			overflow: scroll;
 			background-color: #302e25;
 
+		}
+
+		.buttonOn {
+			color: #E34234;
 		}
 
 		.ILImage {
