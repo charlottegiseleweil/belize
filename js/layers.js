@@ -215,6 +215,14 @@ tourismSites.bindPopup(document.getElementById("natureSitePopup"));
 //Archeological/Cultural Sites
 culturalSites.bindPopup(document.getElementById("culturalSitePopup"));
 
+//Dams
+  //$.getJSON("damsGJ.geojson", function(data) {
+
+    //function onEachFeature(feature, layer) {
+  
+    //    dams.bindPopup("Name: " + desc_short.properties.name );
+    //}   
+
 
 
 //Layer Toggling
