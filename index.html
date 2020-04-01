@@ -55,13 +55,13 @@
 <!-- Layers - should be own html file like the data download and legend --> 
 <!--<div w3-include-html="html/popupInfo.html"></div>-->
 
-<div id = "arenalPopup">Arenal <br> <img src="img/popupIMG/arenal.png" alt="Interactive Legend for impacted Tourism Sites"  width="110"> <br> Region of incresaed natural tourism, on the border of Guatemala and Belize.</div>
+<div id = "arenalPopup">Arenal <br> <img src="img/popupImg/arenal.png" alt="Interactive Legend for impacted Tourism Sites"  width="110"> <br> Region of incresaed natural tourism, on the border of Guatemala and Belize.</div>
 
 <div id = "benqueViejoPopup"> Benque Viejo<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
 
 <div id = "cristyReyPopup"> Cristo Rey<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
 
-<div id = "elProgressoPopup"> El Progresso <br> <img src="img/popupIMG/elProgresso.png" alt="Interactive Legend for impacted Tourism Sites" width="110"> <br> Poputation: a number</div>
+<div id = "elProgressoPopup"> El Progresso <br> <img src="img/popupImg/elProgresso.png" alt="Interactive Legend for impacted Tourism Sites" width="110"> <br> Poputation: a number</div>
 
 <div id = "georgevillePopup"> Georgeville<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
 
@@ -76,6 +76,12 @@
 <div id = "santaElenaPopup"> Santa Elena<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
 
 <div id = "upperBartonCreekPopup"> Upper Barton Creek<img src="img/placeholdersmall.png" alt="Interactive Legend for impacted Tourism Sites" height="20" width="20"> Poputation: a number</div>
+
+<div id = "culturalSitePopup"> Cultural/Archeological Sites <br><img src="img/culturalSite.png" alt="Interactive Legend for impacted Tourism Sites" width="110"><br> This is a tourist site with important archeological and cultural significance</div>
+
+<div id = "natureSitePopup"> Nature/Recreational Sites <br><img src="img/natureSite.png" alt="Interactive Legend for impacted Tourism Sites" width="110"><br> This is a tourist site with cool nature</div>
+
+<div id = "lodgingSitePopup"> Hotel/Lodging <br><img src="img/lodging.png" alt="Interactive Legend for impacted Tourism Sites" width="110"><br> This is a hotel</div>
 
 
 
@@ -141,6 +147,10 @@
 <!-- Legend -->
 <div class="InteractiveLegend panels" id="interactiveLegend">
 	<div w3-include-html="html/legend.html"></div>
+	
+		<div class="close" id="newRoadIL">
+		<div><img src="img/newRoadLegend.png" alt="Interactive Legend for New Road" height="20" width="20"> Improved Caracol Road</div>
+	</div>
 
 	</div>
 
@@ -192,7 +202,6 @@ Click on the checkboxes, can also download data and get information on different
 
 <!-- JavaScript --> 
 
-<script src="js/belizeJS.js"></script>
 <script src="js/dataDownloadControls.js"></script>
 <!--Data Layers
  may end up at the same place as the selection panel but could be separate under this heading, includes styling for the layers -->

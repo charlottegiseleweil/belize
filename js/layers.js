@@ -209,11 +209,11 @@ recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
 //Tourism
 //Hotels
-hotelLodging.bindPopup("This is a hotel")
+hotelLodging.bindPopup(document.getElementById("lodgingSitePopup"));
 //Natural Sites
-tourismSites.bindPopup("This is a tourist site with cool nature")
+tourismSites.bindPopup(document.getElementById("natureSitePopup"));
 //Archeological/Cultural Sites
-culturalSites.bindPopup("This is a tourist site with important archeological and cultural significance")
+culturalSites.bindPopup(document.getElementById("culturalSitePopup"));
 
 
 
@@ -249,8 +249,8 @@ newRoadIL = "newRoadIL"
 $(document).ready(function(){
 	$("#newRoadCheckBox").prop("checked", true);
 			newRoad.addTo(mymap);
-			//x = document.getElementById(newRoadIL); //need onload setting, but not quite working
-			//x.className = "ILImage";
+			x = document.getElementById(newRoadIL); //need onload setting, but not quite working
+			x.className = "ILImage";
 	});
 
 

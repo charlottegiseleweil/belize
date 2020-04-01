@@ -13,5 +13,5 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map
 
 
 		var osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
-		var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(mymap);
+		var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true, position:'topleft' }).addTo(mymap);
 	
