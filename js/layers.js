@@ -55,7 +55,7 @@
 	});
 
 	var culturalSitesIcon = L.icon({
-    iconUrl: 'img/monument.png',
+    iconUrl: 'img/chichen-itza-pyramid.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -73,7 +73,7 @@
 
 
 	var solarGoodIcon = L.icon({
-    iconUrl: 'img/sun-2.png',
+    iconUrl: 'img/solar-panel-2.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -81,7 +81,7 @@
 	});
 
 	var solarBestIcon = L.icon({
-    iconUrl: 'img/sun.png',
+    iconUrl: 'img/solar-panel.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -122,7 +122,7 @@
 	});
 
 	var damsIcon = L.icon({
-    iconUrl: 'img/hydro-power.png',
+    iconUrl: 'img/dam.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -169,7 +169,7 @@
 	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
 	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker});
 	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
-
+	var energySites = L.layerGroup([solarGood, solarBest, windGood, windBest]);
 
 	var dams = new L.geoJSON.ajax("data/damsGJ.geojson", {pointToLayer:returnDamsMarker});
 
@@ -183,7 +183,7 @@
 		cmccZone = L.layerGroup([cmccGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
 		water = L.layerGroup([waterWays, waterBody, majorRivers]);
-		energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
+		//energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
 
 
 //Additional Info Pop-ups
