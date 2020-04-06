@@ -21,7 +21,7 @@
 
 	var CMCCGeographicZoneStyle = {
 		"color": "#FC4A1A",
-		"fillOpacity":0.5,
+		"fillOpacity":0.2,
 		"weight": 0.9,		
 	}
 
@@ -141,7 +141,18 @@
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
 	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {pointToLayer:returnHotelMarker});
-	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {pointToLayer:returntourismSitesMarker});
+	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {
+		pointToLayer: function returntourismSitesMarker(json, latlng){
+			return L.marker(latlng, {
+				icon: tourismSitesIcon
+			});
+		},
+
+		onEachFeature: function(feature, layer){
+			layer.bindPopup(feature.properties.Name);
+		}
+	});
+
 	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker}); //These were all over, maybe filter, talk to team about which ones they identified for the region?
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
@@ -209,11 +220,14 @@ recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
 //Tourism
 //Hotels
-hotelLodging.bindPopup(document.getElementById("lodgingSitePopup"));
+hotelLodging.bindPopup("hotel");
 //Natural Sites
-tourismSites.bindPopup(document.getElementById("natureSitePopup"));
+//tourismSites.bindPopup(document.getElementById("natureSitePopup"));
 //Archeological/Cultural Sites
 culturalSites.bindPopup(document.getElementById("culturalSitePopup"));
+
+//Energy
+//dams.bindPopup(feature.properties.descript);
 
 //Dams
   //$.getJSON("damsGJ.geojson", function(data) {
@@ -477,11 +491,11 @@ function returnHotelMarker(json, latlng){
 	});
 }
 
-function returntourismSitesMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: tourismSitesIcon
-	});
-}
+//function returntourismSitesMarker(json, latlng){
+//	return L.marker(latlng, {
+//		icon: tourismSitesIcon
+//	});
+//}
 
 function returnCulturalSitesMarker(json, latlng){
 	return L.marker(latlng, {
