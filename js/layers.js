@@ -140,7 +140,24 @@
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip", {style: waterwaysStyle});
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
-	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {pointToLayer:returnHotelMarker});
+	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
+		pointToLayer: function returnHotelMarker(json, latlng){
+			return L.marker(latlng, {
+				icon: hotelLodgingIcon
+		});
+	},
+
+		onEachFeature: function(feature, layer){
+			layer.bindPopup(feature.properties.Name);
+			layer.on('mouseover', function (e) {
+            	this.openPopup();
+        	});
+       		layer.on('mouseout', function (e) {
+            	this.closePopup();
+        	});
+		}
+	});
+
 	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {
 		pointToLayer: function returntourismSitesMarker(json, latlng){
 			return L.marker(latlng, {
@@ -148,8 +165,14 @@
 			});
 		},
 
-		onEachFeature: function(feature, layer){
+		onEachFeature: function(feature, layer){ //isolate this function out
 			layer.bindPopup(feature.properties.Name);
+			layer.on('mouseover', function (e) {
+            	this.openPopup();
+        	});
+       		layer.on('mouseout', function (e) {
+            	this.closePopup();
+        	});
 		}
 	});
 
@@ -485,11 +508,11 @@ function returnIconMarker (json, latlng, iconName){
 	});
 }
 
-function returnHotelMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: hotelLodgingIcon
-	});
-}
+//function returnHotelMarker(json, latlng){
+//	return L.marker(latlng, {
+//		icon: hotelLodgingIcon
+//	});
+//}
 
 //function returntourismSitesMarker(json, latlng){
 //	return L.marker(latlng, {
