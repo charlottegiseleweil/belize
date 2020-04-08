@@ -161,6 +161,10 @@ function popUpWindEnergy(feature, layer){
 	layer.bindPopup("Average wind speed: " + feature.properties.speed_mean)
 	popUpOnMouseHover(feature, layer);
 }
+function popUpSingleMining(feature, layer){
+	layer.bindPopup("Click on marker for more information");
+	popUpOnMouseHover(feature, layer);
+}
 
 
 //Layer Data Load In
@@ -207,7 +211,7 @@ function popUpWindEnergy(feature, layer){
 	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
 
 	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
-	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon});
+	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon}).bindTooltip("Click icon for more information").on('click', miningMarkerClick);
 
 	//var miningMarker = L.markerClusterGroup();
 	//miningMarker.addLayer(currentMining).addTo(mymap);
@@ -303,8 +307,13 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 			toggleOn(miningSingle, currentMiningIL);
 		} else {
 			toggleOff(miningSingle, currentMiningIL);
+			mymap.removeLayer(currentMining);
 		}
 	}	
+
+	function miningMarkerClick(){
+		currentMining.addTo(mymap);
+	}
 
 	miningExpansionIL = "miningExpansionIL"
 	document.getElementById("miningExpansionCheckBox").onclick = function(){
