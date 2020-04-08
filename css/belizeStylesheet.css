@@ -110,6 +110,14 @@ html *{
 		    font-size: 2vh; 
 		}
 
+		.buttonPressed {
+			border-radius: 8px;
+		    margin: 1vh;
+		    display: inline;
+		    font-size: 2vh; 
+		    background-color: #E1AD01;
+		}
+
 
 
 		.LULCpanel {

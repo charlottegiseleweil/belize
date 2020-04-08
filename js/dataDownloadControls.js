@@ -8,3 +8,10 @@
       });
 
 
+//Data Download Button Change
+	$(document).ready(function(){
+		$("#dataDownloadButton").click(function(){
+			$("#dataDownloadButton").toggleClass("buttonPressed");
+		});
+	});
+	

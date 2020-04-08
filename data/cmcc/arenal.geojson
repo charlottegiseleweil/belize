@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "arenal",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::26916" } },
-"features": [
-{ "type": "Feature", "properties": { "SETTNAME": "Arenal", "DISTRICT": "Cayo", "TYPE": "Village", "POPULATION": 614.0, "X_COORD": 270702.90625, "Y_COORD": 1883367.0 }, "geometry": { "type": "Point", "coordinates": [ 270709.50438, 1883570.18171 ] } }
-]
-}

@@ -1,11 +1,5 @@
    
    //Layer Checks
-   function dataDownloadCheck(){
-      dataDownCheck = document.getElementById("dataDownloadPanel");
-         if (dataDownCheck.className == "dataDownload"){
-            dataDownCheck.className="close";
-         }     
-   }
    function aboutPanelCheck(){
       aboutCheck = document.getElementById("AboutPanel");
       if (aboutCheck.className == "AboutPanel"){
@@ -56,7 +50,6 @@
 
    function LULCPanelOpen(){
       aboutPanelCheck();
-      dataDownloadCheck();
          x =document.getElementById("LULCPanel1");
          x.className="LULCpanel";
          y =document.getElementById("LULCPanel2");

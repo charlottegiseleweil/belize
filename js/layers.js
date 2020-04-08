@@ -21,8 +21,8 @@
 
 	var CMCCGeographicZoneStyle = {
 		"color": "#FC4A1A",
-		"fillOpacity":0.2,
-		"weight": 0.9,		
+		"stroke-width": 2,
+		"fillOpacity":0,
 	}
 
 	var currentTimberStyle = {
@@ -129,6 +129,40 @@
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
+//Popup On Mouse Over
+
+ function popUpOnMouseHover(feature, layer){ //isolate this function out
+			layer.on('mouseover', function (e) {
+            	this.openPopup();
+        	});
+       		layer.on('mouseout', function (e) {
+            	this.closePopup();
+        	});
+		}
+
+//PopUp Content
+function popUpCulturalSites(feature, layer){ //isolate this function out
+	layer.bindPopup("Attraction name: " + feature.properties.Attraction + " | Ownership: " + feature.properties.Ownership);
+	popUpOnMouseHover(feature, layer);
+}
+function popUpCMCCCommunities(feature, layer){
+	layer.bindPopup(feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
+	popUpOnMouseHover(feature, layer);
+}
+function popUpHotelSites(feature, layer){
+	layer.bindPopup(feature.properties.Name);
+	popUpOnMouseHover(feature, layer);
+}
+function popUpSolarEnergy(feature, layer){
+	layer.bindPopup("PV out: " + feature.properties.PV_out);
+	popUpOnMouseHover(feature, layer);
+}
+function popUpWindEnergy(feature, layer){
+	layer.bindPopup("Average wind speed: " + feature.properties.speed_mean)
+	popUpOnMouseHover(feature, layer);
+}
+
+
 //Layer Data Load In
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
 
@@ -138,58 +172,21 @@
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip", {style: waterwaysStyle});
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip", {style: waterwaysStyle});
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip", {style: waterwaysStyle});
-	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
+	var waterLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+}); //practice label layer
+	var water = L.layerGroup([waterWays, waterBody, majorRivers, waterLabels]);
 
-	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
-		pointToLayer: function returnHotelMarker(json, latlng){
-			return L.marker(latlng, {
-				icon: hotelLodgingIcon
-		});
-	},
+	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {pointToLayer:returnHotelMarker, onEachFeature:popUpHotelSites});
 
-		onEachFeature: function(feature, layer){
-			layer.bindPopup(feature.properties.Name);
-			layer.on('mouseover', function (e) {
-            	this.openPopup();
-        	});
-       		layer.on('mouseout', function (e) {
-            	this.closePopup();
-        	});
-		}
-	});
+	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {pointToLayer: returntourismSitesMarker, onEachFeature: popUpHotelSites});
 
-	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {
-		pointToLayer: function returntourismSitesMarker(json, latlng){
-			return L.marker(latlng, {
-				icon: tourismSitesIcon
-			});
-		},
-
-		onEachFeature: function(feature, layer){ //isolate this function out
-			layer.bindPopup(feature.properties.Name);
-			layer.on('mouseover', function (e) {
-            	this.openPopup();
-        	});
-       		layer.on('mouseout', function (e) {
-            	this.closePopup();
-        	});
-		}
-	});
-
-	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker}); //These were all over, maybe filter, talk to team about which ones they identified for the region?
+	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker, onEachFeature: popUpCulturalSites}); 
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
-	var arenal = new L.geoJSON.ajax("data/cmcc/arenal.geojson", {pointToLayer: returnCMCCCommunitiesMarker}); //NEED TO CHECK LAYER
-	var benqueViejo = new L.geoJSON.ajax("data/cmcc/benqueViejo.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var cristoRey = new L.geoJSON.ajax("data/cmcc/cristoRey.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var elProgresso = new L.geoJSON.ajax("data/cmcc/elProgresso.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var georgeville = new L.geoJSON.ajax("data/cmcc/georgeville.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var lowerBartonCreek = new L.geoJSON.ajax("data/cmcc/lowerBartonCreek.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var sanAntonio = new L.geoJSON.ajax("data/cmcc/sanAntonio.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var sanIgnacio = new L.geoJSON.ajax("data/cmcc/sanIgnacio.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var sanJoseSuccotz = new L.geoJSON.ajax("data/cmcc/sanJoseSuccotz.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var santaElena = new L.geoJSON.ajax("data/cmcc/santaElena.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
-	var upperBartonCreek = new L.geoJSON.ajax("data/cmcc/upperBartonCreek.geojson", {pointToLayer: returnCMCCCommunitiesMarker});
+	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {pointToLayer: returnCMCCCommunitiesMarker, onEachFeature: popUpCMCCCommunities});
 
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 
@@ -199,41 +196,31 @@
 	var plcArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
 	var recinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
 
-	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker});
-	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker});
-	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker});
-	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker});
+	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker, onEachFeature: popUpSolarEnergy});
+	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker, onEachFeature: popUpSolarEnergy});
+	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker, onEachFeature:popUpWindEnergy});
+	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker, onEachFeature:popUpWindEnergy});
 	var energySites = L.layerGroup([solarGood, solarBest, windGood, windBest]);
 
 	var dams = new L.geoJSON.ajax("data/damsGJ.geojson", {pointToLayer:returnDamsMarker});
 
 	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
+
 	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
+	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon});
+
+	//var miningMarker = L.markerClusterGroup();
+	//miningMarker.addLayer(currentMining).addTo(mymap);
+
 
 	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 
 	var agZone = L.layerGroup([agZones]);
-		cmccCommPoints = L.layerGroup([arenal, benqueViejo, cristoRey, elProgresso, georgeville, lowerBartonCreek, sanAntonio, sanIgnacio, sanJoseSuccotz, santaElena, upperBartonCreek]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
-		water = L.layerGroup([waterWays, waterBody, majorRivers]);
-		//energySites = L.layerGroup([solarBest, solarGood, windBest, windGood]);
 
 
 //Additional Info Pop-ups
-
-//CMCC Communitites
-arenal.bindPopup(document.getElementById("arenalPopup"));
-benqueViejo.bindPopup(document.getElementById("benqueViejoPopup"));
-cristoRey.bindPopup(document.getElementById("cristoReyPopup"));
-elProgresso.bindPopup(document.getElementById("elProgressoPopup"));
-georgeville.bindPopup(document.getElementById("georgevillePopup"));
-lowerBartonCreek.bindPopup(document.getElementById("lowerBartonCreekPopup"));
-sanAntonio.bindPopup(document.getElementById("sanAntonioPopup"));
-sanIgnacio.bindPopup(document.getElementById("sanIgnacioPopup"));
-sanJoseSuccotz.bindPopup(document.getElementById("sanJoseSuccotzPopup"));
-santaElena.bindPopup(document.getElementById("santaElenaPopup"));
-upperBartonCreek.bindPopup(document.getElementById("upperBartonCreekPopup"));
 
 //Timber
 bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>");
@@ -241,24 +228,6 @@ fdPortionMPR.bindPopup("<b>FD Portion MPR</b>");
 plcArea.bindPopup("<b>PLC Area</b>");
 recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
 
-//Tourism
-//Hotels
-hotelLodging.bindPopup("hotel");
-//Natural Sites
-//tourismSites.bindPopup(document.getElementById("natureSitePopup"));
-//Archeological/Cultural Sites
-culturalSites.bindPopup(document.getElementById("culturalSitePopup"));
-
-//Energy
-//dams.bindPopup(feature.properties.descript);
-
-//Dams
-  //$.getJSON("damsGJ.geojson", function(data) {
-
-    //function onEachFeature(feature, layer) {
-  
-    //    dams.bindPopup("Name: " + desc_short.properties.name );
-    //}   
 
 
 
@@ -275,19 +244,6 @@ function toggleOff(layer, elementIL) {
 	x = document.getElementById(elementIL);
 	x.className = "close";
 }
-
-/*function layerToggle() {
-	if (this.checked){
-		newRoad.addTo(mymap);
-		x = document.getElementById("newRoadIL");
-		x.className = "ILImage";
-	} else {
-		mymap.removeLayer(newRoad);
-		x = document.getElementById("newRoadIL");
-		x.className= "close";
-	}
-}*/
-
 
 newRoadIL = "newRoadIL"
 //display on load event
@@ -310,48 +266,6 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 		toggleOff(newRoad, newRoadIL);
 	}
 }	
-
-
-//Large layer clicks
-
-/*//Tourism
-$(document).ready(function(){
-    $("#allTourismCheckBox").click(function(){
-        $("#tourismArchKeyCheckBox").prop("checked", true);
-        	if (this.checked){
-				allTourism.addTo(mymap);
-				x = document.getElementById("tourismArckKeyIL");
-				x.className = "ILImage";
-
-
-
-			}
-        $("#tourismImpactedCheckBox").prop("checked", true);
-        	if (this.checked){
-				newRoad.addTo(mymap);
-				x = document.getElementById("impactedTourismIL");
-				x.className = "ILImage";
-
-			}
-        $("#tourismExpandedCheckBox").prop("checked", true);
-    		if (this.checked){
-				newRoad.addTo(mymap);
-				x = document.getElementById("tourismExpansionIL");
-				x.className = "ILImage";
-
-			}
-    });
-    $("#tourismArchKeyCheckBox").click(function(){
-        $("#allTourismCheckBox").prop("checked", false);
-    });
-    $("#tourismImpactedCheckBox").click(function(){
-        $("#allTourismCheckBox").prop("checked", false);
-    });
-    $("#tourismExpandedCheckBox").click(function(){
-        $("#allTourismCheckBox").prop("checked", false);
-    });
-}); //minor bugs with layer toggling, when road as placeholder is replaced with true layer won't be an issue*/
-
 
 
 	tourismArchKeyIL = "tourismArckKeyIL"
@@ -386,9 +300,9 @@ $(document).ready(function(){
 	currentMiningIL = "currentMiningIL"
 	document.getElementById("miningCheckBox").onclick = function(){
 		if (this.checked){
-			toggleOn(currentMining, currentMiningIL);
+			toggleOn(miningSingle, currentMiningIL);
 		} else {
-			toggleOff(currentMining, currentMiningIL);
+			toggleOff(miningSingle, currentMiningIL);
 		}
 	}	
 
@@ -480,9 +394,9 @@ $(document).ready(function(){
 	CMCCCommunitiesIL = "CMCCCommunitiesIL"
 	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		if (this.checked){
-			toggleOn(cmccCommPoints, CMCCCommunitiesIL);
+			toggleOn(cmccCommunities, CMCCCommunitiesIL);
 		} else {
-			toggleOff(cmccCommPoints, CMCCCommunitiesIL);
+			toggleOff(cmccCommunities, CMCCCommunitiesIL);
 		}
 	}	
 
@@ -508,17 +422,17 @@ function returnIconMarker (json, latlng, iconName){
 	});
 }
 
-//function returnHotelMarker(json, latlng){
-//	return L.marker(latlng, {
-//		icon: hotelLodgingIcon
-//	});
-//}
+function returnHotelMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: hotelLodgingIcon
+	});
+}
 
-//function returntourismSitesMarker(json, latlng){
-//	return L.marker(latlng, {
-//		icon: tourismSitesIcon
-//	});
-//}
+function returntourismSitesMarker(json, latlng){
+	return L.marker(latlng, {
+		icon: tourismSitesIcon
+	});
+}
 
 function returnCulturalSitesMarker(json, latlng){
 	return L.marker(latlng, {
@@ -534,7 +448,7 @@ function returncurrentMiningMarker(json, latlng){
 
 function returnCMCCCommunitiesMarker(json, latlng){
 	return L.marker(latlng, {
-		icon: cmccCommunityIcon //update icon - add pop-up with info
+		icon: cmccCommunityIcon 
 	});
 }
 
