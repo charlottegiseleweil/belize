@@ -1,14 +1,12 @@
 h1, h2, h3, h4 {
   color: #E1AD01;  /* first colorsheet : #F7B733*/
+  font-weight: normal;
 }
 
 h2 {
 	margin: 1%;
 }
 
-h1,h2,h3,h4 {
-	font-weight: normal;
-}
 
 .panels {
 			background-color: #302e25; /* first colorsheet : #003366*/
@@ -30,6 +28,7 @@ html *{
    			font-family: Verdana !important;
 		}
 
+/* Scroll Bar Styling*/
 /* width */
 ::-webkit-scrollbar {
   width: 20px;

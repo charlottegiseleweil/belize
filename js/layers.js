@@ -63,7 +63,7 @@
 	});
 
 	var currentMiningIcon = L.icon({
-    iconUrl: 'img/coal.png',
+    iconUrl: 'img/pickaxe.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -141,8 +141,14 @@
 		}
 
 //PopUp Content
-function popUpCulturalSites(feature, layer){ //isolate this function out
-	layer.bindPopup("Attraction name: " + feature.properties.Attraction + " | Ownership: " + feature.properties.Ownership);
+// For images need to declare them as html elemenet then getElementById("ImageName"); ERASE LINE WHEN DONE
+
+function popUpCulturalSites(feature, layer){
+	layer.bindPopup("Attraction name: " + feature.properties.Attraction + "<img src='img/culturalSitesImage.jpg' width='70%''>");
+	popUpOnMouseHover(feature, layer);
+}
+function popUpNatureSites(feature, layer){
+	layer.bindPopup( "Attraction name: " + feature.properties.Name + "<img src='img/natureSite.png' width='70%''>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpCMCCCommunities(feature, layer){
@@ -150,19 +156,25 @@ function popUpCMCCCommunities(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 function popUpHotelSites(feature, layer){
-	layer.bindPopup(feature.properties.Name);
+	layer.bindPopup(feature.properties.Name + "<img src='img/lodging.png' width='70%''>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergy(feature, layer){
-	layer.bindPopup("PV out: " + feature.properties.PV_out);
+	layer.bindPopup("PV out: " + feature.properties.PV_out + " UNIT");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpWindEnergy(feature, layer){
-	layer.bindPopup("Average wind speed: " + feature.properties.speed_mean)
+	layer.bindPopup("Average wind speed: " + feature.properties.v_avg_disp  + " UNIT")
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSingleMining(feature, layer){
 	layer.bindPopup("Click on marker for more information");
+	popUpOnMouseHover(feature, layer);
+}
+
+function popUpDams(feature, layer){
+	var linkName = feature.properties.infoLink;
+	layer.bindPopup("Name: " + feature.properties.descript  + "<img src='img/damsImage.jpg' width='70%''>" + "   | Additional Information: "  + linkName + "<a href='https://en.wikipedia.org/wiki/Chalillo_Dam'> Click for Info</a>");
 	popUpOnMouseHover(feature, layer);
 }
 
@@ -180,17 +192,24 @@ function popUpSingleMining(feature, layer){
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	subdomains: 'abcd',
 	maxZoom: 19
-}); //practice label layer
+}); //practice label layer, erase comment when you find right raster layer
 	var water = L.layerGroup([waterWays, waterBody, majorRivers, waterLabels]);
 
-	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {pointToLayer:returnHotelMarker, onEachFeature:popUpHotelSites});
+	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
+		onEachFeature:popUpHotelSites});
+	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismSitesIcon)}, 
+		onEachFeature: popUpNatureSites});
+	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, culturalSitesIcon)}, 
+		onEachFeature: popUpCulturalSites}); 
 
-	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {pointToLayer: returntourismSitesMarker, onEachFeature: popUpHotelSites});
-
-	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {pointToLayer:returnCulturalSitesMarker, onEachFeature: popUpCulturalSites}); 
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
 
-	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {pointToLayer: returnCMCCCommunitiesMarker, onEachFeature: popUpCMCCCommunities});
+	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, cmccCommunityIcon)}, 
+		onEachFeature: popUpCMCCCommunities});
 
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 
@@ -200,22 +219,28 @@ function popUpSingleMining(feature, layer){
 	var plcArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
 	var recinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
 
-	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {pointToLayer:returnSolarGoodMarker, onEachFeature: popUpSolarEnergy});
-	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {pointToLayer:returnSolarBestMarker, onEachFeature: popUpSolarEnergy});
-	var windGood = new L.geoJSON.ajax("data/windGoodGJ.geojson", {pointToLayer:returnWindGoodMarker, onEachFeature:popUpWindEnergy});
-	var windBest = new L.geoJSON.ajax("data/windBestGJ.geojson", {pointToLayer:returnWindBestMarker, onEachFeature:popUpWindEnergy});
+	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarGoodIcon)}, 
+		onEachFeature: popUpSolarEnergy});
+	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarBestIcon)}, 
+		onEachFeature: popUpSolarEnergy});
+	var windGood = new L.geoJSON.ajax("data/windGoodDisp.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windGoodIcon)}, 
+		onEachFeature:popUpWindEnergy});
+	var windBest = new L.geoJSON.ajax("data/windBestDisp.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windBestIcon)}, 
+		onEachFeature:popUpWindEnergy});
 	var energySites = L.layerGroup([solarGood, solarBest, windGood, windBest]);
 
-	var dams = new L.geoJSON.ajax("data/damsGJ.geojson", {pointToLayer:returnDamsMarker});
+	var dams = new L.geoJSON.ajax("data/damsMoreInfoGJ.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, damsIcon)}, 
+		onEachFeature:popUpDams});
 
 	var allRoads = new L.Shapefile("data/allRoads.zip", {style: allRoadsStyle});
 
 	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
 	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon}).bindTooltip("Click icon for more information").on('click', miningMarkerClick);
-
-	//var miningMarker = L.markerClusterGroup();
-	//miningMarker.addLayer(currentMining).addTo(mymap);
-
 
 	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 
@@ -227,7 +252,7 @@ function popUpSingleMining(feature, layer){
 //Additional Info Pop-ups
 
 //Timber
-bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>");
+bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>" + "<a href='https://en.wikipedia.org/wiki/Chalillo_Dam'> Click for Info</a>");
 fdPortionMPR.bindPopup("<b>FD Portion MPR</b>");
 plcArea.bindPopup("<b>PLC Area</b>");
 recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
@@ -300,7 +325,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 		}
 	}			
 
-
+	//keep this one
 	currentMiningIL = "currentMiningIL"
 	document.getElementById("miningCheckBox").onclick = function(){
 		if (this.checked){
@@ -420,32 +445,11 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 
 
 
-
-
-
 //Icon setups 
 //function below should replace all others in this list, json and latlng values do not translate well when moved up top
 function returnIconMarker (json, latlng, iconName){
 	return L.marker(latlng, {
 		icon: iconName
-	});
-}
-
-function returnHotelMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: hotelLodgingIcon
-	});
-}
-
-function returntourismSitesMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: tourismSitesIcon
-	});
-}
-
-function returnCulturalSitesMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: culturalSitesIcon
 	});
 }
 
@@ -455,38 +459,3 @@ function returncurrentMiningMarker(json, latlng){
 	});
 }
 
-function returnCMCCCommunitiesMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: cmccCommunityIcon 
-	});
-}
-
-function returnSolarBestMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: solarBestIcon
-	});
-}
-
-function returnSolarGoodMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: solarGoodIcon
-	});
-}
-
-function returnWindBestMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: windBestIcon
-	});
-}
-
-function returnWindGoodMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: windGoodIcon
-	});
-}
-
-function returnDamsMarker(json, latlng){
-	return L.marker(latlng, {
-		icon: damsIcon
-	});
-}

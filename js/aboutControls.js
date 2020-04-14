@@ -30,6 +30,8 @@
     function aboutPanelClose(){
       x = document.getElementById("AboutPanel");
       x.className="close";
+      y=document.getElementById("aboutPanelButton");
+      y.className="button";
    }
 
    function aboutPanelOpen(){
@@ -38,4 +40,16 @@
          LULC3Check();
       x = document.getElementById("AboutPanel");
       x.className="AboutPanel";
+      y = document.getElementById("aboutPanelButton");
+      y.className="buttonPressed";
    }
+
+document.getElementById("aboutPanelButton").addEventListener("click", function(){ 
+   x = document.getElementById("AboutPanel");
+   if (x.className == "AboutPanel"){
+      aboutPanelClose(); 
+   }else{
+      aboutPanelOpen();
+   }
+});
+
