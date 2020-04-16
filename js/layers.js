@@ -160,11 +160,11 @@ function popUpHotelSites(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergy(feature, layer){
-	layer.bindPopup("PV out: " + feature.properties.PV_out + " UNIT");
+	layer.bindPopup("Solar Irradiance: " + feature.properties.PV_out + " kWh/m2");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpWindEnergy(feature, layer){
-	layer.bindPopup("Average wind speed: " + feature.properties.v_avg_disp  + " UNIT")
+	layer.bindPopup("Average wind speed: " + feature.properties.v_avg_disp  + " m/s")
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSingleMining(feature, layer){
@@ -188,12 +188,12 @@ function popUpDams(feature, layer){
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip", {style: waterwaysStyle});
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip", {style: waterwaysStyle});
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip", {style: waterwaysStyle});
-	var waterLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 19
-}); //practice label layer, erase comment when you find right raster layer
-	var water = L.layerGroup([waterWays, waterBody, majorRivers, waterLabels]);
+	//var waterLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+	//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	//subdomains: 'abcd',
+	//maxZoom: 19
+//}); //practice label layer, erase comment when you find right raster layer
+	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
 	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 

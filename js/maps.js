@@ -29,6 +29,11 @@ var baseMapTwo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/servic
 
 miniMap.addTo(mymap);
 
+//display on load event
+$(document).ready(function(){
+	$("#mapRadio").prop("checked", true);
+			miniMap.addTo(mymap);
+	});
 
 document.getElementById("mapRadio").onclick = function(){
 	if (this.checked){
