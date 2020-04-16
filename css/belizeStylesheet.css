@@ -69,7 +69,7 @@ html *{
 			top: 2%;
 			right: 15px;
 			height: 88%;
-			opacity: 0.85;
+			opacity: 0.95;
 			border: 2px;
 			border-color: #F7B733;
 			z-index: 99;	
@@ -129,7 +129,7 @@ html *{
 			color: #DFDCE3;
 			z-index: 99;
 			border-radius: 25px;
-			opacity: 0.85;
+			opacity: 0.95;
 			background-color: #302e25;
 
 		}
@@ -170,7 +170,7 @@ html *{
 			right: 35%;
 			position: absolute;
 			border-radius: 25px;
-			opacity: 0.85;
+			opacity: 0.95;
 			background-color: #302e25;
 
 		}
@@ -219,7 +219,7 @@ html *{
 			left: 15px;
 			position: absolute;
 			border-radius: 25px;
-			opacity: 0.85;
+			opacity: 0.95;
 
 		}
 
