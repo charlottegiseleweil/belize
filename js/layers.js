@@ -6,13 +6,13 @@
 	};
 
 	var roadStyle = {
-		"color": "grey"
+		"color": "#8B0000"
 
 	};
 
 	var allRoadsStyle = {
-		"color": "#654321",
-		"weight": 0.7,
+		"color": "#cd7f32",
+		"weight": 1,
 	};
 
 	var myStyle2 = {
@@ -26,9 +26,10 @@
 	}
 
 	var currentTimberStyle = {
-		"color": "#013220",
-		"fillOpacity":0.8,
-		"weight": 0.5,		
+		"color": "#654321",
+		"fillOpacity":0.7,
+		"stroke": "#180606",
+		"stroke-width": 1,
 	}
 
 	var waterwaysStyle = {

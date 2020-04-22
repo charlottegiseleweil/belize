@@ -11,6 +11,11 @@ var baseMapTwo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/servic
 	attribution: 'Tiles &copy; Esri '
 });
 
+var baseMapTwoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+});
 
 //Mini Map
 		//mini map 1
@@ -38,6 +43,7 @@ $(document).ready(function(){
 document.getElementById("mapRadio").onclick = function(){
 	if (this.checked){
 		mymap.removeLayer(baseMapTwo);
+		mymap.removeLayer(baseMapTwoLabels);
 		baseMapOne.addTo(mymap);
 
 	}
@@ -47,6 +53,7 @@ document.getElementById("satelliteRadio").onclick = function(){
 	if (this.checked){
 		mymap.removeLayer(baseMapOne);
 		baseMapTwo.addTo(mymap);
+		baseMapTwoLabels.addTo(mymap);
 	}
 }
 
