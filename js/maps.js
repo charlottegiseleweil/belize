@@ -17,6 +17,7 @@ var baseMapTwoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertile
 	maxZoom: 19
 });
 
+
 //Mini Map
 		//mini map 1
 		var osmUrl='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
@@ -29,14 +30,14 @@ var baseMapTwoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertile
 		//miniMap.addTo(mymap);
 
 		//mini map 2
-		var osmUrl2='https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png';
+		var osmUrl2='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 		var osmAttrib2='Tiles &copy; Esri';
-		var osm = new L.TileLayer(osmUrl, {minZoom: 5, maxZoom: 18, attribution: osmAttrib});
+		var osm = new L.TileLayer(osmUrl2, {minZoom: 5, maxZoom: 18, attribution: osmAttrib});
 
 
-		var osm2 = new L.TileLayer(osmUrl2, {minZoom: 0, maxZoom: 13, attribution: osmAttrib2 });
-		var miniMap2 = new L.Control.MiniMap(osm2, baseMapTwoLabels, { toggleDisplay: true, position:'topleft' });
-		miniMap2.addTo(mymap);
+		var osm2 = new L.TileLayer(osmUrl2, baseMapTwoLabels, {minZoom: 0, maxZoom: 13, attribution: osmAttrib2 });
+		var miniMap2 = new L.Control.MiniMap(osm2, { toggleDisplay: true, position:'topleft' });
+		//miniMap2.addTo(mymap);
 
 
 //Map and Satellite Toggle
