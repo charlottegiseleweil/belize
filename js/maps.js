@@ -28,6 +28,15 @@ var baseMapTwoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertile
 		var miniMap = new L.Control.MiniMap(osm1, { toggleDisplay: true, position:'topleft' });
 		//miniMap.addTo(mymap);
 
+		//mini map 2
+		var osmUrl2='https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png';
+		var osmAttrib2='Tiles &copy; Esri';
+		var osm = new L.TileLayer(osmUrl, {minZoom: 5, maxZoom: 18, attribution: osmAttrib});
+
+
+		var osm2 = new L.TileLayer(osmUrl2, {minZoom: 0, maxZoom: 13, attribution: osmAttrib2 });
+		var miniMap2 = new L.Control.MiniMap(osm2, baseMapTwoLabels, { toggleDisplay: true, position:'topleft' });
+		miniMap2.addTo(mymap);
 
 
 //Map and Satellite Toggle
@@ -52,8 +61,10 @@ document.getElementById("mapRadio").onclick = function(){
 document.getElementById("satelliteRadio").onclick = function(){
 	if (this.checked){
 		mymap.removeLayer(baseMapOne);
+		//mymap.removeLayer(minimap);
 		baseMapTwo.addTo(mymap);
 		baseMapTwoLabels.addTo(mymap);
+		//miniMap2.addTo(mymap);
 	}
 }
 

@@ -179,6 +179,26 @@ function popUpDams(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 
+function popUpBullRidge(feature, layer){
+	layer.bindPopup("Bull Ridge Compartment Boundry");
+	popUpOnMouseHover(feature, layer);
+}
+
+function popUpfd(feature, layer){
+	layer.bindPopup("FD Portion MPR");
+	popUpOnMouseHover(feature, layer);
+}
+
+function popUpRecinos(feature, layer){
+	layer.bindPopup("Recinos Management Area");
+	popUpOnMouseHover(feature, layer);
+}
+
+function popUpplc(feature, layer){
+	layer.bindPopup("PLC Area");
+	popUpOnMouseHover(feature, layer);
+}
+
 
 //Layer Data Load In
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
@@ -189,11 +209,7 @@ function popUpDams(feature, layer){
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip", {style: waterwaysStyle});
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip", {style: waterwaysStyle});
 	var majorRivers = new L.Shapefile("data/ALEX/MajorRivers.zip", {style: waterwaysStyle});
-	//var waterLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-	//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	//subdomains: 'abcd',
-	//maxZoom: 19
-//}); //practice label layer, erase comment when you find right raster layer
+
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
 	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
@@ -214,11 +230,11 @@ function popUpDams(feature, layer){
 
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 
-	var bullRidgeCompartmentBoundry = new L.Shapefile("data/timberConcessions/BullRidgeCompartmentBoundry.zip", {style: currentTimberStyle});
+	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/BullRidgeCompartmentBoundry.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
-	var fdPortionMPR = new L.Shapefile("data/timberConcessions/FD_Portion_MPR.zip", {style: currentTimberStyle});
-	var plcArea = new L.Shapefile("data/timberConcessions/PLCArea.zip", {style: currentTimberStyle});
-	var recinosMngtArea = new L.Shapefile("data/timberConcessions/RecinosMngtArea.zip", {style: currentTimberStyle});
+	var fdPortionMPR = new L.geoJSON.ajax("data/timberConcessions/fdPortionMPR.geojson", {style: currentTimberStyle, onEachFeature: popUpfd});
+	var plcArea = new L.geoJSON.ajax("data/timberConcessions/plcArea.geojson", {style: currentTimberStyle, onEachFeature: popUpplc});
+	var recinosMngtArea = new L.geoJSON.ajax("data/timberConcessions/recinosMngtArea.geojson", {style: currentTimberStyle, onEachFeature: popUpRecinos});
 
 	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarGoodIcon)}, 
@@ -248,16 +264,6 @@ function popUpDams(feature, layer){
 	var agZone = L.layerGroup([agZones]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
-
-
-//Additional Info Pop-ups
-
-//Timber
-bullRidgeCompartmentBoundry.bindPopup("<b>Bull Ridge Compartment Boundry</b>" + "<a href='https://en.wikipedia.org/wiki/Chalillo_Dam'> Click for Info</a>");
-fdPortionMPR.bindPopup("<b>FD Portion MPR</b>");
-plcArea.bindPopup("<b>PLC Area</b>");
-recinosMngtArea.bindPopup("<b>Recinos Management Area</b>");
-
 
 
 
@@ -443,7 +449,6 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 			toggleOff(allRoads, roadsIL);
 		}
 	}	
-
 
 
 //Icon setups 
