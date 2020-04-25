@@ -150,11 +150,10 @@ function openLinkOnClick(feature, layer){
 }
 
 //PopUp Content
-// For images need to declare them as html elemenet then getElementById("ImageName"); ERASE LINE WHEN DONE
 
 function popUpCulturalSites(feature, layer){
 	layer.bindPopup(feature.properties.Attraction + "<img src='img/culturalSitesImage.jpg' width='70%''>");
-	popUpOnMouseHover(feature, layer);
+	//popUpOnMouseHover(feature, layer);
 }
 function popUpNatureSites(feature, layer){
 	layer.bindPopup(feature.properties.Name + "<img src='img/natureSite.png' width='70%''>");
@@ -211,9 +210,9 @@ function popUpplc(feature, layer){
 }
 
 //Popup Links - layer groups only
-function damsLinkClick(){
-	window.open('https://en.wikipedia.org/wiki/Chalillo_Dam');
-}
+//function damsLinkClick(){
+//	window.open('https://en.wikipedia.org/wiki/Chalillo_Dam');
+//}
 
 function energyLinkClick(){
 	window.open('https://drive.google.com/file/d/1Pk_Muvl_DtfA9b1UT4ZySI8l_V19ij_S/view?usp=sharing');
@@ -301,6 +300,18 @@ function toggleOff(layer, elementIL) {
 	x = document.getElementById(elementIL);
 	x.className = "close";
 }
+
+//LayerLegendToggleFunction
+function LayerLegendToggle(layer, elementIL) {
+	if (this.checked){
+		toggleOn(layer, elementIL);
+	} else{
+		toggleOff(layer, elementIL);
+	}
+}
+
+
+
 
 newRoadIL = "newRoadIL"
 //display on load event
@@ -415,6 +426,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 
 	energyIL = "energyIL"
 	document.getElementById("energyCheckBox").onclick = function(){
+		//LayerLegendToggle(dams, energyIL);
 		if (this.checked){
 			toggleOn(dams, energyIL);
 		} else {
