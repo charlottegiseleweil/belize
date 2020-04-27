@@ -149,30 +149,39 @@ function openLinkOnClick(feature, layer){
 	})
 }
 
+
 //PopUp Content
 
 function popUpCulturalSites(feature, layer){
-	layer.bindPopup(feature.properties.Attraction + "<img src='img/culturalSitesImage.jpg' width='70%''>");
-	//popUpOnMouseHover(feature, layer);
+	layer.bindPopup("<h5>Cultural Sites</h5>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>");
+	popUpOnMouseHover(feature, layer);
 }
 function popUpNatureSites(feature, layer){
-	layer.bindPopup(feature.properties.Name + "<img src='img/natureSite.png' width='70%''>");
+	layer.bindPopup("<h5>Nature Sites</h5>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpCMCCCommunities(feature, layer){
-	layer.bindPopup(feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
+	layer.bindPopup("<h5>CMCC Communities</h5>" + feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
 	popUpOnMouseHover(feature, layer);
 }
 function popUpHotelSites(feature, layer){
-	layer.bindPopup(feature.properties.Name + "<img src='img/lodging.png' width='70%''>");
+	layer.bindPopup("<h5>Hotel/Lodging</h5>" + feature.properties.Name + "<br>" + "<img src='img/lodging.png' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergy(feature, layer){
-	layer.bindPopup("Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "Click icon for info");
+	layer.bindPopup("<h5>Ideal Sites for Solar Energy</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
+	popUpOnMouseHover(feature, layer);
+}
+function popUpSolarEnergyGood(feature, layer){
+	layer.bindPopup("<h5>Suitable Sites for Solar Energy</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpWindEnergy(feature, layer){
-	layer.bindPopup("Average wind speed: " + feature.properties.v_avg_disp  + " m/s" + "<br>" + "Click icon for info")
+	layer.bindPopup("<h5>Ideal Sites for Wind Farms</h5>" + "<br>" + "<h6>The terrain in the region and the speed of the wind in the region were examined to determine suitability of this site.</h6>" + "<br>" + "Average wind speed: " + feature.properties.v_avg_disp  + " m/s" + "<br>" + "<h6>Click icon for info</h6>")
+	popUpOnMouseHover(feature, layer);
+}
+function popUpWindEnergyGood(feature, layer){
+	layer.bindPopup("<h5>Suitable Sites for Wind Farms</h5>" + "<br>" + "<h6>The terrain in the region and the speed of the wind in the region were examined to determine suitability of this site.</h6>" + "<br>" + "Average wind speed: " + feature.properties.v_avg_disp  + " m/s" + "<br>" + "<h6>Click icon for info</h6>")
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSingleMining(feature, layer){
@@ -180,32 +189,32 @@ function popUpSingleMining(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 
-
 function popUpDams(feature, layer){
 	var linkName = String(feature.properties.infoLink);
-	layer.bindPopup(feature.properties.descript  + "<img src='img/damsImage.jpg' width='70%''>" + "<br>" + "Click icon for info");
+	damsContent = feature.properties.descript  + "<br>" + "<img src='img/damsImage.jpg' width='120'>" + "<br>" + "<h6>Click icon for info</h6>";
+	layer.bindPopup(damsContent);//.className(damsPopupStyling);
 	popUpOnMouseHover(feature, layer);
 	openLinkOnClick(feature, layer);
 
 }
 
 function popUpBullRidge(feature, layer){
-	layer.bindPopup("Bull Ridge Compartment Boundry" + "<img src='img/timberCurrentPopupImage.jpg' width='70%'>");
+	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "Bull Ridge Compartment Boundry" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpfd(feature, layer){
-	layer.bindPopup("FD Portion MPR" + "<img src='img/timberCurrentPopupImage.jpg' width='70%'>");
+	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "FD Portion MPR" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpRecinos(feature, layer){
-	layer.bindPopup("Recinos Management Area" + "<img src='img/timberCurrentPopupImage.jpg' width='70%'>");
+	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "Recinos Management Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpplc(feature, layer){
-	layer.bindPopup("PLC Area" + "<img src='img/timberCurrentPopupImage.jpg' width='70%'>");
+	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "PLC Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
@@ -215,7 +224,7 @@ function popUpplc(feature, layer){
 //}
 
 function energyLinkClick(){
-	window.open('https://drive.google.com/file/d/1Pk_Muvl_DtfA9b1UT4ZySI8l_V19ij_S/view?usp=sharing');
+	window.open('img/renewableSitesInfo.pdf');
 }
 
 
@@ -258,13 +267,13 @@ function energyLinkClick(){
 
 	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarGoodIcon)}, 
-		onEachFeature: popUpSolarEnergy}).on('click', energyLinkClick);
+		onEachFeature: popUpSolarEnergyGood}).on('click', energyLinkClick);
 	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarBestIcon)}, 
 		onEachFeature: popUpSolarEnergy}).on('click', energyLinkClick);
 	var windGood = new L.geoJSON.ajax("data/windGoodDisp.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windGoodIcon)}, 
-		onEachFeature:popUpWindEnergy}).on('click', energyLinkClick);
+		onEachFeature:popUpWindEnergyGood}).on('click', energyLinkClick);
 	var windBest = new L.geoJSON.ajax("data/windBestDisp.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windBestIcon)}, 
 		onEachFeature:popUpWindEnergy}).on('click', energyLinkClick);
@@ -302,8 +311,9 @@ function toggleOff(layer, elementIL) {
 }
 
 //LayerLegendToggleFunction
-function LayerLegendToggle(layer, elementIL) {
-	if (this.checked){
+function layerLegendToggle(layer, elementIL, checkBox) {
+	var checkbox = document.getElementById(checkBox);
+	if (checkbox.checked == true){
 		toggleOn(layer, elementIL);
 	} else{
 		toggleOff(layer, elementIL);
@@ -333,31 +343,22 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 
 
 	tourismArchKeyIL = "tourismArckKeyIL"
+	tourismArchKeyCheck = "tourismArchKeyCheckBox"
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(allTourism, tourismArchKeyIL);
-		} else {
-			toggleOff(allTourism, tourismArchKeyIL);
-		}
+		layerLegendToggle(allTourism, tourismArchKeyIL, tourismArchKeyCheck);
+
 	}	
 
 	impactedTourismIL = "impactedTourismIL"
+	tourismImpactedCheck = "tourismImpactedCheckBox"
 	document.getElementById("tourismImpactedCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(newRoad, impactedTourismIL);
-		} else {
-			toggleOff(newRoad, impactedTourismIL);
-
-		}
+		layerLegendToggle(newRoad, impactedTourismIL, tourismImpactedCheck);
 	}	
 
 	tourismExpansionIL = "tourismExpansionIL"
+	tourismExpandedCheck = "tourismExpandedCheckBox"
 	document.getElementById("tourismExpandedCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(newRoad, tourismExpansionIL);
-		} else {
-			toggleOff(newRoad, tourismExpansionIL);
-		}
+		layerLegendToggle(newRoad, tourismExpansionIL, tourismExpandedCheck);
 	}			
 
 	//keep this one
@@ -375,108 +376,75 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 		currentMining.addTo(mymap);
 	}
 
+
 	miningExpansionIL = "miningExpansionIL"
+	miningExpansionCheck = "miningExpansionCheckBox"
 	document.getElementById("miningExpansionCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(newRoad, miningExpansionIL);
-		} else {
-			toggleOff(newRoad, miningExpansionIL);
-		}
+		layerLegendToggle(newRoad, miningExpansionIL, miningExpansionCheck);
 	}			
 
 
 	currentAgricultureIL = "currentAgricultureIL"
+	currentAgricultureCheck = "currentAgricultureCheckBox"
 	document.getElementById("currentAgricultureCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(agZones, currentAgricultureIL);
-		} else {
-			toggleOff(agZones, currentAgricultureIL);
-		}
+		layerLegendToggle(agZones, currentAgricultureIL, currentAgricultureCheck);
 	}	
 
 	agExpansionIL = "agExpansionIL"
+	agExpansionCheck = "agExpansionCheckBox"
 	document.getElementById("agExpansionCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(newRoad, agExpansionIL);
-		} else {
-			toggleOff(newRoad, agExpansionIL);
-		}
+		layerLegendToggle(newRoad, agExpansionIL, agExpansionCheck);
 	}	
 
 
 
 	currentTimberIL = "currentTimberIL"
+	timberCheck = "timberCheckBox"
 	document.getElementById("timberCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(timberConcessions, currentTimberIL);
-		} else {
-			toggleOff(timberConcessions, currentTimberIL);
-		}
+		layerLegendToggle(timberConcessions, currentTimberIL, timberCheck);
 	}	
 
 	timberExpansionIL = "timberExpansionIL"
+	timberExpansionCheck = "timberExpansionCheckBox"
 	document.getElementById("timberExpansionCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(newRoad, timberExpansionIL);
-		} else {
-			toggleOff(newRoad, timberExpansionIL);
-		}
+		layerLegendToggle(newRoad, timberExpansionIL, timberExpansionCheck);
 	}	
 
 
 	energyIL = "energyIL"
+	energyCheck = "energyCheckBox"
 	document.getElementById("energyCheckBox").onclick = function(){
-		//LayerLegendToggle(dams, energyIL);
-		if (this.checked){
-			toggleOn(dams, energyIL);
-		} else {
-			toggleOff(dams, energyIL);
-		}
+		layerLegendToggle(dams, energyIL, energyCheck);
 	}	
 
 	potentialEnergyIL = "potentialEnergyIL"
+	energySitesCheck = "energySitesCheckBox"
 	document.getElementById("energySitesCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(energySites, potentialEnergyIL);
-		} else {
-			toggleOff(energySites, potentialEnergyIL);
-		}
+		layerLegendToggle(energySites, potentialEnergyIL, energySitesCheck);
 	}			
 
 	watershedsIL = "watershedsIL"
+	watershedsCheck = "watershedsCheckBox"
 	document.getElementById("watershedsCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(water, watershedsIL);
-		} else {
-			toggleOff(water, watershedsIL);
-		}
+		layerLegendToggle(water, watershedsIL, watershedsCheck);
 	}	
 
 	CMCCAreasIL = "CMCCAreasIL"
+	CMCCAreasCheck = "CMCCAreasCheckBox"
 	document.getElementById("CMCCAreasCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(cmccGeographicZone, CMCCAreasIL);
-		} else {
-			toggleOff(cmccGeographicZone, CMCCAreasIL);
-		}
+		layerLegendToggle(cmccGeographicZone, CMCCAreasIL, CMCCAreasCheck);
 	}
 
 	CMCCCommunitiesIL = "CMCCCommunitiesIL"
+	CMCCCommunitiesCheck = "CMCCCommunitiesCheckBox"
 	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(cmccCommunities, CMCCCommunitiesIL);
-		} else {
-			toggleOff(cmccCommunities, CMCCCommunitiesIL);
-		}
+		layerLegendToggle(cmccCommunities, CMCCCommunitiesIL, CMCCCommunitiesCheck);
 	}	
 
 	roadsIL = "roadsIL"
+	roadsCheck = "roadsCheckBox"
 	document.getElementById("roadsCheckBox").onclick = function(){
-		if (this.checked){
-			toggleOn(allRoads, roadsIL);
-		} else {
-			toggleOff(allRoads, roadsIL);
-		}
+		layerLegendToggle(allRoads, roadsIL, roadsCheck);
 	}	
 
 
