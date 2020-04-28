@@ -241,13 +241,13 @@ function energyLinkClick(){
 
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
-	var hotelLodging = L.geoJSON.ajax("data/hotelsSitesTourism.geojson", {
+	var hotelLodging = L.geoJSON.ajax("data/tourismData/hotelsSitesTourism.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
 		onEachFeature:popUpHotelSites});
-	var tourismSites = L.geoJSON.ajax("data/tourismSites.geojson", {
+	var tourismSites = L.geoJSON.ajax("data/tourismData/tourismSites.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismSitesIcon)}, 
 		onEachFeature: popUpNatureSites});
-	var culturalSites = L.geoJSON.ajax("data/culturalSitesTourism.geojson", {
+	var culturalSites = L.geoJSON.ajax("data/tourismData/culturalSitesTourism.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, culturalSitesIcon)}, 
 		onEachFeature: popUpCulturalSites}); 
 
@@ -259,27 +259,27 @@ function energyLinkClick(){
 
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 
-	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/BullRidgeCompartmentBoundry.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
+	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/BullRidgeCompartmentBoundryGJ.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
 	var fdPortionMPR = new L.geoJSON.ajax("data/timberConcessions/fdPortionMPR.geojson", {style: currentTimberStyle, onEachFeature: popUpfd});
 	var plcArea = new L.geoJSON.ajax("data/timberConcessions/plcArea.geojson", {style: currentTimberStyle, onEachFeature: popUpplc});
 	var recinosMngtArea = new L.geoJSON.ajax("data/timberConcessions/recinosMngtArea.geojson", {style: currentTimberStyle, onEachFeature: popUpRecinos});
 
-	var solarGood = new L.geoJSON.ajax("data/solarGoodGJ.geojson", {
+	var solarGood = new L.geoJSON.ajax("data/energy/solarGoodGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarGoodIcon)}, 
 		onEachFeature: popUpSolarEnergyGood}).on('click', energyLinkClick);
-	var solarBest = new L.geoJSON.ajax("data/solarBestGJ.geojson", {
+	var solarBest = new L.geoJSON.ajax("data/energy/solarBestGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarBestIcon)}, 
 		onEachFeature: popUpSolarEnergy}).on('click', energyLinkClick);
-	var windGood = new L.geoJSON.ajax("data/windGoodDisp.geojson", {
+	var windGood = new L.geoJSON.ajax("data/energy/windGoodDisp.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windGoodIcon)}, 
 		onEachFeature:popUpWindEnergyGood}).on('click', energyLinkClick);
-	var windBest = new L.geoJSON.ajax("data/windBestDisp.geojson", {
+	var windBest = new L.geoJSON.ajax("data/energy/windBestDisp.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, windBestIcon)}, 
 		onEachFeature:popUpWindEnergy}).on('click', energyLinkClick);
 	var energySites = L.layerGroup([solarGood, solarBest, windGood, windBest]);
 
-	var dams = new L.geoJSON.ajax("data/damsMoreInfoGJ.geojson", {
+	var dams = new L.geoJSON.ajax("data/energy/damsMoreInfoGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, damsIcon)}, 
 		onEachFeature:popUpDams})/*.on('click', damsLinkClick)*/;
 
