@@ -233,10 +233,12 @@ function popUpplc(feature, layer){
 //}
 
 function energyLinkClick(){
-	window.open('img/renewableSitesInfo.pdf');
+	window.open('data/dataInfoDocuments/renewablesOnePager.pdf');
 }
 
-
+function hotelLinkClick() {
+	window.open('https://www.belizehotels.org/interactive-map/');
+}
 
 //Layer Data Load In
 	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
@@ -252,7 +254,7 @@ function energyLinkClick(){
 
 	var hotelLodging = L.geoJSON.ajax("data/tourismData/hotelsSitesTourism.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
-		onEachFeature:popUpHotelSites});
+		onEachFeature:popUpHotelSites}).on('click', hotelLinkClick);
 	var tourismSites = L.geoJSON.ajax("data/tourismData/tourismSitesInfo.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismSitesIcon)}, 
 		onEachFeature: popUpNatureSites});
@@ -288,7 +290,7 @@ function energyLinkClick(){
 		onEachFeature:popUpWindEnergy}).on('click', energyLinkClick);
 	var energySites = L.layerGroup([solarGood, solarBest, windGood, windBest]);
 
-	var dams = new L.geoJSON.ajax("data/energy/damsMoreInfoGJ.geojson", {
+	var dams = new L.geoJSON.ajax("data/energy/damsFullInfoLink.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, damsIcon)}, 
 		onEachFeature:popUpDams})/*.on('click', damsLinkClick)*/;
 
