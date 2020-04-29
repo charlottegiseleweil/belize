@@ -149,16 +149,25 @@ function openLinkOnClick(feature, layer){
 	})
 }
 
+function openPhotoOnClick(feature, layer){
+	layer.on('click', function(e){
+		var photosphere = feature.properties.photosphereLink;
+		window.open(photosphere);
+	})
+}
+
 
 //PopUp Content
 
 function popUpCulturalSites(feature, layer){
-	layer.bindPopup("<h5>Cultural Sites</h5>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>");
+	layer.bindPopup("<h5>Cultural Sites</h5>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>" + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
+	openPhotoOnClick(feature, layer);
 }
 function popUpNatureSites(feature, layer){
-	layer.bindPopup("<h5>Nature Sites</h5>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >");
+	layer.bindPopup("<h5>Nature Sites</h5>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >" + + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
+	openPhotoOnClick(feature, layer);
 }
 function popUpCMCCCommunities(feature, layer){
 	layer.bindPopup("<h5>CMCC Communities</h5>" + feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
@@ -244,10 +253,10 @@ function energyLinkClick(){
 	var hotelLodging = L.geoJSON.ajax("data/tourismData/hotelsSitesTourism.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
 		onEachFeature:popUpHotelSites});
-	var tourismSites = L.geoJSON.ajax("data/tourismData/tourismSites.geojson", {
+	var tourismSites = L.geoJSON.ajax("data/tourismData/tourismSitesInfo.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismSitesIcon)}, 
 		onEachFeature: popUpNatureSites});
-	var culturalSites = L.geoJSON.ajax("data/tourismData/culturalSitesTourism.geojson", {
+	var culturalSites = L.geoJSON.ajax("data/tourismData/culturalSitesTourismInfo.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, culturalSitesIcon)}, 
 		onEachFeature: popUpCulturalSites}); 
 
@@ -259,7 +268,7 @@ function energyLinkClick(){
 
 	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
 
-	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/BullRidgeCompartmentBoundryGJ.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
+	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/bullRidgeCompartmentBoundryGJ.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
 	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
 	var fdPortionMPR = new L.geoJSON.ajax("data/timberConcessions/fdPortionMPR.geojson", {style: currentTimberStyle, onEachFeature: popUpfd});
 	var plcArea = new L.geoJSON.ajax("data/timberConcessions/plcArea.geojson", {style: currentTimberStyle, onEachFeature: popUpplc});

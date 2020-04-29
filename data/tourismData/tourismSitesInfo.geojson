@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "tourismSites",
+"name": "tourismSitesInfo",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "Name": "Big Rock", "Ownership": "Public", "Type": null, "Management": "Forestry", "Latitude": 17.033142, "Longitude": -88.974704, "photosphereLink": "https:\/\/www.google.com\/maps\/@17.032925,-88.9746175,3a,75y,34.72h,90t\/data=!3m8!1e1!3m6!1sAF1QipOkfKdoOUbwv-jKmxdP6s3dOiegpthyFpTg_0QU!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOkfKdoOUbwv-jKmxdP6s3dOiegpthyFpTg_0QU%3Dw203-h100-k-no-pi-0-ya257.52347-ro0-fo100!7i4000!8i2000" }, "geometry": { "type": "Point", "coordinates": [ -88.9747, 17.03314 ] } },
