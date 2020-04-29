@@ -160,29 +160,29 @@ function openPhotoOnClick(feature, layer){
 //PopUp Content
 
 function popUpCulturalSites(feature, layer){
-	layer.bindPopup("<h5>Cultural Sites</h5>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>" + "<br>" + "<h6>Click icon for more info</h6>");
+	layer.bindPopup("<h6>Cultural Sites</h6>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>" + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
 	openPhotoOnClick(feature, layer);
 }
 function popUpNatureSites(feature, layer){
-	layer.bindPopup("<h5>Nature Sites</h5>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >" + + "<br>" + "<h6>Click icon for more info</h6>");
+	layer.bindPopup("<h6>Nature Sites</h6>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >" + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
 	openPhotoOnClick(feature, layer);
 }
 function popUpCMCCCommunities(feature, layer){
-	layer.bindPopup("<h5>CMCC Communities</h5>" + feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
+	layer.bindPopup("<h6>CMCC Communities</h6>" + feature.properties.SETTNAME + " | Population: " + feature.properties.POPULATION);
 	popUpOnMouseHover(feature, layer);
 }
 function popUpHotelSites(feature, layer){
-	layer.bindPopup("<h5>Hotel/Lodging</h5>" + feature.properties.Name + "<br>" + "<img src='img/lodging.png' width='120'>");
+	layer.bindPopup("<h6>Hotel/Lodging</h6>" + feature.properties.Name + "<br>" + "<img src='img/lodging.png' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergy(feature, layer){
-	layer.bindPopup("<h5>Ideal Sites for Solar Energy</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
+	layer.bindPopup("<h5>Ideal Sites for Solar Farms</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergyGood(feature, layer){
-	layer.bindPopup("<h5>Suitable Sites for Solar Energy</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
+	layer.bindPopup("<h5>Suitable Sites for Solar Farms</h5>" + "<br>" + "<h6>The terrain in the region and the amount of solar energy hitting the surface were examined to determine suitability of this site.</h6>" + "<br>" + "Solar Irradiance: " + feature.properties.PV_out + " kWh/m2" + "<br>" + "<h6>Click icon for info</h6>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpWindEnergy(feature, layer){
@@ -208,22 +208,22 @@ function popUpDams(feature, layer){
 }
 
 function popUpBullRidge(feature, layer){
-	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "Bull Ridge Compartment Boundry" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "Bull Ridge Compartment Boundry" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpfd(feature, layer){
-	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "FD Portion MPR" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "FD Portion MPR" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpRecinos(feature, layer){
-	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "Recinos Management Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "Recinos Management Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
 function popUpplc(feature, layer){
-	layer.bindPopup("<h5>Timber Concessions</h5>" + "<br>" + "PLC Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "PLC Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
