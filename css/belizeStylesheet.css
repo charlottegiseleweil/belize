@@ -152,6 +152,7 @@ html *{
 			top: 2%;
 			right: 35%;
 			position: absolute;
+			width: 40%;
 
 		}
 
@@ -160,6 +161,7 @@ html *{
 			top: 2%;
 			right: 50%;
 			position: absolute;
+			display: none;
 
 		}
 
@@ -167,6 +169,7 @@ html *{
 			top: 2%;
 			right: 65%;
 			position: absolute;
+			display: none;
 
 		}
 
