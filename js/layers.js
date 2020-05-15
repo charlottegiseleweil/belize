@@ -1,7 +1,25 @@
 //Layer Styling - these are independent, need separate styling for layers
 	var currentAgStyle = {
-		"color": "#F7B733",
+		"color": "#ff6b1a",
 		"fillOpacity":0.9,
+		"weight": 0.5,
+	};
+
+	var agExpansionStyle = {
+		"color": "#ff6b1a",
+		"fillOpacity":0.5,
+		"weight": 0.5,
+	};
+
+	var miningExpansionStyle = {
+		"color": "#773399",
+		"fillOpacity":0.5,
+		"weight": 0.5,
+	};
+
+	var tourismExpansionStyle = {
+		"color": "#ffd500",
+		"fillOpacity":0.7,
 		"weight": 0.5,
 	};
 
@@ -28,6 +46,13 @@
 	var currentTimberStyle = {
 		"color": "#654321",
 		"fillOpacity":0.7,
+		"stroke": "#180606",
+		"stroke-width": 1,
+	}
+
+		var timberExpansionStyle = {
+		"color": "#654321",
+		"fillOpacity":0.4,
 		"stroke": "#180606",
 		"stroke-width": 1,
 	}
@@ -245,6 +270,8 @@ function hotelLinkClick() {
 
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: currentAgStyle});
 
+	var agExpansion = L.geoJSON.ajax("data/belizeExpansionLayers/agExpansionLayerClip.geojson", {style: agExpansionStyle});
+
 
 	var waterWays = new L.Shapefile("data/ALEX/WaterWays.zip", {style: waterwaysStyle});
 	var waterBody = new L.Shapefile("data/ALEX/WaterBody.zip", {style: waterwaysStyle});
@@ -263,6 +290,8 @@ function hotelLinkClick() {
 		onEachFeature: popUpCulturalSites}); 
 
 	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
+
+	var tourismExpanded = L.geoJSON.ajax("data/belizeExpansionLayers/tourismExpansionLayer.geojson", {style: tourismExpansionStyle});
 
 	var cmccCommunities = new L.geoJSON.ajax("data/cmccCommunititesGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, cmccCommunityIcon)}, 
@@ -298,6 +327,10 @@ function hotelLinkClick() {
 
 	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
 	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon}).bindTooltip("Click icon for more information").on('click', miningMarkerClick);
+
+	var miningExpansion = L.geoJSON.ajax("data/belizeExpansionLayers/miningExpansionLayer.geojson", {style: miningExpansionStyle});
+
+	var timberExpansion = L.geoJSON.ajax("data/belizeExpansionLayers/timberExpansionLayer.geojson", {style: timberExpansionStyle});
 
 	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
 
@@ -369,7 +402,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 	tourismExpansionIL = "tourismExpansionIL"
 	tourismExpandedCheck = "tourismExpandedCheckBox"
 	document.getElementById("tourismExpandedCheckBox").onclick = function(){
-		layerLegendToggle(newRoad, tourismExpansionIL, tourismExpandedCheck);
+		layerLegendToggle(tourismExpanded, tourismExpansionIL, tourismExpandedCheck);
 	}			
 
 	//keep this one
@@ -391,7 +424,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 	miningExpansionIL = "miningExpansionIL"
 	miningExpansionCheck = "miningExpansionCheckBox"
 	document.getElementById("miningExpansionCheckBox").onclick = function(){
-		layerLegendToggle(newRoad, miningExpansionIL, miningExpansionCheck);
+		layerLegendToggle(miningExpansion, miningExpansionIL, miningExpansionCheck);
 	}			
 
 
@@ -404,7 +437,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 	agExpansionIL = "agExpansionIL"
 	agExpansionCheck = "agExpansionCheckBox"
 	document.getElementById("agExpansionCheckBox").onclick = function(){
-		layerLegendToggle(newRoad, agExpansionIL, agExpansionCheck);
+		layerLegendToggle(agExpansion, agExpansionIL, agExpansionCheck);
 	}	
 
 
@@ -418,7 +451,7 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 	timberExpansionIL = "timberExpansionIL"
 	timberExpansionCheck = "timberExpansionCheckBox"
 	document.getElementById("timberExpansionCheckBox").onclick = function(){
-		layerLegendToggle(newRoad, timberExpansionIL, timberExpansionCheck);
+		layerLegendToggle(timberExpansion, timberExpansionIL, timberExpansionCheck);
 	}	
 
 
