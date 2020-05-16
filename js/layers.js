@@ -393,11 +393,11 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 
 	}	
 
-	impactedTourismIL = "impactedTourismIL"
-	tourismImpactedCheck = "tourismImpactedCheckBox"
-	document.getElementById("tourismImpactedCheckBox").onclick = function(){
-		layerLegendToggle(newRoad, impactedTourismIL, tourismImpactedCheck);
-	}	
+	//impactedTourismIL = "impactedTourismIL"
+	//tourismImpactedCheck = "tourismImpactedCheckBox"
+	//document.getElementById("tourismImpactedCheckBox").onclick = function(){
+	//	layerLegendToggle(newRoad, impactedTourismIL, tourismImpactedCheck);
+	//}	
 
 	tourismExpansionIL = "tourismExpansionIL"
 	tourismExpandedCheck = "tourismExpandedCheckBox"
