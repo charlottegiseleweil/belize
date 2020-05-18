@@ -1,0 +1,99 @@
+#Agricultrue Scenario Plot
+
+import matplotlib.pyplot as plt
+
+#plt.title("Scenarios")
+
+
+def make_patch_spines_invisible(ax):
+    ax.set_frame_on(True)
+    ax.patch.set_visible(False)
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+
+def align_yaxis(ax1, v1, ax2, v2):
+    """adjust ax2 ylimit so that v2 in ax2 is aligned to v1 in ax1"""
+    _, y1 = ax1.transData.transform((0, v1))
+    _, y2 = ax2.transData.transform((0, v2))
+    inv = ax2.transData.inverted()
+    _, dy = inv.transform((0, 0)) - inv.transform((0, y1-y2))
+    miny, maxy = ax2.get_ylim()
+    ax2.set_ylim(miny+dy, maxy+dy)
+
+
+
+fig, baseflow = plt.subplots()
+fig.subplots_adjust(right=0.75)
+#section subtitle
+#plt.title('Change in Ecosystem Services',size=22)
+
+#data for all scenarios
+totalFlow = {'agriclture': 13861312008, 'mining': 12399680445, 'tourism': 12452638350, 'timber': 13594656482 }
+sedimentLoad = {'agriclture': 85968342.1, 'mining': 80521997.16, 'tourism': 44063126.36, 'timber': 41737293.88 }
+nutrientLoad = {'agriclture': 13218078.88, 'mining': 13011048.31, 'tourism': 13034430.17, 'timber': 13108934.29 }
+#change in ecosystem service data values
+changeTotalFlow = [1665705752, 204074189.1, 257032094.4, 1399050226]
+changeSedimentLoad = [45107156.98, 39660812.04, 3201941.235, 876108.7563]
+changeNutrientLoad = [201996.5952, -5033.973084, 18347.88057, 92852.0018]
+
+#connect the y-axis together
+sediment = baseflow.twinx()
+nutrient = baseflow.twinx()
+
+# Offset the right spine of par2.  The ticks and label have already been
+# placed on the right by twinx above.
+#nutrient.spines["right"].set_position(("axes", 1.2))
+# Having been created by twinx, par2 has its frame off, so the line of its
+# detached spine is invisible.  First, activate the frame but make the patch
+# and spines invisible.
+#make_patch_spines_invisible(nutrient)
+# Second, show the right spine.
+nutrient.spines["right"].set_visible(True)
+
+#change in total flow
+p1, = baseflow.bar(0.5, changeTotalFlow[0], 0.3, color="#0042d1", label="Change in Total Flow | m^3/year")
+#change in sediment transport
+p2, = sediment.bar(1, changeSedimentLoad[0], 0.3, color="#8b0000", label="Change in Sediment Transport | tons/year")
+#change in nutrient transport
+p3, = nutrient.bar(1.5, changeNutrientLoad[0], 0.3, color= "#855b00",label="Change in Nutrient Transport | tons/year")
+
+baseflow.set_xlim(0, 2)
+baseflow.set_ylim(-240000000, 3000000000)
+sediment.set_ylim(-5600000, 55000000)
+nutrient.set_ylim(-24000, 200000)
+
+baseflow.set_xlabel("Agriculture")
+#baseflow.set_ylabel("m3/year", size=18)
+#sediment.set_ylabel("tons/year", size=18)
+#nutrient.set_ylabel("tons/year", size=18)
+
+
+#host.yaxis.label.set_color(p1.get_color())
+#sediment.set_ylabel('tons/year', color="#8b0000")
+
+#nutrient.set_ylabel('tons/year', color="#855b00")
+
+tkw = dict(size=4, width=1.5)
+#baseflow.set_ylabel('m3/year', color="#0042d1")
+baseflow.tick_params(axis='y', labelcolor="#0042d1")
+sediment.tick_params(axis='y', labelcolor="#8b0000")
+nutrient.tick_params(axis='y', labelcolor="#855b00")
+baseflow.tick_params(axis='x', **tkw)
+
+baseflow.axes.get_xaxis().set_visible(False)
+#nutrient.axes.get_yaxis().set_visible(False)
+#sediment.axes.get_yaxis().set_visible(False)
+
+
+
+
+lines = [p1, p2, p3]
+baseflow.axhline(0, color='black', lw=1)
+
+
+align_yaxis(baseflow, 0, sediment, 0)
+align_yaxis(baseflow, 0, nutrient, 0)
+
+#baseflow.legend(lines, [l.get_label() for l in lines])
+
+plt.show()

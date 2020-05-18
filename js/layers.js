@@ -44,17 +44,17 @@
 	}
 
 	var currentTimberStyle = {
-		"color": "#654321",
+		"color": "#1eb6a7",
 		"fillOpacity":0.7,
-		"stroke": "#180606",
-		"stroke-width": 1,
+		"stroke": "#1eb6a7",
+		"weight": 0.5,
 	}
 
 		var timberExpansionStyle = {
-		"color": "#654321",
+		"color": "#48d1cc",
 		"fillOpacity":0.4,
-		"stroke": "#180606",
-		"stroke-width": 1,
+		"stroke": "#48d1cc",
+		"weight": 0.5,
 	}
 
 	var waterwaysStyle = {
