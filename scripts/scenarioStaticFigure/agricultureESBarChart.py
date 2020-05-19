@@ -50,6 +50,7 @@ nutrient = baseflow.twinx()
 # Second, show the right spine.
 nutrient.spines["right"].set_visible(True)
 
+#bar graph figureName.bar(x,y,barWidth, color, label)
 #change in total flow
 p1, = baseflow.bar(0.5, changeTotalFlow[0], 0.3, color="#0042d1", label="Change in Total Flow | m^3/year")
 #change in sediment transport
@@ -76,9 +77,10 @@ baseflow.set_xlabel("Agriculture")
 tkw = dict(size=4, width=1.5)
 #baseflow.set_ylabel('m3/year', color="#0042d1")
 baseflow.tick_params(axis='y', labelcolor="#0042d1")
-sediment.tick_params(axis='y', labelcolor="#8b0000")
+#sediment.tick_params(axis='y', labelcolor="#8b0000")
 nutrient.tick_params(axis='y', labelcolor="#855b00")
 baseflow.tick_params(axis='x', **tkw)
+
 
 baseflow.axes.get_xaxis().set_visible(False)
 #nutrient.axes.get_yaxis().set_visible(False)
@@ -86,7 +88,7 @@ baseflow.axes.get_xaxis().set_visible(False)
 
 
 
-
+#line through x-axis
 lines = [p1, p2, p3]
 baseflow.axhline(0, color='black', lw=1)
 
