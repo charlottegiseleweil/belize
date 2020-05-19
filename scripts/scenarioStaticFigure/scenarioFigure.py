@@ -18,8 +18,8 @@ fig = plt.figure("Scenarios")
 plt.axis('off')
 
 #load the data
-imgAg = mpimg.imread('belizeAgriculture.png')
-print(imgAg)
+#imgAg = mpimg.imread('belizeAgriculture.png')
+#print(imgAg)
 
 imgMining = mpimg.imread('belizeMining.png')
 print(imgMining)
