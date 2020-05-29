@@ -265,8 +265,13 @@ function hotelLinkClick() {
 	window.open('https://www.belizehotels.org/interactive-map/');
 }
 
+//Pane set up for roads
+mymap.createPane('road');
+mymap.getPane('road').style.zIndex = 650;
+mymap.getPane('road').style.pointerEvents = 'none';
+
 //Layer Data Load In
-	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle});
+	var newRoad = new L.Shapefile("data/newRoad.zip", {style: roadStyle, pane: 'road'});
 
 	var agZones = new L.Shapefile("data/ag_defined_v1.zip", {style: currentAgStyle});
 

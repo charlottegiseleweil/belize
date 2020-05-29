@@ -153,6 +153,9 @@ html *{
 			right: 35%;
 			position: absolute;
 			width: 40%;
+			height: auto;
+			max-height: 88%;
+			overflow: scroll;
 
 		}
 

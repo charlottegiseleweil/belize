@@ -103,7 +103,7 @@ baseflow.set_xlabel("Agriculture")
 
 #sediment.set_ylabel("tons/year", size=18, color="#8b0000" )
 #nutrient.set_ylabel("tons/year", size=18, color="#855b00")
-totalflow.set_ylabel("m^3/year", size=18, color="#0042d1")
+totalflow.set_ylabel("m$^3$/year", size=18, color="#0042d1")
 
 
 
