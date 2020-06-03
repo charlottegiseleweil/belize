@@ -69,7 +69,9 @@
       y.className="LULCPanel";
    }
 
-
+function downloadFigure(){
+   window.open('data/dataInfoDocuments/renewablesOnePager.pdf');
+}
 
 
 document.getElementById("LULCScenarioButton").addEventListener("click", function(){ 
@@ -84,14 +86,11 @@ document.getElementById("LULCScenarioButton").addEventListener("click", function
 document.getElementById("expandFigureButton").addEventListener("click", function(){
   x = document.getElementById("LULCPanel2");
   x.className = "LULCPanel";
-  //if (x.className == "LULCPanel"){
-      //w = document.getElementById("expandFigureButton");
-      //w.className = "buttonPressed";
-  //}
-  
-
 });
 
+document.getElementById('downloadFigureButton').addEventListener("click", function(){
+   window.open('scripts/scenarioStaticFigure/ScenarioStaticFigure.png');
+});
 
 
 

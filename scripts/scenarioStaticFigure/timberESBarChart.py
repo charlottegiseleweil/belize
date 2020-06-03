@@ -97,7 +97,7 @@ baseflow.set_xlabel("Agriculture")
 #baseflow.set_ylabel("m3/year", size=18, )
 #sediment.yaxis.set_major_locator(MultipleLocator(10000)
 
-sediment.set_ylabel("tons/year", size=18 )
+#sediment.set_ylabel("tons/year", size=18 )
 #nutrient.set_ylabel("tons/year", size=18, color="#855b00")
 #totalflow.set_ylabel("m^3/year", size=18, color="#0042d1")
 
@@ -116,7 +116,7 @@ minor_ticks = np.arange(-3000000000, 3000000000, 500000000)
 
 #tick and tick label settings
 #sediment.tick_params(axis='y', labelcolor="#8b0000", labelsize = 20, color="#8b0000", size=10, width= 2)
-sediment.tick_params(axis='y', labelsize = 20, color="#8b0000", size=20, width= 2)
+sediment.tick_params(axis='y', labelsize = 28, color="#8b0000", size=20, width= 2)
 totalflow.tick_params(axis='y', which='major', labelcolor="#0042d1", labelsize = 20, color="#0042d1", size=10, width= 2)
 totalflow.tick_params(axis='y', which='minor', labelcolor="#0042d1", labelsize = 0, color="#0042d1", size=10, width= 2)
 nutrient.tick_params(axis='y', labelcolor="#855b00", labelsize = 20, color="#855b00", size=10, width= 2)
