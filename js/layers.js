@@ -50,6 +50,13 @@
 		"weight": 0.5,
 	}
 
+	var currentTimberInactiveStyle = {
+		"color": "#7E7E7E",
+		"fillOpacity":0.7,
+		"stroke": "#7E7E7E",
+		"weight": 0.5,
+	}
+
 		var timberExpansionStyle = {
 		"color": "#48d1cc",
 		"fillOpacity":0.4,
@@ -233,7 +240,7 @@ function popUpDams(feature, layer){
 }
 
 function popUpBullRidge(feature, layer){
-	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "Bull Ridge Compartment Boundry" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "Bull Ridge Limited" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
@@ -248,7 +255,7 @@ function popUpRecinos(feature, layer){
 }
 
 function popUpplc(feature, layer){
-	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "PLC Area" + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
+	layer.bindPopup("<h6>Timber Concessions</h6>" + "<br>" + "Pine Lumber Company Ltd." + "<br>" + "<img src='img/timberCurrentPopupImage.jpg' width='120'>");
 	popUpOnMouseHover(feature, layer);
 }
 
@@ -302,13 +309,13 @@ mymap.getPane('road').style.pointerEvents = 'none';
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, cmccCommunityIcon)}, 
 		onEachFeature: popUpCMCCCommunities});
 
-	var cmccGeographicZone = new L.geoJSON.ajax("data/cmccGeographyCleaned.geojson", {style:CMCCGeographicZoneStyle });
+	var cmccGeographicZone = new L.geoJSON.ajax("data/protectedAreas.geojson", {style:CMCCGeographicZoneStyle});
 
 	var bullRidgeCompartmentBoundry = new L.geoJSON.ajax("data/timberConcessions/bullRidgeCompartmentBoundryGJ.geojson", {style: currentTimberStyle, onEachFeature: popUpBullRidge});
-	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberStyle});
-	var fdPortionMPR = new L.geoJSON.ajax("data/timberConcessions/fdPortionMPR.geojson", {style: currentTimberStyle, onEachFeature: popUpfd});
+	var CFR = new L.Shapefile("data/timberConcessions/CFR.zip", {style: currentTimberInactiveStyle});
+	var fdPortionMPR = new L.geoJSON.ajax("data/timberConcessions/fdPortionMPR.geojson", {style: currentTimberInactiveStyle, onEachFeature: popUpfd});
 	var plcArea = new L.geoJSON.ajax("data/timberConcessions/plcArea.geojson", {style: currentTimberStyle, onEachFeature: popUpplc});
-	var recinosMngtArea = new L.geoJSON.ajax("data/timberConcessions/recinosMngtArea.geojson", {style: currentTimberStyle, onEachFeature: popUpRecinos});
+	var recinosMngtArea = new L.geoJSON.ajax("data/timberConcessions/recinosMngtArea.geojson", {style: currentTimberInactiveStyle, onEachFeature: popUpRecinos});
 
 	var solarGood = new L.geoJSON.ajax("data/energy/solarGoodGJ.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, solarGoodIcon)}, 
@@ -370,10 +377,9 @@ function layerLegendToggle(layer, elementIL, checkBox) {
 }
 
 
-
+//first three layers start on
 
 newRoadIL = "newRoadIL"
-//display on load event
 $(document).ready(function(){
 	$("#newRoadCheckBox").prop("checked", true);
 			newRoad.addTo(mymap);
@@ -390,19 +396,49 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 	}
 }	
 
+watershedsIL = "watershedsIL"
+$(document).ready(function(){
+	$("#watershedsCheckBox").prop("checked", true);
+			water.addTo(mymap);
+			x = document.getElementById(watershedsIL); //need onload setting, but not quite working
+			x.className = "ILImage";
+	});
 
+
+document.getElementById("watershedsCheckBox").onclick = function(){
+	if (this.checked){
+		toggleOn(water, watershedsIL);
+	} else {
+		toggleOff(water, watershedsIL);
+	}
+}
+
+
+CMCCCommunitiesIL = "CMCCCommunitiesIL"
+$(document).ready(function(){
+	$("#CMCCCommunitiesCheckBox").prop("checked", true);
+			cmccCommunities.addTo(mymap);
+			x = document.getElementById(CMCCCommunitiesIL); //need onload setting, but not quite working
+			x.className = "ILImage";
+	});
+
+
+document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
+	if (this.checked){
+		toggleOn(cmccCommunities, CMCCCommunitiesIL);
+	} else {
+		toggleOff(cmccCommunities, CMCCCommunitiesIL);
+	}
+}
+
+
+//these layers start off
 	tourismArchKeyIL = "tourismArckKeyIL"
 	tourismArchKeyCheck = "tourismArchKeyCheckBox"
 	document.getElementById("tourismArchKeyCheckBox").onclick = function(){
 		layerLegendToggle(allTourism, tourismArchKeyIL, tourismArchKeyCheck);
 
 	}	
-
-	//impactedTourismIL = "impactedTourismIL"
-	//tourismImpactedCheck = "tourismImpactedCheckBox"
-	//document.getElementById("tourismImpactedCheckBox").onclick = function(){
-	//	layerLegendToggle(newRoad, impactedTourismIL, tourismImpactedCheck);
-	//}	
 
 	tourismExpansionIL = "tourismExpansionIL"
 	tourismExpandedCheck = "tourismExpandedCheckBox"
@@ -472,11 +508,11 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 		layerLegendToggle(energySites, potentialEnergyIL, energySitesCheck);
 	}			
 
-	watershedsIL = "watershedsIL"
-	watershedsCheck = "watershedsCheckBox"
-	document.getElementById("watershedsCheckBox").onclick = function(){
-		layerLegendToggle(water, watershedsIL, watershedsCheck);
-	}	
+	// watershedsIL = "watershedsIL"
+	// watershedsCheck = "watershedsCheckBox"
+	// document.getElementById("watershedsCheckBox").onclick = function(){
+	// 	layerLegendToggle(water, watershedsIL, watershedsCheck);
+	// }	
 
 	CMCCAreasIL = "CMCCAreasIL"
 	CMCCAreasCheck = "CMCCAreasCheckBox"
@@ -484,11 +520,11 @@ document.getElementById("newRoadCheckBox").onclick = function(){
 		layerLegendToggle(cmccGeographicZone, CMCCAreasIL, CMCCAreasCheck);
 	}
 
-	CMCCCommunitiesIL = "CMCCCommunitiesIL"
-	CMCCCommunitiesCheck = "CMCCCommunitiesCheckBox"
-	document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
-		layerLegendToggle(cmccCommunities, CMCCCommunitiesIL, CMCCCommunitiesCheck);
-	}	
+	// CMCCCommunitiesIL = "CMCCCommunitiesIL"
+	// CMCCCommunitiesCheck = "CMCCCommunitiesCheckBox"
+	// document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
+	// 	layerLegendToggle(cmccCommunities, CMCCCommunitiesIL, CMCCCommunitiesCheck);
+	// }	
 
 	roadsIL = "roadsIL"
 	roadsCheck = "roadsCheckBox"
