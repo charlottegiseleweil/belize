@@ -98,6 +98,7 @@
 
 <h2 id="InteractiveLegendTitle">Legend</h2>
 
+
 <!--Base Map -->
 <div class= "layerChecks" id="baseMapSelect">
 	<input type= "radio" name="basemap" id="mapRadio"> Map 
@@ -125,8 +126,7 @@
 
 
 
-<!-- LULC Panel TO DO !!!
-	Notes: all open with the same button on map, display should also fit in screen with content panel, about panel, and legend -->
+<!-- LULC Panel  -->
 <div class= "LULCclose panels" id= "LULCPanel3"> <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button><h3>Scenario Draft</h3>
 <br>
 	<img src="scripts/scenarioStaticFigure/ScenarioStaticFigure.png" width= 100%>
@@ -157,6 +157,34 @@
 
 </div>
 
+<!-- Intro Tutorial -->
+<!--<div class="panels introPanelOut" id=introPanel>-->
+<!--<div w3-include-html="html/introTutorial.html"></div>-->
+<div class="panels introPanel" id=introPanel1>
+	<h2>Step 1</h2>
+	<button type= "button" class="button" style="display: inline;" id="skipTutorialButton">Skip Tutorial</button>
+	<br>
+	<button type= "button" class="button" style="display: inline;" id="prev1Button">Previous</button>
+	<button type= "button" class="button" style="display: inline;" id="next1Button">Next</button>
+</div>
+
+<div class="close" id=introPanel2>
+	<h2>Step 2</h2>
+	<button type= "button" class="button" style="display: inline;" id="close2TutorialButton">Close Tutorial</button>
+	<br>
+	<button type= "button" class="button" style="display: inline;" id="prev2Button">Previous</button>
+	<button type= "button" class="button" style="display: inline;" id="next2Button">Next</button>
+</div>
+
+<div class="close" id=introPanel3>
+	<h2>Step 3</h2>
+	<button type= "button" class="button" style="display: inline;" id="finishTutorialButton">Finish Tutorial</button>
+	<br>
+	<button type= "button" class="button" style="display: inline;" id="prev3Button">Previous</button>
+	<button type= "button" class="button" style="display: inline;" id="next3Button">Next</button>
+</div>
+<!--</div>-->
+
 
 
 
@@ -165,10 +193,11 @@
 
 <script src="js/dataDownloadControls.js"></script> <!--stops working if commented out-->
 
- <script src="js/layers.js"></script>
+<script src="js/layers.js"></script>
 <script src="js/LULCControls.js"></script>
 
 <script src="js/aboutControls.js"></script>
+<script src="js/introTutorial.js"></script>
 
 
 

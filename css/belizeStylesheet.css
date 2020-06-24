@@ -307,4 +307,42 @@ html *{
 	width: 35%;
 }
 
+.introPanelOut {
+	display: inline-block;
+	float: right;
+	padding: 1.5%;
+	width: 30%;
+	height: 70%;
+	overflow: scroll;
+	color: #DFDCE3;
+	z-index: 600;
+	top: 2%;
+	right: 35%;
+	position: absolute;
+	border-radius: 25px;
+	opacity: 0.95;
+	background-color: #302e25;
+
+
+}
+
+.introPanel {
+	display: inline-block;
+	float: right;
+	padding: 1.5%;
+	width: 30%;
+	height: 70%;
+	overflow: scroll;
+	color: #DFDCE3;
+	z-index: 600;
+	top: 2%;
+	right: 35%;
+	position: absolute;
+	border-radius: 25px;
+	opacity: 0.95;
+	background-color: #302e25;
+
+
+}
+
 

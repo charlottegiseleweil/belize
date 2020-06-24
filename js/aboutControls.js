@@ -53,3 +53,8 @@ document.getElementById("aboutPanelButton").addEventListener("click", function()
    }
 });
 
+function restartTutorialAbout(){
+   x = document.getElementById("introPanel1");
+   x.className = introPanel;
+}
+
