@@ -33,11 +33,15 @@
 document.getElementById("skipTutorialButton").addEventListener("click", function(){
   x = document.getElementById("introPanel1");
   x.className = "close";
+  y = document.getElementById("tutorialArrow1");
+  y.className = "close";
 });
 
 document.getElementById("next1Button").addEventListener("click", function(){
 	x = document.getElementById("introPanel1");
 	x.className = "close";
+  z = document.getElementById("tutorialArrow1");
+  z.className = "close";
 	y = document.getElementById("introPanel2");
 	y.className = "introPanel";
 });
@@ -57,6 +61,8 @@ document.getElementById("next2Button").addEventListener("click", function(){
 document.getElementById("prev2Button").addEventListener("click", function(){
 	x = document.getElementById("introPanel2");
 	x.className = "close";
+  z = document.getElementById("tutorialArrow1");
+  z.className = "tutorialArrow";
 	y = document.getElementById("introPanel1");
 	y.className = "introPanel";
 });

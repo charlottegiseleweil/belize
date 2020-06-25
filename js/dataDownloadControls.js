@@ -16,5 +16,5 @@
 	});
 
 function dataDownloadAlert() {
-	alert("Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.");
+	alert("The dataset links are preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.");
 }

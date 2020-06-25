@@ -66,5 +66,8 @@ function restartTutorialAbout(){
    y.className="button";
    x = document.getElementById("introPanel1");
    x.className = "introPanel";
+   z = document.getElementById("tutorialArrow1");
+   z.className = "tutorialArrow";
 }
+
 

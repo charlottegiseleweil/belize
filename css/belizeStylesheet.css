@@ -152,10 +152,11 @@ html *{
 			top: 2%;
 			right: 35%;
 			position: absolute;
-			width: 40%;
+			width: 50%;
 			height: auto;
 			max-height: 88%;
 			overflow: scroll;
+			opacity: 1;
 
 		}
 
@@ -293,6 +294,7 @@ html *{
 		.teamDescriptor {
 			display: inline-block;
 			width: 30%;
+			top: 0;
 		}
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -344,5 +346,19 @@ html *{
 
 
 }
+
+.tutorialArrow{
+	z-index: 900;
+	position: absolute;
+}
+
+#tutorialArrow1{
+	right: 30%;
+	top: 15%;
+}
+
+/*#aboutPanelButton{
+	border: 15px solid red;
+}*/
 
 

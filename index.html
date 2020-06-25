@@ -67,7 +67,7 @@
 	<div class="layerChecks" id="CMCCCommunities"><input type = "checkbox" id="CMCCCommunitiesCheckBox"> CMCC Communities <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<div class="layerChecks" id="watersheds"><input type = "checkbox" id="watershedsCheckBox"> Waterways <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<div class="layerChecks" id="CMCCAreas"><input type = "checkbox" id="CMCCAreasCheckBox"> Protected Areas <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
-	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox"> All roads <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
+	<div class="layerChecks" id="Roads"><input type = "checkbox" id="roadsCheckBox"> Roads <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 	<div class="layerChecks" id="tourismArchKey"><input type = "checkbox" id="tourismArchKeyCheckBox"> Nature/Key Cultural Sites <a class="dataLinkClose" href="https://docs.google.com/document/d/19cuUkXI-JI_9XogK8MqClx1oF2X5yANsAfa13NnzmHo/edit" target="_blank">download</a></div>
 
 	<hr>
@@ -127,15 +127,14 @@
 
 
 <!-- LULC Panel  -->
-<div class= "LULCclose panels" id= "LULCPanel3"> <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button><h3>Scenario Draft</h3>
+<div class= "LULCclose panels" id= "LULCPanel3"> <button type= "button" class= "exitButton" onclick="LULCPanelClose()">X</button><h3>Scenario Comparisons</h3>
 <br>
 	<img src="scripts/scenarioStaticFigure/ScenarioStaticFigure.png" width= 100%>
 <br>
 <button type= "button" class="close" id= "expandFigureButton" onclick="expandFigureOpen()">Click to Expand Figure</button>
 <button type= "button" class="button" id= "downloadFigureButton" onclick="downladFigure()"><img src="img/expand.png" width="30"></button>
 	<div>
-		<h3>About this Figure</h3>
-		<br>
+		<h4>About this Figure</h4>
 		Sediment Flow: Reffers to flow of sediments in and out of the area. A positive value for flow means sediment is retained, a negative value means sediments are lost and flow out of the system. 
 		<br>
 		Nutrient Flow: Reffers to the flow of nutrients in and out of the area. A positive value for flow means nutrients are retained, a negative value means nutrients are lost and flow out of the system. 
@@ -160,12 +159,14 @@
 <!-- Intro Tutorial -->
 <!--<div class="panels introPanelOut" id=introPanel>-->
 <!--<div w3-include-html="html/introTutorial.html"></div>-->
+<div><img class = "tutorialArrow" id = "tutorialArrow1" src="img/next1.png" width="5%"></div>
+
 <div class="panels introPanel" id=introPanel1>
 	<h2>Welcome!</h2>
 	This viewer shows different scenarios for development in the CMCC Region in Belize. 
 	<button type= "button" class="button" style="display: inline;" id="skipTutorialButton">Skip Tutorial</button>
 	<h3>Mapping Elements</h3>
-	To visualize the information we have an interactive map where you can turn these layers on and off to explore different factors. To the right of the page you have the main selection panel. This has buttons that allow for greater interaction with the map, as well as checkboxes that can be clicked to turn layers on and off. Make sure to click and hover over icons and layers for additional information. On the bottom left of the graph we have the legend, which shows the elements you have clicked on, and on the top left a smaller map to help reference your position. 
+	To visualize the information we have an interactive map where you can turn layers on and off to explore different factors. To the right of the page you have the main selection panel where you have buttons that allow for greater interaction with the map, as well as checkboxes that can be clicked to turn layers on and off. Make sure to click and hover over icons and layers for additional information!
 	<br>
 	<button type= "button" class="button" style="display: inline;" id="prev1Button">Previous</button>
 	<button type= "button" class="button" style="display: inline;" id="next1Button">Next</button>
@@ -176,17 +177,19 @@
 	<button type= "button" class="button" style="display: inline;" id="close2TutorialButton">Close Tutorial</button>
 	<img class = "image" src="img/aboutTutorial.png" width="100%">
 	<br>
-	Next in this tutorial we are going to look at the About panel. To open the resource up, simply click on the button labeled 'About' in the main selection panel on the right. It should look like the image above. Here you will find all sorts of additional information. Wou can access this tutorial anytime by clicking the start tutorial button. You can also look at reports and documnets about the project, additional resources that provide data about Belize, and get to know the team for this project.
+	In this panel you will find all sorts of additional information. You can access this tutorial anytime by clicking the start tutorial button. You can also look at reports and documnets about the project, additional resources that provide data about Belize, and get to know part of the team for this project.
+	<br>
 	<button type= "button" class="button" style="display: inline;" id="prev2Button">Previous</button>
 	<button type= "button" class="button" style="display: inline;" id="next2Button">Next</button>
 </div>
 
 <div class="close" id=introPanel3>
-	<h3>The Scenaio Panel</h3>
+	<h3>The Scenario Comparison Panel</h3>
 	<button type= "button" class="button" style="display: inline;" id="finishTutorialButton">Finish Tutorial</button>
 	<img class = "image" src="img/scenarioTutorial.png" width="100%">
 	<br>
-	The last part of this tutorial will talk abou the Scenario panel. To access this click on the 'Scenatios' button on the main selection panel on the right side. Once click your page should look like the image above. This shows a static figure with 3 rows and 4 columns. The top row has land cover maps show models of possible expansion of the four main areas we observed for this study: Agriculture, Mining, Tourism, and Timber. On the first row we look at how different ecosystem services are affected by the full development of these scenarios. The bottom rows shows the cost of the lost of some of these systems, in BZD. Below the graph you will find tools to expand the grpah for further inspection and for download, as well as some description of some of the services evaluated. 
+	 The top row in the static figure has land cover maps that show models of possible expansion of the four main development areas we observed for this study: Agriculture, Mining, Tourism, and Timber. The second and third row look at metrics to evaluate how different ecoystem services will change under these development conditions. Below the graph you will find tools to expand the graph for further inspection and for download, as well as some description of some of the services evaluated. 
+	<br>
 	<button type= "button" class="button" style="display: inline;" id="prev3Button">Previous</button>
 	<button type= "button" class="button" style="display: inline;" id="next3Button">Finish</button>
 </div>
