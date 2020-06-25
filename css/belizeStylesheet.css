@@ -357,8 +357,20 @@ html *{
 	top: 15%;
 }
 
+.tutorialBorder{
+	border-style: solid;
+	border-width: 6px;
+	border-color: #E34234;
+}
+
+.closeBorder{
+	border-style: none;
+}
+
 /*#aboutPanelButton{
-	border: 15px solid red;
-}*/
+	border-style: solid;
+	border-width: 6px;
+	border-color: #E34234;
+}/
 
 

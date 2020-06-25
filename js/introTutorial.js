@@ -44,11 +44,15 @@ document.getElementById("next1Button").addEventListener("click", function(){
   z.className = "close";
 	y = document.getElementById("introPanel2");
 	y.className = "introPanel";
+  w = document.getElementById("aboutPanelButton");
+  w.className = "tutorialBorder";
 });
 
 document.getElementById("close2TutorialButton").addEventListener("click", function(){
   x = document.getElementById("introPanel2");
   x.className = "close";
+  w = document.getElementById("aboutPanelButton");
+  w.className = "button";
 });
 
 document.getElementById("next2Button").addEventListener("click", function(){
@@ -56,6 +60,10 @@ document.getElementById("next2Button").addEventListener("click", function(){
 	x.className = "close";
 	y = document.getElementById("introPanel3");
 	y.className = "introPanel";
+  w = document.getElementById("aboutPanelButton");
+  w.className = "button";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "tutorialBorder";
 });
 
 document.getElementById("prev2Button").addEventListener("click", function(){
@@ -65,6 +73,8 @@ document.getElementById("prev2Button").addEventListener("click", function(){
   z.className = "tutorialArrow";
 	y = document.getElementById("introPanel1");
 	y.className = "introPanel";
+  w = document.getElementById("aboutPanelButton");
+  w.className = "button";
 });
 
 document.getElementById("prev3Button").addEventListener("click", function(){
@@ -72,14 +82,22 @@ document.getElementById("prev3Button").addEventListener("click", function(){
 	x.className = "close";
 	y = document.getElementById("introPanel2");
 	y.className = "introPanel";
+  w = document.getElementById("aboutPanelButton");
+  w.className = "tutorialBorder";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "button";
 });
 
 document.getElementById("finishTutorialButton").addEventListener("click", function(){
   x = document.getElementById("introPanel3");
   x.className = "close";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "button";
 });
 
 document.getElementById("next3Button").addEventListener("click", function(){
   x = document.getElementById("introPanel3");
   x.className = "close";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "button";
 });
