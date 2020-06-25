@@ -26,6 +26,13 @@
       }
    }
 
+   function aboutPanelCheck(){
+      aboutCheck = document.getElementById("AboutPanel");
+      if (aboutCheck.className == "AboutPanel"){
+         aboutCheck.className = "close";
+      }
+   }
+
    //About Panel
     function aboutPanelClose(){
       x = document.getElementById("AboutPanel");
@@ -54,6 +61,9 @@ document.getElementById("aboutPanelButton").addEventListener("click", function()
 });
 
 function restartTutorialAbout(){
+   aboutPanelCheck();
+   y=document.getElementById("aboutPanelButton");
+   y.className="button";
    x = document.getElementById("introPanel1");
    x.className = "introPanel";
 }
