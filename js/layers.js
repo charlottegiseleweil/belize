@@ -162,6 +162,14 @@
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 	});
 
+	var tourismScoreIcon = L.icon({
+    iconUrl: 'img/plane.png',
+
+    iconSize:     [20, 20], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+	});
+
 //Popup On Mouse Over
 
  function popUpOnMouseHover(feature, layer){ //isolate this function out
@@ -259,6 +267,11 @@ function popUpplc(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 
+function popUpTourismScore(feature, layer){
+	layer.bindPopup("<h6>Tourism Impact Score</h6>" + "<br>" + feature.properties.Composite);
+	popUpOnMouseHover(feature, layer);
+}
+
 //Popup Links - layer groups only
 //function damsLinkClick(){
 //	window.open('https://en.wikipedia.org/wiki/Chalillo_Dam');
@@ -345,6 +358,9 @@ mymap.getPane('road').style.pointerEvents = 'none';
 	var timberExpansion = L.geoJSON.ajax("data/belizeExpansionLayers/timberExpansionLayer.geojson", {style: timberExpansionStyle});
 
 	var allEnergy = L.layerGroup([solarBest, solarGood, windBest, windGood, dams]);
+
+	var scoreTourism = L.geoJSON.ajax("data/tourismImpactScore.geojson", {
+		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismScoreIcon)}, onEachFeature: popUpTourismScore});
 
 	var agZone = L.layerGroup([agZones]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
@@ -443,7 +459,7 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	tourismExpansionIL = "tourismExpansionIL"
 	tourismExpandedCheck = "tourismExpandedCheckBox"
 	document.getElementById("tourismExpandedCheckBox").onclick = function(){
-		layerLegendToggle(tourismExpanded, tourismExpansionIL, tourismExpandedCheck);
+		layerLegendToggle(scoreTourism, tourismExpansionIL, tourismExpandedCheck);
 	}			
 
 	//keep this one
@@ -462,11 +478,11 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	}
 
 
-	miningExpansionIL = "miningExpansionIL"
-	miningExpansionCheck = "miningExpansionCheckBox"
-	document.getElementById("miningExpansionCheckBox").onclick = function(){
-		layerLegendToggle(miningExpansion, miningExpansionIL, miningExpansionCheck);
-	}			
+	// miningExpansionIL = "miningExpansionIL"
+	// miningExpansionCheck = "miningExpansionCheckBox"
+	// document.getElementById("miningExpansionCheckBox").onclick = function(){
+	// 	layerLegendToggle(miningExpansion, miningExpansionIL, miningExpansionCheck);
+	// }			
 
 
 	currentAgricultureIL = "currentAgricultureIL"
@@ -475,11 +491,11 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(agZones, currentAgricultureIL, currentAgricultureCheck);
 	}	
 
-	agExpansionIL = "agExpansionIL"
-	agExpansionCheck = "agExpansionCheckBox"
-	document.getElementById("agExpansionCheckBox").onclick = function(){
-		layerLegendToggle(agExpansion, agExpansionIL, agExpansionCheck);
-	}	
+	// agExpansionIL = "agExpansionIL"
+	// agExpansionCheck = "agExpansionCheckBox"
+	// document.getElementById("agExpansionCheckBox").onclick = function(){
+	// 	layerLegendToggle(agExpansion, agExpansionIL, agExpansionCheck);
+	// }	
 
 
 
@@ -489,11 +505,11 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(timberConcessions, currentTimberIL, timberCheck);
 	}	
 
-	timberExpansionIL = "timberExpansionIL"
-	timberExpansionCheck = "timberExpansionCheckBox"
-	document.getElementById("timberExpansionCheckBox").onclick = function(){
-		layerLegendToggle(timberExpansion, timberExpansionIL, timberExpansionCheck);
-	}	
+	// timberExpansionIL = "timberExpansionIL"
+	// timberExpansionCheck = "timberExpansionCheckBox"
+	// document.getElementById("timberExpansionCheckBox").onclick = function(){
+	// 	layerLegendToggle(timberExpansion, timberExpansionIL, timberExpansionCheck);
+	// }	
 
 
 	energyIL = "energyIL"
