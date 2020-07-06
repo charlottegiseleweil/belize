@@ -141,9 +141,9 @@
 	} 
 
 		var heatmapStyle = {
-		"color": "#7E7E7E",
+		"color": "#BDBDBD",
 		"fillOpacity":1,
-		"stroke": "#7E7E7E",
+		"stroke": "#BDBDBD",
 		"weight": 0.5,
 	}
 
