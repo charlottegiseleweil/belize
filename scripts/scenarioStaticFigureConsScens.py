@@ -40,9 +40,9 @@ waterTreatmentCost = [0,0,0,0]
 timberRevenue = [-280000, -150000, -890000, 0]
 
 #Data from new report, order is environmental impact macal river, change in revenue, social impact, more conservative, less conservative
-#environmental imact macal river, % change in units
+#environmental impact macal river, % change in units
 #Increasing summer flows (% change)
-increseSummerFlow = [-9.1,-13.7]
+increaseSummerFlow = [-9.1,-13.7]
 #Lessening high flows (% change) 
 lessHighFlow =[-8, 20.4]
 #Sediment load (% change) 
@@ -65,16 +65,13 @@ hydroPowerRev =[-5.4, -4.6]
 carbonValue =[158, 4.2]
 
 #social , %change
-Water availability, communities (baseflow, % change)=[ -7, -5]
-Water quality, communities (sediment, % change) =[-34.5, 16.5]
-Water quality, communities (nitrogen, % change) =[-7.6, 0.7]
+#Water availability, communities (baseflow, % change)
+waterAvailability=[ -7, -5]
+#Water quality, communities (sediment, % change) 
+waterQualitySediment=[-34.5, 16.5]
+#Water quality, communities (nitrogen, % change)
+waterQualityNutrient =[-7.6, 0.7]
 
-
-
-#more conservative scenario
-
-
-#####Timber: lack of sustainable harvest results in near total loss of long term timber revenue --> write this comment in figure
 
 
 #connect y-axis together on graph
@@ -86,11 +83,11 @@ timberRev = revenue.twinx()
 
 # Offset the right spine of par2.  The ticks and label have already been
 # placed on the right by twinx above.
-energy.spines["right"].set_position(("axes", 0))
+#energy.spines["right"].set_position(("axes", 0))
 cropRev.spines["right"].set_position(("axes", 0))
 carbonStock.spines["right"].set_position(("axes", 0))
 waterTreatment.spines["right"].set_position(("axes", 0))
-timberRev.spines["right"].set_position(("axes", 1))
+#timberRev.spines["right"].set_position(("axes", 1))
 
 # Having been created by twinx, par2 has its frame off, so the line of its
 # detached spine is invisible.  First, activate the frame but make the patch
@@ -102,40 +99,41 @@ make_patch_spines_invisible(waterTreatment)
 make_patch_spines_invisible(timberRev)
 
 # Second, show the right spine.
-energy.spines["right"].set_visible(True)
+#energy.spines["right"].set_visible(True)
 cropRev.spines["left"].set_visible(True)
 carbonStock.spines["left"].set_visible(True)
 waterTreatment.spines["left"].set_visible(True)
-timberRev.spines["right"].set_visible(True)
+#timberRev.spines["right"].set_visible(True)
 
 #bar graph figureName.bar(x,y,barWidth, color, label)
 #change in total flow
-p1, = revenue.bar(0.5, waterTreatmentCost[1], 0.3, color="#0042d1", label="BZD/year")
+p1, = revenue.bar(0.5, tourismRevLocal[1], 0.3, color="#8b0000", label="BZD/year")
 #change in sediment transport
-p2, = cropRev.bar(1.1, changeCropRevenue[1], 0.3, color="#dd7e6b", label="BZD/year")
+p2, = cropRev.bar(1.1, tourismRevCayo[1], 0.3, color="#00468b", label="BZD/year")
 #change in nutrient transport
-p3, = carbonStock.bar(1.4, carbonStockValue[1], 0.3, color= "#93c47d",label="BZD/year")
+p3, = carbonStock.bar(1.4, cropValue[1], 0.3, color= "#cc5500",label="BZD/year")
 #change in total flow
-p4, = energy.bar(0.8, changeEnergyValue[1], 0.3, color="#ffab40", label="BZD/year")
+p4, = energy.bar(0.8, 1.3, 0.3, color="#dbe600", label="BZD/year")
 #change in water demand
-p5, = waterTreatment.bar(0.5, waterTreatmentCost[0], 0.3, color="#a4c2f4", label="BZD/year")
+p5, = waterTreatment.bar(0.5, tourismRevLocal[1], 0.3, color="#8b0000", label="BZD/year")
 #change in crop production
-p6, = timberRev.bar(1.7, timberRevenue[1], 0.3, color="#b7b7b7", label="BZD/year")
-
+p6, = timberRev.bar(1.7, hydroPowerRev[1], 0.3, color="#006400", label="BZD/year")
+#change in crop production
+p7, = timberRev.bar(2.0, carbonValue[1], 0.3, color="#9370db", label="BZD/year")
 
 #set scale of the axis
-revenue.set_xlim(0, 2.5)
+revenue.set_xlim(0, 2.6)
 
-revenue.set_ylim(-350000000, 350000000)
+revenue.set_ylim(-160, 160)
 #energy.set_ylim(-350000000, 350000000)
-energy.set_ylim(-35000000, 35000000)
+energy.set_ylim(-160, 160)
 carbonStock.set_ylim()
 
-cropRev.set_ylim(-350000000, 350000000)
-carbonStock.set_ylim(-350000000, 350000000)
-waterTreatment.set_ylim(-350000000, 350000000)
+cropRev.set_ylim(-160, 160)
+carbonStock.set_ylim(-160, 160)
+waterTreatment.set_ylim(-160, 160)
 #timberRev.set_ylim(-350000000, 350000000)
-timberRev.set_ylim(-900000, 900000)
+timberRev.set_ylim(-160, 160)
 
 
 
@@ -153,7 +151,7 @@ waterTreatment.tick_params(axis='y', labelsize = 28, size=20, width= 2)
 energy.yaxis.set_ticklabels([])
 cropRev.yaxis.set_ticklabels([])
 carbonStock.yaxis.set_ticklabels([])
-waterTreatment.yaxis.set_ticklabels([])
+#waterTreatment.yaxis.set_ticklabels([])
 timberRev.yaxis.set_ticklabels([])
 
 

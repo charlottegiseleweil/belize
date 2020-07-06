@@ -367,10 +367,20 @@ html *{
 	border-style: none;
 }
 
-/*#aboutPanelButton{
-	border-style: solid;
-	border-width: 6px;
-	border-color: #E34234;
-}/
+#partnerImage{
+	background-color: #aeaeae;
+	border-radius: 25px;
+	margin: 10px;
+}
 
+#natCapLogo {
+	display: inline-block;
+}
 
+#natCapText {
+	display: inline-block;
+}
+
+#staticFigure{
+	border-radius: 25px;
+}

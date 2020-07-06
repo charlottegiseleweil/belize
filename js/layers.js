@@ -70,6 +70,73 @@
 		"weight": 0.5,		
 	}
 
+	var heatmapClass1Style = {
+		"color": "#2c7bb6",
+		"stroke": "#2c7bb6",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass2Style = {
+		"color": "#3f9ccd",
+		"stroke": "#3f9ccd",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass3Style = {
+		"color": "#52bde4",
+		"stroke": "#52bde4",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass4Style = {
+		"color": "#8fd89b",
+		"stroke": "#8fd89b",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass5Style = {
+		"color": "#daf233",
+		"stroke": "#daf233",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass6Style = {
+		"color": "#ffed15",
+		"stroke": "#ffed15",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass7Style = {
+		"color": "#fec940",
+		"stroke": "#fec940",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass8Style = {
+		"color": "#f99e59",
+		"stroke": "#f99e59",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass9Style = {
+		"color": "#e85b3a",
+		"stroke": "#e85b3a",
+		"weight": 0.5,
+	} 
+
+		var heatmapClass10Style = {
+		"color": "#d7191c",
+		"stroke": "#d7191c",
+		"weight": 0.5,
+	} 
+
+		var heatmapStyle = {
+		"color": "#7E7E7E",
+		"fillOpacity":1,
+		"stroke": "#7E7E7E",
+		"weight": 0.5,
+	}
+
 //Icon Declarations 
 	var hotelLodgingIcon = L.icon({
     iconUrl: 'img/bed.png',
@@ -163,7 +230,7 @@
 	});
 
 	var tourismScoreIcon = L.icon({
-    iconUrl: 'img/plane.png',
+    iconUrl: 'img/pin.png',
 
     iconSize:     [20, 20], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
@@ -268,7 +335,7 @@ function popUpplc(feature, layer){
 }
 
 function popUpTourismScore(feature, layer){
-	layer.bindPopup("<h6>Tourism Impact Score</h6>" + "<br>" + feature.properties.Composite);
+	layer.bindPopup(feature.properties.Name + "<h6>Tourism Impact Score</h6>" + "<br>" + "Environmental Impact: " + feature.properties.Env_Impact + "/10" + "<br>" + "Community Impact: " + feature.properties.Com_Impact + "/10" + "<br>" + "<h6>High values indicate that development at that site is likely to have a large impact</h6>");
 	popUpOnMouseHover(feature, layer);
 }
 
@@ -365,6 +432,23 @@ mymap.getPane('road').style.pointerEvents = 'none';
 	var agZone = L.layerGroup([agZones]);
 		cmccZone = L.layerGroup([cmccGeographicZone]);
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
+
+	var heatMapNull = L.geoJSON.ajax("data/surveyedImpact.geojson", {style: heatmapStyle});
+	var heatmapClass1 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass1.geojson", {style: heatmapClass1Style});
+	var heatmapClass2 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass2.geojson", {style: heatmapClass2Style});
+	var heatmapClass3 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass3.geojson", {style: heatmapClass3Style});
+	var heatmapClass4 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass4.geojson", {style: heatmapClass4Style});
+	var heatmapClass5 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass5.geojson", {style: heatmapClass5Style});
+	var heatmapClass6 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass6.geojson", {style: heatmapClass6Style});
+	var heatmapClass7 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass7.geojson", {style: heatmapClass7Style});
+	var heatmapClass8 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass8.geojson", {style: heatmapClass8Style});
+	var heatmapClass9 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass9.geojson", {style: heatmapClass9Style});
+	var heatmapClass10 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass10.geojson", {style: heatmapClass10Style});
+
+	var heatmapAllClasses = L.layerGroup([heatMapNull, heatmapClass1, heatmapClass2, heatmapClass3, heatmapClass4, heatmapClass5, heatmapClass6, heatmapClass7, heatmapClass8, heatmapClass9, heatmapClass10]);
+
+
+
 
 
 
@@ -497,6 +581,11 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	// 	layerLegendToggle(agExpansion, agExpansionIL, agExpansionCheck);
 	// }	
 
+	heatmapIL = "heatmapIL"
+	heatmapCheck = "heatmapCheckBox"
+	document.getElementById("heatmapCheckBox").onclick = function(){
+		layerLegendToggle(heatmapAllClasses, heatmapIL, heatmapCheck);
+	}
 
 
 	currentTimberIL = "currentTimberIL"
