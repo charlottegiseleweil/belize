@@ -73,60 +73,70 @@
 	var heatmapClass1Style = {
 		"color": "#2c7bb6",
 		"stroke": "#2c7bb6",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass2Style = {
 		"color": "#3f9ccd",
 		"stroke": "#3f9ccd",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass3Style = {
 		"color": "#52bde4",
 		"stroke": "#52bde4",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass4Style = {
 		"color": "#8fd89b",
 		"stroke": "#8fd89b",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass5Style = {
 		"color": "#daf233",
 		"stroke": "#daf233",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass6Style = {
 		"color": "#ffed15",
 		"stroke": "#ffed15",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass7Style = {
 		"color": "#fec940",
 		"stroke": "#fec940",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass8Style = {
 		"color": "#f99e59",
 		"stroke": "#f99e59",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass9Style = {
 		"color": "#e85b3a",
 		"stroke": "#e85b3a",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
 		var heatmapClass10Style = {
 		"color": "#d7191c",
 		"stroke": "#d7191c",
+		"fillOpacity": 1,
 		"weight": 0.5,
 	} 
 
@@ -636,6 +646,20 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	document.getElementById("roadsCheckBox").onclick = function(){
 		layerLegendToggle(allRoads, roadsIL, roadsCheck);
 	}	
+
+//Function starting with alert
+
+document.getElementById("waterflowCheckBox").onclick = function(){
+	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+}
+
+document.getElementById("waterQualityCheckBox").onclick = function(){
+	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+}
+
+document.getElementById("carbonStorageCheckBox").onclick = function(){
+	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+}
 
 
 //Icon setups 
