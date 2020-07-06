@@ -444,16 +444,16 @@ mymap.getPane('road').style.pointerEvents = 'none';
 		timberConcessions = L.layerGroup([bullRidgeCompartmentBoundry, fdPortionMPR, plcArea, recinosMngtArea]);
 
 	var heatMapNull = L.geoJSON.ajax("data/surveyedImpact.geojson", {style: heatmapStyle});
-	var heatmapClass1 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass1.geojson", {style: heatmapClass1Style});
-	var heatmapClass2 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass2.geojson", {style: heatmapClass2Style});
-	var heatmapClass3 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass3.geojson", {style: heatmapClass3Style});
-	var heatmapClass4 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass4.geojson", {style: heatmapClass4Style});
-	var heatmapClass5 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass5.geojson", {style: heatmapClass5Style});
-	var heatmapClass6 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass6.geojson", {style: heatmapClass6Style});
-	var heatmapClass7 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass7.geojson", {style: heatmapClass7Style});
-	var heatmapClass8 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass8.geojson", {style: heatmapClass8Style});
-	var heatmapClass9 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass9.geojson", {style: heatmapClass9Style});
-	var heatmapClass10 = L.geoJSON.ajax("data/heatmapArea/heatmapFinalClass10.geojson", {style: heatmapClass10Style});
+	var heatmapClass1 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass1.geojson", {style: heatmapClass1Style});
+	var heatmapClass2 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass2.geojson", {style: heatmapClass2Style});
+	var heatmapClass3 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass3.geojson", {style: heatmapClass3Style});
+	var heatmapClass4 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass4.geojson", {style: heatmapClass4Style});
+	var heatmapClass5 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass5.geojson", {style: heatmapClass5Style});
+	var heatmapClass6 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass6.geojson", {style: heatmapClass6Style});
+	var heatmapClass7 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass7.geojson", {style: heatmapClass7Style});
+	var heatmapClass8 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass8.geojson", {style: heatmapClass8Style});
+	var heatmapClass9 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass9.geojson", {style: heatmapClass9Style});
+	var heatmapClass10 = L.geoJSON.ajax("data/heatmapAreaBenefitsImp/heatmapFinalClass10.geojson", {style: heatmapClass10Style});
 
 	var heatmapAllClasses = L.layerGroup([heatMapNull, heatmapClass1, heatmapClass2, heatmapClass3, heatmapClass4, heatmapClass5, heatmapClass6, heatmapClass7, heatmapClass8, heatmapClass9, heatmapClass10]);
 
@@ -650,15 +650,15 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 //Function starting with alert
 
 document.getElementById("waterflowCheckBox").onclick = function(){
-	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
 }
 
 document.getElementById("waterQualityCheckBox").onclick = function(){
-	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
 }
 
 document.getElementById("carbonStorageCheckBox").onclick = function(){
-	aler("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
+	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
 }
 
 

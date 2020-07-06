@@ -89,7 +89,7 @@ document.getElementById("expandFigureButton").addEventListener("click", function
 });
 
 document.getElementById('downloadFigureButton').addEventListener("click", function(){
-   window.open('scripts/staticFigure0701.png');
+   window.open('scripts/StaticFigureViewer.png');
 });
 
 
