@@ -46,6 +46,10 @@ document.getElementById("next1Button").addEventListener("click", function(){
 	y.className = "introPanel";
   w = document.getElementById("aboutPanelButton");
   w.className = "tutorialBorder";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "tutorialBorder";
+  b = document.getElementById("dataDownloadButton");
+  b.className = "tutorialBorder";
 });
 
 document.getElementById("close2TutorialButton").addEventListener("click", function(){
@@ -53,18 +57,22 @@ document.getElementById("close2TutorialButton").addEventListener("click", functi
   x.className = "close";
   w = document.getElementById("aboutPanelButton");
   w.className = "button";
+  a = document.getElementById("LULCScenarioButton");
+  a.className = "button";
+  b = document.getElementById("dataDownloadButton");
+  b.className = "button";
 });
 
-document.getElementById("next2Button").addEventListener("click", function(){
-	x = document.getElementById("introPanel2");
-	x.className = "close";
-	y = document.getElementById("introPanel3");
-	y.className = "introPanel";
-  w = document.getElementById("aboutPanelButton");
-  w.className = "button";
-  a = document.getElementById("LULCScenarioButton");
-  a.className = "tutorialBorder";
-});
+// document.getElementById("next2Button").addEventListener("click", function(){
+// 	x = document.getElementById("introPanel2");
+// 	x.className = "close";
+// 	y = document.getElementById("introPanel3");
+// 	y.className = "introPanel";
+//   w = document.getElementById("aboutPanelButton");
+//   w.className = "button";
+//   a = document.getElementById("LULCScenarioButton");
+//   a.className = "tutorialBorder";
+// });
 
 document.getElementById("prev2Button").addEventListener("click", function(){
 	x = document.getElementById("introPanel2");
@@ -75,29 +83,41 @@ document.getElementById("prev2Button").addEventListener("click", function(){
 	y.className = "introPanel";
   w = document.getElementById("aboutPanelButton");
   w.className = "button";
-});
-
-document.getElementById("prev3Button").addEventListener("click", function(){
-	x = document.getElementById("introPanel3");
-	x.className = "close";
-	y = document.getElementById("introPanel2");
-	y.className = "introPanel";
-  w = document.getElementById("aboutPanelButton");
-  w.className = "tutorialBorder";
   a = document.getElementById("LULCScenarioButton");
   a.className = "button";
+  b = document.getElementById("dataDownloadButton");
+  b.className = "button";
 });
+
+// document.getElementById("prev3Button").addEventListener("click", function(){
+// 	x = document.getElementById("introPanel3");
+// 	x.className = "close";
+// 	y = document.getElementById("introPanel2");
+// 	y.className = "introPanel";
+//   w = document.getElementById("aboutPanelButton");
+//   w.className = "tutorialBorder";
+//   a = document.getElementById("LULCScenarioButton");
+//   a.className = "button";
+// });
 
 document.getElementById("finishTutorialButton").addEventListener("click", function(){
   x = document.getElementById("introPanel3");
   x.className = "close";
   a = document.getElementById("LULCScenarioButton");
   a.className = "button";
+  c = document.getElementById("aboutPanelButton");
+  c.className = "button";
+  b = document.getElementById("dataDownloadButton");
+  b.className = "button";
 });
 
-document.getElementById("next3Button").addEventListener("click", function(){
-  x = document.getElementById("introPanel3");
+document.getElementById("next2Button").addEventListener("click", function(){
+  x = document.getElementById("introPanel2");
   x.className = "close";
   a = document.getElementById("LULCScenarioButton");
   a.className = "button";
+  c = document.getElementById("aboutPanelButton");
+  c.className = "button";
+  b = document.getElementById("dataDownloadButton");
+  b.className = "button";
 });
