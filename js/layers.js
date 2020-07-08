@@ -382,12 +382,12 @@ function openPhotoOnClick(feature, layer){
 //PopUp Content
 
 function popUpCulturalSites(feature, layer){
-	layer.bindPopup("<h6>Cultural Sites</h6>" + feature.properties.Attraction + "<br>" + "<img src='img/culturalSites.png' width='200'>" + "<br>" + "<h6>Click icon for more info</h6>");
+	layer.bindPopup("<h6>Cultural Sites</h6>" + feature.properties.Attraction + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
 	openPhotoOnClick(feature, layer);
 }
 function popUpNatureSites(feature, layer){
-	layer.bindPopup("<h6>Nature Sites</h6>" + feature.properties.Name + "<br>" + "<img src='img/natureSites.png' width='200' >" + "<br>" + "<h6>Click icon for more info</h6>");
+	layer.bindPopup("<h6>Nature Sites</h6>" + feature.properties.Name + "<br>" + "<h6>Click icon for more info</h6>");
 	popUpOnMouseHover(feature, layer);
 	openPhotoOnClick(feature, layer);
 }
@@ -396,7 +396,7 @@ function popUpCMCCCommunities(feature, layer){
 	popUpOnMouseHover(feature, layer);
 }
 function popUpHotelSites(feature, layer){
-	layer.bindPopup("<h6>Hotel/Lodging</h6>" + feature.properties.Name + "<br>" + "<img src='img/lodging.png' width='120'>");
+	layer.bindPopup("<h6>Hotel/Lodging</h6>" + feature.properties.Name + "<br>");
 	popUpOnMouseHover(feature, layer);
 }
 function popUpSolarEnergy(feature, layer){
