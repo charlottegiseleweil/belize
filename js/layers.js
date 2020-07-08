@@ -232,23 +232,23 @@
 	}
 
 		var carbonStyle1 = {
-		"color": "#fcfbfd",
+		"color": "#ffe0bb",
 		"fillOpacity":1,
-		"stroke": "#fcfbfd",
+		"stroke": "#ffe0bb",
 		"weight": 0.5,
 	}
 
 		var carbonStyle2 = {
-		"color": "#a3a0cb",
+		"color": "#b1895d",
 		"fillOpacity":1,
-		"stroke": "#a3a0cb",
+		"stroke": "#b1895d",
 		"weight": 0.5,
 	}
 
 		var carbonStyle3 = {
-		"color": "#3f007d",
+		"color": "#623200",
 		"fillOpacity":1,
-		"stroke": "#3f007d",
+		"stroke": "#623200",
 		"weight": 0.5,
 	}
 
@@ -698,24 +698,12 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	}
 
 
-	// miningExpansionIL = "miningExpansionIL"
-	// miningExpansionCheck = "miningExpansionCheckBox"
-	// document.getElementById("miningExpansionCheckBox").onclick = function(){
-	// 	layerLegendToggle(miningExpansion, miningExpansionIL, miningExpansionCheck);
-	// }			
-
-
 	currentAgricultureIL = "currentAgricultureIL"
 	currentAgricultureCheck = "currentAgricultureCheckBox"
 	document.getElementById("currentAgricultureCheckBox").onclick = function(){
 		layerLegendToggle(agZones, currentAgricultureIL, currentAgricultureCheck);
 	}	
-
-	// agExpansionIL = "agExpansionIL"
-	// agExpansionCheck = "agExpansionCheckBox"
-	// document.getElementById("agExpansionCheckBox").onclick = function(){
-	// 	layerLegendToggle(agExpansion, agExpansionIL, agExpansionCheck);
-	// }	
+	
 
 	heatmapIL = "heatmapIL"
 	heatmapCheck = "heatmapCheckBox"
@@ -730,12 +718,6 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(timberConcessions, currentTimberIL, timberCheck);
 	}	
 
-	// timberExpansionIL = "timberExpansionIL"
-	// timberExpansionCheck = "timberExpansionCheckBox"
-	// document.getElementById("timberExpansionCheckBox").onclick = function(){
-	// 	layerLegendToggle(timberExpansion, timberExpansionIL, timberExpansionCheck);
-	// }	
-
 
 	energyIL = "energyIL"
 	energyCheck = "energyCheckBox"
@@ -748,24 +730,13 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	document.getElementById("energySitesCheckBox").onclick = function(){
 		layerLegendToggle(energySites, potentialEnergyIL, energySitesCheck);
 	}			
-
-	// watershedsIL = "watershedsIL"
-	// watershedsCheck = "watershedsCheckBox"
-	// document.getElementById("watershedsCheckBox").onclick = function(){
-	// 	layerLegendToggle(water, watershedsIL, watershedsCheck);
-	// }	
+	
 
 	CMCCAreasIL = "CMCCAreasIL"
 	CMCCAreasCheck = "CMCCAreasCheckBox"
 	document.getElementById("CMCCAreasCheckBox").onclick = function(){
 		layerLegendToggle(cmccGeographicZone, CMCCAreasIL, CMCCAreasCheck);
-	}
-
-	// CMCCCommunitiesIL = "CMCCCommunitiesIL"
-	// CMCCCommunitiesCheck = "CMCCCommunitiesCheckBox"
-	// document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
-	// 	layerLegendToggle(cmccCommunities, CMCCCommunitiesIL, CMCCCommunitiesCheck);
-	// }	
+	}	
 
 	roadsIL = "roadsIL"
 	roadsCheck = "roadsCheckBox"
@@ -773,11 +744,6 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(allRoads, roadsIL, roadsCheck);
 	}	
 
-//Function starting with alert
-
-// document.getElementById("waterflowCheckBox").onclick = function(){
-// 	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
-// }
 
 	waterFlowIL = "waterFlowIL"
 	waterFlowCheck = "waterflowCheckBox"
@@ -785,9 +751,6 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(waterFlowsAllClasses, waterFlowIL, waterFlowCheck);
 	}
 
-// document.getElementById("waterQualityCheckBox").onclick = function(){
-// 	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
-// }
 
 	waterQualityIL = "waterQualityIL"
 	waterQualityCheck = "waterQualityCheckBox"
@@ -795,9 +758,6 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 		layerLegendToggle(waterQualityAllClasses, waterQualityIL, waterQualityCheck);
 	}	
 
-// document.getElementById("carbonStorageCheckBox").onclick = function(){
-// 	alert("This checkbox is preliminary. Please contact Adrian Vogl, Project Lead (avogl@stanford.edu), for access to the data used in this study.")
-// }
 
 	carbonStorageIL = "carbonStorageIL"
 	carbonStorageCheck = "carbonStorageCheckBox"
