@@ -486,9 +486,10 @@ mymap.getPane('road').style.pointerEvents = 'none';
 
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
-	var hotelLodging = L.geoJSON.ajax("data/tourismData/hotelsSitesTourism.geojson", {
+	var hotelLodging = L.geoJSON.ajax("data/hotelResorts.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
 		onEachFeature:popUpHotelSites}).on('click', hotelLinkClick);
+
 	var tourismSites = L.geoJSON.ajax("data/tourismData/tourismSitesInfo.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, tourismSitesIcon)}, 
 		onEachFeature: popUpNatureSites});
@@ -496,7 +497,7 @@ mymap.getPane('road').style.pointerEvents = 'none';
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, culturalSitesIcon)}, 
 		onEachFeature: popUpCulturalSites}); 
 
-	var allTourism = L.layerGroup([hotelLodging, tourismSites, culturalSites]);
+	var allTourism = L.layerGroup([tourismSites, culturalSites]);
 
 	var tourismExpanded = L.geoJSON.ajax("data/belizeExpansionLayers/tourismExpansionLayer.geojson", {style: tourismExpansionStyle});
 
@@ -703,6 +704,12 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	document.getElementById("currentAgricultureCheckBox").onclick = function(){
 		layerLegendToggle(agZones, currentAgricultureIL, currentAgricultureCheck);
 	}	
+
+	hotelResortIL = "hotelResortIL"
+	hotelResortCheck = "hotelLodgingCheckBox"
+	document.getElementById("hotelLodgingCheckBox").onclick = function(){
+		layerLegendToggle(hotelLodging, hotelResortIL, hotelResortCheck);
+	}
 	
 
 	heatmapIL = "heatmapIL"
