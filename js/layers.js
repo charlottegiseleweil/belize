@@ -759,9 +759,9 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 
 	waterFlowIL = "waterFlowIL"
 	waterFlowCheck = "waterflowCheckBox"
-	var checkbox = document.getElementById("waterflowCheckBox");
+	var checkbox1 = document.getElementById("waterflowCheckBox");
 	document.getElementById("waterflowCheckBox").onclick = function(){
-		if (checkbox.checked == true){
+		if (checkbox1.checked == true){
 			toggleOff(waterQualityAllClasses, waterQualityIL);
 			toggleOff(carbonAllClasses, carbonStorageIL);
 			toggleOn(waterFlowsAllClasses, waterFlowIL);
@@ -776,8 +776,9 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 
 	waterQualityIL = "waterQualityIL"
 	waterQualityCheck = "waterQualityCheckBox"
+	var checkbox2 = document.getElementById("waterQualityCheckBox");
 	document.getElementById("waterQualityCheckBox").onclick = function(){
-		if (checkbox.checked == true){
+		if (checkbox2.checked == true){
 			toggleOff(waterFlowsAllClasses, waterFlowIL);
 			toggleOff(carbonAllClasses, carbonStorageIL);
 			toggleOn(waterQualityAllClasses, waterQualityIL);
@@ -792,8 +793,9 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 
 	carbonStorageIL = "carbonStorageIL"
 	carbonStorageCheck = "carbonStorageCheckBox"
+	var checkbox3 = document.getElementById("carbonStorageCheckBox");
 	document.getElementById("carbonStorageCheckBox").onclick = function(){
-		if (checkbox.checked == true){
+		if (checkbox3.checked == true){
 			toggleOff(waterFlowsAllClasses, waterFlowIL);
 			toggleOff(waterQualityAllClasses, waterQualityIL);
 			toggleOn(carbonAllClasses, carbonStorageIL);
