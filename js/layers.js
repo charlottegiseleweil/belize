@@ -752,25 +752,58 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	}	
 
 
+	//Variable declaractions for functions below
+	waterQualityIL = "waterQualityIL"
+	carbonStorageIL = "carbonStorageIL"
+
+
 	waterFlowIL = "waterFlowIL"
 	waterFlowCheck = "waterflowCheckBox"
+	var checkbox = document.getElementById("waterflowCheckBox");
 	document.getElementById("waterflowCheckBox").onclick = function(){
-		layerLegendToggle(waterFlowsAllClasses, waterFlowIL, waterFlowCheck);
+		if (checkbox.checked == true){
+			toggleOff(waterQualityAllClasses, waterQualityIL);
+			toggleOff(carbonAllClasses, carbonStorageIL);
+			toggleOn(waterFlowsAllClasses, waterFlowIL);
+			document.getElementById("waterQualityCheckBox").checked = false;
+			document.getElementById("carbonStorageCheckBox").checked = false;
+		}
+		else{
+			toggleOff(waterFlowsAllClasses, waterFlowIL);
+		}
 	}
 
 
 	waterQualityIL = "waterQualityIL"
 	waterQualityCheck = "waterQualityCheckBox"
 	document.getElementById("waterQualityCheckBox").onclick = function(){
-		layerLegendToggle(waterQualityAllClasses, waterQualityIL, waterQualityCheck);
+		if (checkbox.checked == true){
+			toggleOff(waterFlowsAllClasses, waterFlowIL);
+			toggleOff(carbonAllClasses, carbonStorageIL);
+			toggleOn(waterQualityAllClasses, waterQualityIL);
+			document.getElementById("waterflowCheckBox").checked = false;
+			document.getElementById("carbonStorageCheckBox").checked = false;
+		}
+		else{
+			toggleOff(waterQualityAllClasses, waterQualityIL);
+		}
 	}	
 
 
 	carbonStorageIL = "carbonStorageIL"
 	carbonStorageCheck = "carbonStorageCheckBox"
 	document.getElementById("carbonStorageCheckBox").onclick = function(){
-		layerLegendToggle(carbonAllClasses, carbonStorageIL, carbonStorageCheck);
-	}
+		if (checkbox.checked == true){
+			toggleOff(waterFlowsAllClasses, waterFlowIL);
+			toggleOff(waterQualityAllClasses, waterQualityIL);
+			toggleOn(carbonAllClasses, carbonStorageIL);
+			document.getElementById("waterflowCheckBox").checked = false;
+			document.getElementById("waterQualityCheckBox").checked = false;
+		}
+		else{
+			toggleOff(carbonAllClasses, carbonStorageIL);
+		}
+	}	
 
 
 //Icon setups 
