@@ -5,23 +5,23 @@
 		"weight": 0.5,
 	};
 
-	// var agExpansionStyle = {
-	// 	"color": "#ff6b1a",
-	// 	"fillOpacity":0.5,
-	// 	"weight": 0.5,
-	// };
+	var agExpansionStyle = {
+		"color": "#ff6b1a",
+		"fillOpacity":0.5,
+		"weight": 0.5,
+	};
 
-	// var miningExpansionStyle = {
-	// 	"color": "#773399",
-	// 	"fillOpacity":0.5,
-	// 	"weight": 0.5,
-	// };
+	var miningExpansionStyle = {
+		"color": "#773399",
+		"fillOpacity":0.5,
+		"weight": 0.5,
+	};
 
-	// var tourismExpansionStyle = {
-	// 	"color": "#ffd500",
-	// 	"fillOpacity":0.7,
-	// 	"weight": 0.5,
-	// };
+	var tourismExpansionStyle = {
+		"color": "#ffd500",
+		"fillOpacity":0.7,
+		"weight": 0.5,
+	};
 
 	var roadStyle = {
 		"color": "#8B0000"
@@ -57,12 +57,12 @@
 		"weight": 0.5,
 	}
 
-	// 	var timberExpansionStyle = {
-	// 	"color": "#48d1cc",
-	// 	"fillOpacity":0.4,
-	// 	"stroke": "#48d1cc",
-	// 	"weight": 0.5,
-	// }
+		var timberExpansionStyle = {
+		"color": "#48d1cc",
+		"fillOpacity":0.4,
+		"stroke": "#48d1cc",
+		"weight": 0.5,
+	}
 
 	var waterwaysStyle = {
 		"color": "#4169E1",
