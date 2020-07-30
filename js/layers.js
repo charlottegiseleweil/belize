@@ -450,7 +450,7 @@ function popUpplc(feature, layer){
 }
 
 function popUpTourismScore(feature, layer){
-	layer.bindPopup(feature.properties.Name + "<h6>Impacts of Site Development for Tourism</h6>" + "<br>" + "Environmental Impact: " + feature.properties.Env_Impact + "/10" + "<br>" + "Community Impact: " + feature.properties.Com_Impact + "/10" + "<br>" + "<h6>High Environmental Impact Scores indicate that development at this site is likely to have a large impact on the surrounding environment, and high Community Impact Scores indicate that development here is likely to have a large impact on downstream communities.</h6>");
+	layer.bindPopup(feature.properties.Name + "<h6>Impacts of Site Development for Tourism</h6>" + "<br>" + "Environmental Impact: " + feature.properties.Env_Impact + "/10" + "<br>" + "Community Impact: " + feature.properties.Com_Impact + "/10" + "<br>" + "<h6>High Environmental Impact Scores indicate that development at this site is likely to have a large impact on the surrounding environment, and high Community Impact Scores indicate that development here is likely to have negative impact on more downstream communities, sites, and businesses.</h6>");
 	popUpOnMouseHover(feature, layer);
 }
 
