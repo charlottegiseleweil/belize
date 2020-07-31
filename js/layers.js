@@ -486,6 +486,8 @@ mymap.getPane('road').style.pointerEvents = 'none';
 
 	var water = L.layerGroup([waterWays, waterBody, majorRivers]);
 
+	var communityWater = L.geoJSON.ajax("data/communityWaterSites.geojson").addTo(mymap);
+
 	var hotelLodging = L.geoJSON.ajax("data/hotelResorts.geojson", {
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, hotelLodgingIcon)}, 
 		onEachFeature:popUpHotelSites}).on('click', hotelLinkClick);
