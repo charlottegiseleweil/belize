@@ -634,10 +634,8 @@ mymap.getPane('road').style.pointerEvents = 'none';
 		pointToLayer: function (json, latlng, iconName) {return returnIconMarker(json, latlng, damsIcon)}, 
 		onEachFeature:popUpDams})/*.on('click', damsLinkClick)*/;
 
-	var primaryRoads = new L.geoJSON.ajax("data/primaryRoads.geojson", {style: allRoadsStyle});
+	var allRoads = new L.geoJSON.ajax("data/primaryRoads.geojson", {style: allRoadsStyle});
 	var secondaryRoads = new L.geoJSON.ajax("data/secondaryRoads.geojson", {style: secondaryRoadsStyle});
-
-	var allRoads = new L.layerGroup([primaryRoads, secondaryRoads]);
 
 	var currentMining = new L.geoJSON.ajax("data/miningRegionsGJ.geojson", {pointToLayer:returncurrentMiningMarker});
 	var miningSingle = L.marker([16.51408574, -89.12677427], {icon: currentMiningIcon}).bindTooltip("Click icon for more information").on('click', miningMarkerClick);
@@ -879,6 +877,12 @@ document.getElementById("CMCCCommunitiesCheckBox").onclick = function(){
 	document.getElementById("roadsCheckBox").onclick = function(){
 		layerLegendToggle(allRoads, roadsIL, roadsCheck);
 	}	
+
+	secondaryRoadsIL = "secondaryRoadsIL"
+	secondaryRoadsCheck = "secondaryRoadsCheckBox"
+	document.getElementById("secondaryRoadsCheckBox").onclick = function(){
+		layerLegendToggle(secondaryRoads, secondaryRoadsIL, secondaryRoadsCheck);
+	}
 
 	communityWaterIL = "communityWaterIL"
 	communityWaterCheck = "communityWaterCheckBox"
